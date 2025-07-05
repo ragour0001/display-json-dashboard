@@ -221,17 +221,23 @@
                   {
                     "id": "wellness-goals",
                     "text": "Set 3 wellness goals",
-                    "selected": true
+                    "selected": true,
+                    "disabled": false,
+                    "completed": true
                   },
                   {
                     "id": "assessment",
                     "text": "Take a short assessment",
-                    "selected": false
+                    "selected": false,
+                    "disabled": false,
+                    "completed": false
                   },
                   {
                     "id": "therapist-preferences", 
                     "text": "Tell us your therapist preferences",
-                    "selected": false
+                    "selected": false,
+                    "disabled": false,
+                    "completed": false
                   }
                 ],
                 "ctaText": "Discover Yourself",

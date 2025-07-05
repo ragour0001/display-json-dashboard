@@ -37,9 +37,26 @@ export default function DynamicContentRenderer({
   const handleSectionChange = (section: string, data?: any) => {
     if (section === 'goals-completed') {
       setGoalsCompleted(true);
+      
+      // Update unsure section options when goals are completed
+      if (unsureSectionProps) {
+        const updatedOptions = unsureSectionProps.options?.map((option: any) => ({
+          ...option,
+          disabled: option.id === 'wellness-goals', // Disable wellness goals option
+          selected: option.id === 'assessment' // Select assessment as next step
+        }));
+        
+        setUnsureSectionProps({
+          ...unsureSectionProps,
+          options: updatedOptions
+        });
+      }
+      
+      // Don't pass 'goals-completed' to parent to avoid changing activeSection
+      return;
     }
     
-    // Pass through to parent
+    // Pass through to parent for other section changes
     if (onSectionChange) {
       onSectionChange(section, data);
     }
@@ -66,6 +83,7 @@ export default function DynamicContentRenderer({
                 <UnsureSection
                   {...unsureSectionProps}
                   className="unsure-section-new"
+                  onSectionChange={onSectionChange}
                 />
               )}
             </React.Fragment>
@@ -111,7 +129,7 @@ function ContentBlockRenderer({ block, config, onSectionChange }: {
       return <GoalsFlowManager {...props} className={className} style={style} onSectionChange={onSectionChange} />;
     
     case 'unsure-section':
-      return <UnsureSection {...props} className={className} style={style} />;
+      return <UnsureSection {...props} className={className} style={style} onSectionChange={onSectionChange} />;
     
     case 'progress-getting-started':
       return <ProgressGettingStarted {...props} className={className} style={style} onSectionChange={onSectionChange} />;
@@ -615,7 +633,7 @@ function GoalsSelection({ goalSet, selectedGoals = [], availableGoals, maxGoals,
   );
 }
 
-function UnsureSection({ title, description, steps, currentStep, options, ctaText, illustrationUrl, className, style }: any) {
+function UnsureSection({ title, description, steps, currentStep, options, ctaText, illustrationUrl, className, style, onSectionChange }: any) {
   const [selectedOptions, setSelectedOptions] = React.useState(
     options?.reduce((acc: any, option: any) => {
       acc[option.id] = option.selected;
@@ -623,13 +641,35 @@ function UnsureSection({ title, description, steps, currentStep, options, ctaTex
     }, {}) || {}
   );
 
+  // Update local state when props change (from parent component updates)
+  React.useEffect(() => {
+    if (options) {
+      const newSelection = options.reduce((acc: any, option: any) => {
+        acc[option.id] = option.selected;
+        return acc;
+      }, {});
+      setSelectedOptions(newSelection);
+    }
+  }, [options]);
+
   const handleOptionChange = (optionId: string) => {
+    // Check if the option is disabled
+    const option = options.find((opt: any) => opt.id === optionId);
+    if (option?.disabled) return;
+
     // For radio buttons, only one option should be selected at a time
     const newSelection: any = {};
     options.forEach((option: any) => {
       newSelection[option.id] = option.id === optionId;
     });
     setSelectedOptions(newSelection);
+  };
+
+  const handleDiscoverClick = () => {
+    // Navigate to Goals & Assessment tab
+    if (onSectionChange) {
+      onSectionChange('goals-assessment');
+    }
   };
 
   // Handle both old steps format and new options format for backward compatibility
@@ -643,19 +683,21 @@ function UnsureSection({ title, description, steps, currentStep, options, ctaTex
           <h2 className="unsure-title">{title}</h2>
           <div className="unsure-options">
             {options.map((option: any) => (
-              <label key={option.id} className="option-item">
+              <label key={option.id} className={`option-item ${option.disabled ? 'disabled' : ''}`}>
                 <input
                   type="radio"
                   name="unsure-options"
                   checked={selectedOptions[option.id]}
                   onChange={() => handleOptionChange(option.id)}
+                  disabled={option.disabled}
                   className="option-radio"
-                />
+                />                
                 <span className="option-text">{option.text}</span>
+                
               </label>
             ))}
           </div>
-          <button className="discover-btn-new">
+          <button className="discover-btn-new" onClick={handleDiscoverClick}>
             <span>{ctaText}</span>
             <div className="arrow-icon-new">
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -702,7 +744,7 @@ function UnsureSection({ title, description, steps, currentStep, options, ctaTex
             </div>
           </div>
         </div>
-        <button className="discover-btn">
+        <button className="discover-btn" onClick={handleDiscoverClick}>
           <span>{ctaText}</span>
           <div className="arrow-icon">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
