@@ -26,21 +26,24 @@ function createDynamicComponent(
   return function DynamicComponent(props: ComponentProps) {
     const { config, onSectionChange } = props;
     
-    // Find the component configuration
-    const componentConfig = config?.layout.components.find(comp => comp.type === componentType);
-    
-    // If we have content blocks, use DynamicContentRenderer
-    if (componentConfig && 'content' in componentConfig && Array.isArray(componentConfig.content)) {
-      return (
-        <DynamicContentRenderer
-          content={componentConfig.content}
-          config={config}
-          onSectionChange={onSectionChange}
-        />
-      );
+    // Only use dynamic rendering for 'home' component to preserve existing functionality
+    if (componentType === 'home') {
+      // Find the component configuration
+      const componentConfig = config?.layout.components.find(comp => comp.type === componentType);
+      
+      // If we have content blocks, use DynamicContentRenderer
+      if (componentConfig && 'content' in componentConfig && Array.isArray(componentConfig.content)) {
+        return (
+          <DynamicContentRenderer
+            content={componentConfig.content}
+            config={config}
+            onSectionChange={onSectionChange}
+          />
+        );
+      }
     }
     
-    // Otherwise, fall back to original component
+    // For all other components, always use the original component
     return <FallbackComponent {...props} />;
   };
 }
@@ -72,6 +75,7 @@ export function DynamicComponentRenderer({
   onSectionChange,
   additionalProps = {}
 }: DynamicComponentRendererProps) {
+  console.log(`🎯 DynamicComponentRenderer: Rendering component type "${componentType}"`);
   const Component = ComponentRegistry[componentType];
   
   if (!Component) {

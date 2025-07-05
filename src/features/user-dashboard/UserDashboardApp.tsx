@@ -11,9 +11,9 @@ export default function UserDashboardApp() {
   const [isSidebarExpanded, setIsSidebarExpanded] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
 
-  // Initialize active section from config when loaded
+  // Initialize active section from config when loaded (only if not already set)
   useEffect(() => {
-    if (config) {
+    if (config && activeSection === "home") {
       const activeItem = getActiveMenuItem();
       if (activeItem) {
         setActiveSection(activeItem.componentType);
@@ -89,6 +89,7 @@ export default function UserDashboardApp() {
   };
 
   const handleSectionChange = (section: string) => {
+    console.log(`🔄 Navigation: Switching to ${section}`);
     setActiveSection(section);
   };
 

@@ -87,7 +87,7 @@
           "path": "/goals-assessment",
           "visible": true,
           "roles": ["user", "admin"],
-          "active": true,
+          "active": false,
           "componentType": "goals-assessment",
           "badge": "Due",
           "badgeColor": "red",
