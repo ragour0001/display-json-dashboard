@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { DisplayConfig } from '../hooks/useDisplayConfig';
 import './DynamicContentRenderer.css';
 
@@ -13,7 +13,7 @@ interface ContentBlock {
 interface DynamicContentRendererProps {
   content: ContentBlock[];
   config?: DisplayConfig;
-  onSectionChange?: (section: string) => void;
+  onSectionChange?: (section: string, data?: any) => void;
 }
 
 export default function DynamicContentRenderer({ 
@@ -21,20 +21,71 @@ export default function DynamicContentRenderer({
   config, 
   onSectionChange 
 }: DynamicContentRendererProps) {
+  const [goalsCompleted, setGoalsCompleted] = useState(false);
+  const [unsureSectionProps, setUnsureSectionProps] = useState<any>(null);
+
+  // Find the unsure-section props from content
+  React.useEffect(() => {
+    if (content && Array.isArray(content)) {
+      const unsureSection = content.find(block => block.type === 'unsure-section');
+      if (unsureSection) {
+        setUnsureSectionProps(unsureSection.props);
+      }
+    }
+  }, [content]);
+
+  const handleSectionChange = (section: string, data?: any) => {
+    if (section === 'goals-completed') {
+      setGoalsCompleted(true);
+    }
+    
+    // Pass through to parent
+    if (onSectionChange) {
+      onSectionChange(section, data);
+    }
+  };
+
   if (!content || !Array.isArray(content)) {
     return null;
   }
 
   return (
     <>
-      {content.map((block, index) => (
-        <ContentBlockRenderer
-          key={index}
-          block={block}
-          config={config}
-          onSectionChange={onSectionChange}
-        />
-      ))}
+      {content.map((block, index) => {
+        // Special handling for goals-flow-manager
+        if (block.type === 'goals-flow-manager') {
+          return (
+            <React.Fragment key={index}>
+              <ContentBlockRenderer
+                block={block}
+                config={config}
+                onSectionChange={handleSectionChange}
+              />
+              {/* Show unsure-section right after goals-flow-manager when goals are completed */}
+              {goalsCompleted && unsureSectionProps && (
+                <UnsureSection
+                  {...unsureSectionProps}
+                  className="unsure-section-new"
+                />
+              )}
+            </React.Fragment>
+          );
+        }
+        
+        // Hide the original unsure-section if goals are completed (to avoid duplication)
+        if (block.type === 'unsure-section' && goalsCompleted) {
+          return null;
+        }
+        
+        return (
+          <ContentBlockRenderer
+            key={index}
+            block={block}
+            config={config}
+            onSectionChange={handleSectionChange}
+          />
+        );
+      })}
     </>
   );
 }
@@ -42,7 +93,7 @@ export default function DynamicContentRenderer({
 function ContentBlockRenderer({ block, config, onSectionChange }: {
   block: ContentBlock;
   config?: DisplayConfig;
-  onSectionChange?: (section: string) => void;
+  onSectionChange?: (section: string, data?: any) => void;
 }) {
   const { type, props = {}, className, style, children } = block;
 
@@ -385,6 +436,11 @@ function GoalsFlowManager({
   const handleGoalsCompleted = (goals: any[]) => {
     setSelectedGoals(goals);
     setIsGoalsSet(true);
+    
+    // Notify parent about goals completion to show unsure section
+    if (onSectionChange) {
+      onSectionChange('goals-completed', goals);
+    }
   };
 
   const handleResetGoals = () => {
@@ -893,7 +949,7 @@ function MainTabsSection({ activeTab, tabs, className, style, onSectionChange }:
   );
 }
 
-function renderTabContent(content: any, onSectionChange?: (section: string) => void) {
+function renderTabContent(content: any, onSectionChange?: (section: string, data?: any) => void) {
   switch (content.type) {
     case 'assessment-prompt':
       return (
