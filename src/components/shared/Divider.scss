@@ -1,0 +1,26 @@
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 23px;
+  margin: 19px 0;
+  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 18px;
+  color: #686677;
+  font-weight: 500;
+}
+
+.divider-line {
+  flex: 1;
+  height: 1px;
+  background-color: #cbcad7;
+}
+
+.divider-text {
+  color: #686677;
+}
+
+@media (max-width: 991px) {
+  .divider {
+    white-space: initial;
+  }
+} 

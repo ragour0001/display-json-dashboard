@@ -1,0 +1,169 @@
+.dashboard-selection-container {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  align-items: stretch;
+  padding: 120px 20px 0;
+  min-height: auto;
+}
+
+.content-wrapper {
+  align-self: center;
+  width: 702px;
+  max-width: 100%;
+  margin: 21px auto 60px;
+}
+
+.header-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 30px;
+}
+
+.header-section {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  color: #19181F;
+}
+
+.greeting-title {
+  color: #19181F;
+  font-size: 36px;
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.instruction-text {
+  color: #19181F;
+  font-size: 20px;
+  font-weight: 400;
+  margin-top: 15px;
+  margin-bottom: 0;
+  opacity: 0.8;
+}
+
+.options-container {
+  display: flex;
+  margin-top: 40px;
+  width: 100%;
+  gap: 32px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 0;
+}
+
+.dashboard-card {
+  border-radius: 16px;
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
+  padding: 35px 25px;
+  width: 320px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  animation: cardFadeIn 0.3s ease-out;
+
+  &:hover,
+  &.hovered {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    border-color: #6C5CE7;
+
+    .dashboard-icon {
+      transform: scale(1.1);
+    }
+  }
+}
+
+.dashboard-icon {
+  aspect-ratio: 1;
+  object-fit: contain;
+  width: 50px;
+  transition: transform 0.3s ease;
+}
+
+.dashboard-content {
+  margin-top: 29px;
+  color: #17283C;
+}
+
+.dashboard-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0;
+  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+}
+
+.dashboard-description {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-top: 16px;
+  opacity: 0.8;
+}
+
+.dashboard-button {
+  width: 100%;
+  background-color: #6C5CE7;
+  color: #FFF;
+  border: none;
+  border-radius: 100px;
+  padding: 16px 24px;
+  font-size: 16px;
+  font-weight: 500;
+  margin-top: 24px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: #5849e4;
+    transform: scale(1.02);
+  }
+}
+
+.button-text {
+  display: block;
+}
+
+@keyframes cardFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 991px) {
+  .dashboard-selection-container {
+    padding: 100px 20px 0;
+  }
+
+  .content-wrapper {
+    width: 100%;
+    margin: 0 auto 40px;
+  }
+
+  .greeting-title {
+    font-size: 28px;
+  }
+
+  .instruction-text {
+    font-size: 18px;
+  }
+
+  .dashboard-card {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .options-container {
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+} 

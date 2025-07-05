@@ -1,0 +1,150 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.signup-container {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  padding: 121px 20px;
+  flex-wrap: wrap;
+}
+
+.hero-image {
+  width: 518px;
+  object-fit: cover;
+  margin-right: 40px;
+}
+
+.form-section {
+  max-width: 533px;
+  width: 100%;
+  padding: 34px 20px;
+}
+
+.form-container {
+  width: 100%;
+}
+
+.form-header {
+  text-align: center;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.login-prompt {
+  margin-top: 16px;
+  font-size: 16px;
+}
+
+.login-link {
+  color: #6f5ea5;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.form-fields {
+  margin-top: 30px;
+}
+
+.terms-checkbox {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+.checkbox-input {
+  width: 20px;
+  height: 20px;
+  margin-top: 3px;
+
+  &.error {
+    outline: 2px solid #dc3545;
+    border-radius: 3px;
+  }
+}
+
+.terms-text {
+  color: #49475a;
+  font-size: 16px;
+  line-height: 25px;
+}
+
+.terms-error {
+  color: #dc3545;
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+.terms-link {
+  background: none;
+  border: none;
+  padding: 0;
+  color: #007bff;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: inherit;
+  font-family: inherit;
+
+  &:hover {
+    color: #0056b3;
+  }
+}
+
+.actions-container {
+  margin-top: 30px;
+}
+
+.create-account-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #6c5ce7;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover:not(:disabled) {
+    background-color: #5d4e8c;
+  }
+
+  &.disabled,
+  &:disabled {
+    background-color: #b3b3b3;
+    cursor: not-allowed;
+  }
+}
+
+@media (max-width: 991px) {
+  .signup-container {
+    flex-direction: column;
+    gap: 20px;
+    padding: 0;
+  }
+
+  .hero-image {
+    display: none;
+  }
+
+  .form-container {
+    width: 100%;
+    max-width: 500px;
+    padding: 20px;
+  }
+} 

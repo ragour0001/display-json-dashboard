@@ -1,0 +1,150 @@
+.pricing-section {
+  padding: 80px 24px;
+  background-color: #f8f9fa;
+}
+
+.content-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+h2 {
+  font-size: 36px;
+  color: #333;
+  margin-bottom: 16px;
+}
+
+.subtitle {
+  color: #666;
+  margin-bottom: 48px;
+  font-size: 18px;
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 32px;
+  margin-bottom: 64px;
+}
+
+.pricing-card {
+  background: white;
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.pricing-card:hover {
+  transform: translateY(-8px);
+}
+
+.plan-header {
+  margin-bottom: 24px;
+}
+
+.plan-header h3 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 16px;
+}
+
+.price {
+  font-size: 36px;
+  color: #6C5CE7;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.billing {
+  color: #666;
+  font-size: 14px;
+}
+
+.features-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 32px;
+  text-align: left;
+}
+
+.features-list li {
+  padding: 8px 0;
+  color: #555;
+  display: flex;
+  align-items: center;
+}
+
+.features-list li::before {
+  content: "✓";
+  color: #6C5CE7;
+  margin-right: 8px;
+}
+
+.select-plan {
+  width: 100%;
+  padding: 12px;
+  background: #6C5CE7;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.select-plan:hover {
+  background: #5849c0;
+}
+
+.enterprise-section {
+  padding: 48px;
+  background: #6C5CE7;
+  border-radius: 16px;
+  color: white;
+}
+
+.enterprise-section h3 {
+  font-size: 28px;
+  margin-bottom: 16px;
+}
+
+.enterprise-section p {
+  margin-bottom: 24px;
+  font-size: 18px;
+}
+
+.contact-sales {
+  padding: 12px 32px;
+  background: white;
+  color: #6C5CE7;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.contact-sales:hover {
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .pricing-section {
+    padding: 60px 16px;
+  }
+
+  h2 {
+    font-size: 32px;
+  }
+
+  .pricing-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .enterprise-section {
+    padding: 32px 24px;
+  }
+} 

@@ -1,0 +1,29 @@
+.sso-button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  background-color: #fff;
+  border: 2px solid #e2e8f0;
+  border-radius: 9999px;
+  padding: 16px;
+  font-family: Figtree, -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 16px;
+  color: #1e293b;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.sso-icon {
+  width: 24px;
+  aspect-ratio: 1;
+  object-fit: contain;
+}
+
+@media (max-width: 991px) {
+  .sso-button {
+    max-width: 100%;
+    flex-wrap: wrap;
+  }
+} 

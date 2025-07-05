@@ -1,0 +1,637 @@
+[
+  {
+    "id": 1,
+    "question": "Felt unable to control important things?",
+    "options": [
+      "Never",
+      "Rarely",
+      "Sometimes",
+      "Often",
+      "Very Often"
+    ]
+  },
+  {
+    "id": 2,
+    "question": "Felt unsure about handling personal problems?",
+    "options": [
+      "Never",
+      "Rarely",
+      "Sometimes",
+      "Often",
+      "Very Often"
+    ]
+  },
+  {
+    "id": 3,
+    "question": "Felt that things were not going your way?",
+    "options": [
+      "Never",
+      "Rarely",
+      "Sometimes",
+      "Often",
+      "Very Often"
+    ]
+  },
+  {
+    "id": 4,
+    "question": "Felt difficulties piling up beyond control?",
+    "options": [
+      "Never",
+      "Rarely",
+      "Sometimes",
+      "Often",
+      "Very Often"
+    ]
+  },
+  {
+    "id": 5,
+    "question": "Little interest or pleasure in doing things.",
+    "options": [  
+      "Not at all",
+      "Rarely",
+      "Often",
+      "Nearly Every Day"
+    ]
+  },
+  {
+    "id": 6,
+    "question": "Feeling down, depressed, or hopeless.",
+    "options": [  
+      "Not at all",
+      "Rarely",
+      "Often",
+      "Nearly Every Day"
+    ]
+  },
+  {
+    "id": 7,
+    "question": "Feeling nervous, anxious, or on edge?",
+    "options": [  
+      "Not at all",
+      "Rarely",
+      "Often",
+      "Nearly Every Day"
+    ]
+  },
+  {
+    "id": 8,
+    "question": "Not being able to stop/control worrying?",
+    "options": [  
+      "Not at all",
+      "Rarely",
+      "Often",
+      "Nearly Every Day"
+    ]
+  },
+  {
+    "id": 9,
+    "question": "Are relationship difficulties currently contributing to your stress or emotional state?",
+    "options": [
+      "Not at all",
+      "A little",
+      "Somewhat",
+      "A lot"
+    ]
+  },
+  {
+    "id": 10,
+    "question": "Satisfaction with sleep patterns?",
+    "options": [
+      "Never",
+      "Rarely",
+      "Sometimes",
+      "Often",
+      "Very Often"
+    ]
+  },
+  {
+    "id": 11,
+    "question": "Does poor sleep interfere with daily functioning?",
+    "options": [
+      "Never",
+      "Rarely",
+      "Sometimes",
+      "Often",
+      "Very Often"
+    ]
+  },
+  {
+    "id": 12,
+    "question": "Trouble wrapping up details of a project?",
+    "options": [
+      "Not at all",
+      "Rarely",
+      "Sometimes",
+      "Often"
+    ]
+  },
+  {
+    "id": 13,
+    "question": "Difficulty organizing tasks?",
+    "options": [
+      "Not at all",
+      "Rarely",
+      "Sometimes",
+      "Often"
+    ]
+  },
+  {
+    "id": 14,
+    "question": "Difficulty controlling anger?",
+    "options": [
+      "Never",
+      "Rarely",
+      "Sometimes",
+      "Often",
+      "Very Often"
+    ]
+  },
+  {
+    "id": 15,
+    "question": "Anger affects relationships?",
+    "options": [
+      "Never",
+      "Rarely",
+      "Sometimes",
+      "Often",
+      "Very Often"
+    ]
+  },
+  {
+    "id": 16,
+    "question": "I feel I am a person of worth.",
+    "options": [
+      "Strongly Disagree",
+      "Disagree",
+      "Agree",
+      "Strongly Agree"
+    ]
+  },
+  {
+    "id": 17,
+    "question": "How often do you feel isolated?",
+    "options": [
+      "Not at all",
+      "Rarely",
+      "Sometimes",
+      "Often"
+    ]
+  },
+  {
+    "id": 18,
+    "question": "How often do you feel left out?",
+    "options": [
+      "Not at all",
+      "Rarely",
+      "Sometimes",
+      "Often"
+    ]
+  },
+  {
+    "id": 19,
+    "question": "How often do you feel you lack companionship?",
+    "options": [
+      "Not at all",
+      "Rarely",
+      "Sometimes",
+      "Often"
+    ]
+  },
+  {
+    "id": 20,
+    "question": "I often feel overwhelmed by the demands of work and personal life.",
+    "options": [
+      "Never",
+      "Rarely",
+      "Sometimes",
+      "Often",
+      "Very Often"
+    ]
+  },
+  {
+    "id": 21,
+    "question": "I do not have enough time for my family or personal interests.",
+    "options": [
+      "Never",
+      "Rarely",
+      "Sometimes",
+      "Often",
+      "Very Often"
+    ]
+  },
+  {
+    "id": 22,
+    "question": "I feel tired.",
+    "options": [
+      "Never",
+      "Seldom",
+      "Sometimes",
+      "Often",
+      "Always"
+    ]
+  },
+  {
+    "id": 23,
+    "question": "I feel physically exhausted.",
+    "options": [
+      "Never",
+      "Seldom",
+      "Sometimes",
+      "Often",
+      "Always"
+    ]
+  },
+  {
+    "id": 24,
+    "question": "I can't take it anymore.",
+    "options": [
+      "Never",
+      "Seldom",
+      "Sometimes",
+      "Often",
+      "Always"
+    ]
+  },
+  {
+    "id": 25,
+    "question": "I feel worn out.",
+    "options": [
+      "Never",
+      "Seldom",
+      "Sometimes",
+      "Often",
+      "Always"
+    ]
+  },
+  {
+    "id": 26,
+    "question": "I feel emotionally exhausted.",
+    "options": [
+      "Never",
+      "Seldom",
+      "Sometimes",
+      "Often",
+      "Always"
+    ]
+  },
+  {
+    "id": 27,
+    "question": "I feel the urge to check my phone or devices constantly.",
+    "options": [
+      "Never",
+      "Rarely",
+      "Often",
+      "Almost Always",
+      "Always"
+    ]
+  },
+  {
+    "id": 28,
+    "question": "Has your mental state affected your work or studies?",
+    "options": [
+      "Not at all",
+      "A little",
+      "Moderate",
+      "A lot",
+      "Extreme"
+    ]
+  },
+  {
+    "id": 29,
+    "question": "Has it been harder to enjoy time with others?",
+    "options": [
+      "Not at all",
+      "A little",
+      "Moderate",
+      "A lot",
+      "Extreme"
+    ]
+  },
+  {
+    "id": 30,
+    "question": "Have you struggled to stay focused or emotionally steady?",
+    "options": [
+      "Not at all",
+      "A little",
+      "Moderate",
+      "A lot",
+      "Extreme"
+    ]
+  },
+  {
+    "id": 31,
+    "question": "How often do you feel stressed about work-related responsibilities?",
+    "options": [
+      "Never",
+      "Rarely",
+      "Often",
+      "Almost Always",
+      "Always"
+    ]
+  },
+  {
+    "id": 32,
+    "question": "I tend to bounce back quickly after hard times?",
+    "options": [
+      "Strongly disagree",
+      "Disagree",
+      "Neutral",
+      "Agree",
+      "Strongly agree"
+    ]
+  },
+  {
+    "id": 33,
+    "question": "It does not take me long to recover from a stressful event?",
+    "options": [
+      "Strongly disagree",
+      "Disagree",
+      "Neutral",
+      "Agree",
+      "Strongly agree"
+    ]
+  },
+  {
+    "id": 34,
+    "question": "I don't tend to take a long time to get over setbacks in my life?",
+    "options": [
+      "Strongly disagree",
+      "Disagree",
+      "Neutral",
+      "Agree",
+      "Strongly agree"
+    ]
+  },
+  {
+    "id": 35,
+    "question": "You felt so good or hyper that other people thought you were not your normal self, or you got into trouble?",
+    "options": [
+      "Yes",
+      "No"
+    ]
+  },
+  {
+    "id": 36,
+    "question": "You got much less sleep than usual and didn't really miss it?",
+    "options": [
+      "Yes",
+      "No"
+    ]
+  },
+  {
+    "id": 37,
+    "question": "Your thoughts raced through your head, or you couldn't slow your mind down?",
+    "options": [
+      "Yes",
+      "No"
+    ]
+  },
+  {
+    "id": 38,
+    "question": "You were much more active or did many more things than usual?",
+    "options": [
+      "Yes",
+      "No"
+    ]
+  },
+  {
+    "id": 39,
+    "question": "You did things that were unusual for you or that other people might have thought were excessive, foolish, or risky?",
+    "options": [
+      "Yes",
+      "No"
+    ]
+  },
+  {
+    "id": 40,
+    "question": "Have you ever felt that you should reduce or limit your intake or use of substances (whether through drinking, smoking, oral ingestion, or inhalation)?",
+    "options": [
+      "Yes",
+      "No"
+    ]
+  },
+  {
+    "id": 41,
+    "question": "Have other people criticized or expressed concern about your substance use habits, regardless of the form of consumption?",
+    "options": [
+      "Yes",
+      "No"
+    ]
+  },
+  {
+    "id": 42,
+    "question": "Have you ever felt guilty or uneasy about the way you use substances (such as using more than intended, relying on them to cope, or frequent use through any mode like pills, smoking, or vaping)?",
+    "options": [
+      "Yes",
+      "No"
+    ]
+  },
+  {
+    "id": 43,
+    "question": "Have you ever used substances first thing in the morning (e.g., a drink, smoke, oral medication, or inhaled substance) to help you feel normal, manage discomfort, or steady your nerves?",
+    "options": [
+      "Yes",
+      "No"
+    ]
+  },
+  {
+    "id": 44,
+    "question": "Unwanted distressing memories/nightmares?",
+    "options": [
+      "Yes",
+      "No"
+    ]
+  },
+  {
+    "id": 45,
+    "question": "Avoidance of reminders of trauma?",
+    "options": [
+      "Yes",
+      "No"
+    ]
+  },
+  {
+    "id": 46,
+    "question": "Feeling emotionally numb or detached?",
+    "options": [
+      "Yes",
+      "No"
+    ]
+  },
+  {
+    "id": 47,
+    "question": "How often do you have trouble wrapping up the final details of a project, once the challenging parts have been done?",
+    "options": [
+      "Never",
+      "Rarely",
+      "Sometimes",
+      "Often",
+      "Very Often"
+    ]
+  },
+  {
+    "id": 48,
+    "question": "How often do you have difficulty getting things in order when you have to do a task that requires organization?",
+    "options": [
+      "Never",
+      "Rarely",
+      "Sometimes",
+      "Often",
+      "Very Often"
+    ]
+  },
+  {
+    "id": 49,
+    "question": "How often do you fidget or squirm with your hands or feet when you have to sit down for a long time?",
+    "options": [
+      "Never",
+      "Rarely",
+      "Sometimes",
+      "Often",
+      "Very Often"
+    ]
+  },
+  {
+    "id": 50,
+    "question": "When you have a task that requires a lot of thought, how often do you avoid or delay getting started?",
+    "options": [
+      "Never",
+      "Rarely",
+      "Sometimes",
+      "Often",
+      "Very Often"
+    ]
+  },
+  {
+    "id": 51,
+    "question": "How often do you have problems remembering appointments or obligations?",
+    "options": [
+      "Never",
+      "Rarely",
+      "Sometimes",
+      "Often",
+      "Very Often"
+    ]
+  },
+  {
+    "id": 52,
+    "question": "How often do you feel overly active and compelled to do things, like you were driven by a motor?",
+    "options": [
+      "Never",
+      "Rarely",
+      "Sometimes",
+      "Often",
+      "Very Often"
+    ]
+  },
+  {
+    "id": 53,
+    "question": "I see myself as someone who is reserved.",
+    "options": [
+      "Disagree strongly",
+      "Disagree a little",
+      "Neither agree nor disagree",
+      "Agree a little",
+      "Agree strongly"
+    ]
+  },
+  {
+    "id": 54,
+    "question": "I see myself as someone who is generally trusting.",
+    "options": [
+      "Disagree strongly",
+      "Disagree a little",
+      "Neither agree nor disagree",
+      "Agree a little",
+      "Agree strongly"
+    ]
+  },
+  {
+    "id": 55,
+    "question": "I see myself as someone who tends to be lazy.",
+    "options": [
+      "Disagree strongly",
+      "Disagree a little",
+      "Neither agree nor disagree",
+      "Agree a little",
+      "Agree strongly"
+    ]
+  },
+  {
+    "id": 56,
+    "question": "I see myself as someone who is relaxed, handles stress well.",
+    "options": [
+      "Disagree strongly",
+      "Disagree a little",
+      "Neither agree nor disagree",
+      "Agree a little",
+      "Agree strongly"
+    ]
+  },
+  {
+    "id": 57,
+    "question": "I see myself as someone who has few artistic interests.",
+    "options": [
+      "Disagree strongly",
+      "Disagree a little",
+      "Neither agree nor disagree",
+      "Agree a little",
+      "Agree strongly"
+    ]
+  },
+  {
+    "id": 58,
+    "question": "I see myself as someone who is outgoing, sociable.",
+    "options": [
+      "Disagree strongly",
+      "Disagree a little",
+      "Neither agree nor disagree",
+      "Agree a little",
+      "Agree strongly"
+    ]
+  },
+  {
+    "id": 59,
+    "question": "I see myself as someone who tends to find fault with others.",
+    "options": [
+      "Disagree strongly",
+      "Disagree a little",
+      "Neither agree nor disagree",
+      "Agree a little",
+      "Agree strongly"
+    ]
+  },
+  {
+    "id": 60,
+    "question": "I see myself as someone who does a thorough job.",
+    "options": [
+      "Disagree strongly",
+      "Disagree a little",
+      "Neither agree nor disagree",
+      "Agree a little",
+      "Agree strongly"
+    ]
+  },
+  {
+    "id": 61,
+    "question": "I see myself as someone who gets nervous easily.",
+    "options": [
+      "Disagree strongly",
+      "Disagree a little",
+      "Neither agree nor disagree",
+      "Agree a little",
+      "Agree strongly"
+    ]
+  },
+  {
+    "id": 62,
+    "question": "I see myself as someone who has an active imagination.",
+    "options": [
+      "Disagree strongly",
+      "Disagree a little",
+      "Neither agree nor disagree",
+      "Agree a little",
+      "Agree strongly"
+    ]
+  }
+]  

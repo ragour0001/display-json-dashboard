@@ -1,0 +1,24 @@
+{
+  "name": "Refill Health - Mental Health & Employee Wellness Platform",
+  "short_name": "Refill Health",
+  "description": "Transform your workplace mental health with AI-powered therapy matching and comprehensive wellness programs.",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#006B5F",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "start_url": "/",
+  "scope": "/",
+  "orientation": "portrait-primary",
+  "categories": ["health", "wellness", "medical", "business"]
+} 

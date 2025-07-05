@@ -1,0 +1,118 @@
+.services {
+  padding: 60px 40px;
+  text-align: center;
+  background-color: #f9f9ff;
+}
+
+.section-header {
+  margin-bottom: 40px;
+}
+
+.section-title {
+  font-size: 42px;
+  font-weight: 700;
+  color: #333;
+  text-align: center;
+  margin-bottom: 16px;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.section-subtitle {
+  font-size: 24px;
+  color: #666;
+  text-align: center;
+  margin-bottom: 48px;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 32px;
+  justify-items: center;
+}
+
+.service-card {
+  background: linear-gradient(131deg, #fee7d6 -12.28%, #f2e6ff 113.85%);
+  padding: 20px;
+  border-radius: 20px;
+  max-width: 392px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  }
+}
+
+.service-img {
+  width: 100%;
+  height: 215px;
+  object-fit: cover;
+  border-radius: 20px;
+  margin-bottom: 16px;
+}
+
+.service-info {
+  text-align: left;
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.service-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 12px;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.service-text {
+  font-size: 16px;
+  color: #666;
+  line-height: 1.6;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.demo-btn {
+  padding: 14px 28px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  background-color: #6f5ea5;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-family: 'Nunito', sans-serif;
+  width: 100%;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #5a4c8c;
+  }
+}
+
+@media (min-width: 1024px) {
+  .services-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .section-title {
+    font-size: 32px;
+  }
+
+  .section-subtitle {
+    font-size: 20px;
+  }
+
+  .demo-btn {
+    font-size: 16px;
+  }
+} 

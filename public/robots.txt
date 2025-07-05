@@ -1,0 +1,37 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+Disallow: /dashboard
+Disallow: /admin-dashboard
+Disallow: /personal-dashboard
+Disallow: /login
+Disallow: /sign-up
+Disallow: /verify
+Disallow: /reset-password
+Disallow: /set-new-password
+Disallow: /onboarding/personal-info
+Disallow: /onboarding/professional-background
+Disallow: /onboarding/specializations
+Disallow: /onboarding/role-alignment
+Disallow: /onboarding/language-proficiency
+Disallow: /onboarding/additional-info
+Disallow: /onboarding/credentials-upload
+Disallow: /onboarding/miscellaneous-info
+Disallow: /onboarding/practice-details
+Disallow: /onboarding/thank-you
+Disallow: /onboarding/interview-scheduling
+Disallow: /onboarding/profile-review
+Disallow: /onboarding/final-steps
+Disallow: /onboarding/application-review
+Disallow: /onboarding/interview-invitation
+Disallow: /onboarding/interview-invitation-new
+Disallow: /onboarding/interview-completed
+Disallow: /onboarding/schedule-interview
+Disallow: /onboarding/complete
+Disallow: /onboarding/application-submitted
+
+# Allow main pages for SEO
+Allow: /
+Allow: /onboarding/application-form
+
+Sitemap: https://refillhealth.com/sitemap.xml

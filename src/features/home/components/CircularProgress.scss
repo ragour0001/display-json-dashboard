@@ -1,0 +1,12 @@
+.progress-container {
+  width: 237px;
+  height: 238px;
+  position: relative;
+}
+
+@media (max-width: 640px) {
+  .progress-container {
+    width: 200px;
+    height: 200px;
+  }
+} 

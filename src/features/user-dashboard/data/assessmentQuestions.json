@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "question": "Felt unable to control important things?",
+    "options": [
+      "Never",
+      "Rarely",
+      "Sometimes",
+      "Often",
+      "Very Often"
+    ]
+  },
+  {
+    "id": 2,
+    "question": "Felt unsure about handling personal problems?",
+    "options": [
+      "Never",
+      "Rarely",
+      "Sometimes",
+      "Often",
+      "Very Often"
+    ]
+  },
+  {
+    "id": 3,
+    "question": "Felt that things were not going your way?",
+    "options": [
+      "Never",
+      "Rarely",
+      "Sometimes",
+      "Often",
+      "Very Often"
+    ]
+  },
+  {
+    "id": 4,
+    "question": "Felt difficulties piling up beyond control?",
+    "options": [
+      "Never",
+      "Rarely",
+      "Sometimes",
+      "Often",
+      "Very Often"
+    ]
+  },
+  {
+    "id": 5,
+    "question": "Little interest or pleasure in doing things.",
+    "options": [  
+      "Not at all",
+      "Rarely",
+      "Often",
+      "Nearly Every Day"
+    ]
+  }
+]

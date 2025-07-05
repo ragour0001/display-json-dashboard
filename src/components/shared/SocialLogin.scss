@@ -1,0 +1,36 @@
+.social-login {
+  margin-top: 19px;
+}
+
+.social-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 13px;
+}
+
+.social-icon {
+  width: 110px;
+  aspect-ratio: 1.96;
+  object-fit: contain;
+}
+
+@media (max-width: 991px) {
+  .social-buttons {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    overflow-x: hidden;
+    box-sizing: border-box;
+    padding: 0 12px;
+  }
+
+  .social-icon {
+    flex: 1 1 auto;
+    max-width: 65px;
+    aspect-ratio: 1.96;
+    object-fit: contain;
+  }
+} 
