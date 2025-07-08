@@ -47,7 +47,7 @@ export default function GoalsAssessment({ onSectionChange }: GoalsAssessmentProp
         .assessment-section {
           display: flex;
           width: 100%;
-          max-width: 929px;
+          max-width: 100%;
           flex-direction: column;
           align-items: flex-start;
           gap: 24px;

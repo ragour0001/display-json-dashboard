@@ -769,11 +769,11 @@ function UnsureSection({ title, description, steps, currentStep, options, ctaTex
 function ProgressGettingStarted({ title, progressPercentage, showProgressIndicators, ctaText, faqLink, onCtaClick, className, style, onSectionChange }: any) {
   return (
     <div className={className || "progress-getting-started-section"} style={style}>
-      <div className="progress-icon">
+      {/* <div className="progress-icon">
         <svg width="24" height="25" viewBox="0 0 24 25" fill="none">
           <path d="..." fill="#006B5F" />
         </svg>
-      </div>
+      </div> */}
       <div className="progress-content">
         <div className="progress-title">{title}</div>
         {showProgressIndicators && (

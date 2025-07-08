@@ -223,7 +223,7 @@
                     "text": "Set 3 wellness goals",
                     "selected": true,
                     "disabled": false,
-                    "completed": true
+                    "completed": false
                   },
                   {
                     "id": "assessment",
