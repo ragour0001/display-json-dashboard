@@ -2,8 +2,12 @@
 
 import GoalCard from "./GoalCard";
 
-export default function MyGoalsSection() {
-  const goals = [
+interface MyGoalsSectionProps {
+  selectedGoals?: any[];
+}
+
+export default function MyGoalsSection({ selectedGoals }: MyGoalsSectionProps) {
+  const defaultGoals = [
     {
       emoji: "😌",
       title: "Manage stress",
@@ -26,6 +30,14 @@ export default function MyGoalsSection() {
       isLocked: true,
     },
   ];
+
+  // Use selected goals from Home tab if available, otherwise show default goals
+  const goalsToDisplay = selectedGoals && selectedGoals.length > 0 ? selectedGoals : defaultGoals;
+  const hasSelectedGoals = selectedGoals && selectedGoals.length > 0;
+  
+  console.log('🎯 MyGoalsSection: selectedGoals received:', selectedGoals);
+  console.log('🎯 MyGoalsSection: hasSelectedGoals:', hasSelectedGoals);
+  console.log('🎯 MyGoalsSection: goalsToDisplay:', goalsToDisplay);
 
   return (
     <>
@@ -233,100 +245,127 @@ export default function MyGoalsSection() {
           <h2 className="goals-section-title">My Goals</h2>
         </div>
 
-        <div className="goals-status-container">
-          <div className="goals-status-header">
-            <div>
-              <div className="goals-status-info">
-                <h3 className="goals-status-title">
-                  Yayyyy,, Your Goal has been Set
-                </h3>
-              </div>
-              <div className="reset-goals-container">
-                <button className="reset-goals-btn" disabled>
-                  <div className="btn-content">
-                    <span className="btn-text">Reset Goals</span>
-                  </div>
-                </button>
-                <p className="reset-goals-text">
-                  You can Reset your Goals after 14 Days
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div className="goals-cards-container">
-            {goals.map((goal, index) => (
-              <GoalCard
-                key={index}
-                emoji={goal.emoji}
-                title={goal.title}
-                color={goal.color}
-                lockColor={goal.lockColor}
-                isLocked={goal.isLocked}
-              />
-            ))}
-          </div>
-
-          <div className="assessment-warning-card">
-            <div className="warning-content">
+        {hasSelectedGoals ? (
+          <div className="goals-status-container">
+            <div className="goals-status-header">
               <div>
-                <svg
-                  width="24"
-                  height="25"
-                  viewBox="0 0 24 25"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fillRule="evenodd"
-                    clipRule="evenodd"
-                    d="M10.8429 4.9713C11.1961 4.77244 11.5947 4.66797 12 4.66797C12.4053 4.66797 12.8039 4.77244 13.1571 4.9713C13.5103 5.17017 13.8063 5.45671 14.0165 5.80328L14.0188 5.80701L20.684 16.9342C20.89 17.2908 20.9988 17.6952 21 18.107C21.0011 18.5188 20.8944 18.9237 20.6905 19.2815C20.4866 19.6393 20.1925 19.9374 19.8376 20.1463C19.4827 20.3551 19.0792 20.4674 18.6674 20.4719L18.6588 20.472L5.33257 20.472C4.92077 20.4675 4.51734 20.3551 4.16241 20.1463C3.80748 19.9374 3.51342 19.6393 3.30949 19.2815C3.10555 18.9237 2.99886 18.5188 3.00001 18.107C3.00116 17.6952 3.11013 17.2908 3.31606 16.9342L3.32236 16.9233L9.98348 5.80327C10.1937 5.4567 10.4897 5.17017 10.8429 4.9713ZM12 6.24029C11.8649 6.24029 11.732 6.27512 11.6143 6.3414C11.4971 6.40739 11.3988 6.50234 11.3288 6.61716L4.67508 17.725C4.60812 17.8428 4.57271 17.9759 4.57233 18.1114C4.57194 18.2487 4.60751 18.3836 4.67549 18.5029C4.74346 18.6222 4.84149 18.7215 4.95979 18.7912C5.07707 18.8602 5.21023 18.8975 5.34623 18.8997H18.6538C18.7898 18.8975 18.9229 18.8602 19.0402 18.7912C19.1585 18.7215 19.2565 18.6222 19.3245 18.5029C19.3925 18.3836 19.4281 18.2487 19.4277 18.1114C19.4273 17.9759 19.3919 17.8428 19.3249 17.725L12.6722 6.61873C12.6719 6.61821 12.6715 6.61769 12.6712 6.61716C12.6012 6.50234 12.5029 6.40739 12.3857 6.3414C12.268 6.27512 12.1351 6.24029 12 6.24029Z"
-                    fill="#E94545"
-                  />
-                  <path
-                    fillRule="evenodd"
-                    clipRule="evenodd"
-                    d="M12.001 9.4668C12.4352 9.4668 12.7872 9.81877 12.7872 10.253V13.3976C12.7872 13.8318 12.4352 14.1838 12.001 14.1838C11.5668 14.1838 11.2148 13.8318 11.2148 13.3976V10.253C11.2148 9.81877 11.5668 9.4668 12.001 9.4668Z"
-                    fill="#E94545"
-                  />
-                  <path
-                    fillRule="evenodd"
-                    clipRule="evenodd"
-                    d="M11.2148 16.542C11.2148 16.1078 11.5668 15.7559 12.001 15.7559H12.0089C12.4431 15.7559 12.795 16.1078 12.795 16.542C12.795 16.9762 12.4431 17.3282 12.0089 17.3282H12.001C11.5668 17.3282 11.2148 16.9762 11.2148 16.542Z"
-                    fill="#E94545"
-                  />
-                </svg>
-                <span className="warning-text">
-                  Kindly Take the Assessment to track your process
-                </span>
+                <div className="goals-status-info">
+                  <h3 className="goals-status-title">
+                    Yayyyy,, Your Goal has been Set
+                  </h3>
+                </div>
+                <div className="reset-goals-container">
+                  <button className="reset-goals-btn" disabled>
+                    <div className="btn-content">
+                      <span className="btn-text">Reset Goals</span>
+                    </div>
+                  </button>
+                  <p className="reset-goals-text">
+                    You can Reset your Goals after 14 Days
+                  </p>
+                </div>
               </div>
-              <button className="close-warning-btn">
-                <svg
-                  width="20"
-                  height="21"
-                  viewBox="0 0 20 21"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M15 5.66797L5 15.668"
-                    stroke="black"
-                    strokeOpacity="0.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M5 5.66797L15 15.668"
-                    stroke="black"
-                    strokeOpacity="0.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </button>
+            </div>
+
+            <div className="goals-cards-container">
+              {goalsToDisplay.map((goal: any, index: number) => (
+                <GoalCard
+                  key={index}
+                  emoji={goal.emoji}
+                  title={goal.title}
+                  color={goal.color}
+                  lockColor={goal.lockColor}
+                  isLocked={goal.isLocked}
+                />
+              ))}
+            </div>
+
+            <div className="assessment-warning-card">
+              <div className="warning-content">
+                <div>
+                  <svg
+                    width="24"
+                    height="25"
+                    viewBox="0 0 24 25"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      clipRule="evenodd"
+                      d="M10.8429 4.9713C11.1961 4.77244 11.5947 4.66797 12 4.66797C12.4053 4.66797 12.8039 4.77244 13.1571 4.9713C13.5103 5.17017 13.8063 5.45671 14.0165 5.80328L14.0188 5.80701L20.684 16.9342C20.89 17.2908 20.9988 17.6952 21 18.107C21.0011 18.5188 20.8944 18.9237 20.6905 19.2815C20.4866 19.6393 20.1925 19.9374 19.8376 20.1463C19.4827 20.3551 19.0792 20.4674 18.6674 20.4719L18.6588 20.472L5.33257 20.472C4.92077 20.4675 4.51734 20.3551 4.16241 20.1463C3.80748 19.9374 3.51342 19.6393 3.30949 19.2815C3.10555 18.9237 2.99886 18.5188 3.00001 18.107C3.00116 17.6952 3.11013 17.2908 3.31606 16.9342L3.32236 16.9233L9.98348 5.80327C10.1937 5.4567 10.4897 5.17017 10.8429 4.9713ZM12 6.24029C11.8649 6.24029 11.732 6.27512 11.6143 6.3414C11.4971 6.40739 11.3988 6.50234 11.3288 6.61716L4.67508 17.725C4.60812 17.8428 4.57271 17.9759 4.57233 18.1114C4.57194 18.2487 4.60751 18.3836 4.67549 18.5029C4.74346 18.6222 4.84149 18.7215 4.95979 18.7912C5.07707 18.8602 5.21023 18.8975 5.34623 18.8997H18.6538C18.7898 18.8975 18.9229 18.8602 19.0402 18.7912C19.1585 18.7215 19.2565 18.6222 19.3245 18.5029C19.3925 18.3836 19.4281 18.2487 19.4277 18.1114C19.4273 17.9759 19.3919 17.8428 19.3249 17.725L12.6722 6.61873C12.6719 6.61821 12.6715 6.61769 12.6712 6.61716C12.6012 6.50234 12.5029 6.40739 12.3857 6.3414C12.268 6.27512 12.1351 6.24029 12 6.24029Z"
+                      fill="#E94545"
+                    />
+                    <path
+                      fillRule="evenodd"
+                      clipRule="evenodd"
+                      d="M12.001 9.4668C12.4352 9.4668 12.7872 9.81877 12.7872 10.253V13.3976C12.7872 13.8318 12.4352 14.1838 12.001 14.1838C11.5668 14.1838 11.2148 13.8318 11.2148 13.3976V10.253C11.2148 9.81877 11.5668 9.4668 12.001 9.4668Z"
+                      fill="#E94545"
+                    />
+                    <path
+                      fillRule="evenodd"
+                      clipRule="evenodd"
+                      d="M11.2148 16.542C11.2148 16.1078 11.5668 15.7559 12.001 15.7559H12.0089C12.4431 15.7559 12.795 16.1078 12.795 16.542C12.795 16.9762 12.4431 17.3282 12.0089 17.3282H12.001C11.5668 17.3282 11.2148 16.9762 11.2148 16.542Z"
+                      fill="#E94545"
+                    />
+                  </svg>
+                  <span className="warning-text">
+                    Kindly Take the Assessment to track your process
+                  </span>
+                </div>
+                <button className="close-warning-btn">
+                  <svg
+                    width="20"
+                    height="21"
+                    viewBox="0 0 20 21"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M15 5.66797L5 15.668"
+                      stroke="black"
+                      strokeOpacity="0.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                    <path
+                      d="M5 5.66797L15 15.668"
+                      stroke="black"
+                      strokeOpacity="0.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </button>
+              </div>
             </div>
           </div>
-        </div>
+        ) : (
+          <div style={{
+            padding: '40px 20px',
+            textAlign: 'center',
+            border: '2px dashed #ccc',
+            borderRadius: '12px',
+            backgroundColor: '#f9f9f9'
+          }}>
+            <div style={{
+              color: '#666',
+              fontSize: '18px',
+              marginBottom: '12px',
+              fontWeight: '500'
+            }}>
+              No Goals Selected Yet
+            </div>
+            <p style={{
+              color: '#888',
+              fontSize: '14px',
+              margin: '0',
+              lineHeight: '1.5'
+            }}>
+              Please go to the <strong>Home</strong> tab, select your wellness goals, and click <strong>Done</strong> to see them here.
+            </p>
+          </div>
+        )}
       </div>
     </>
   );

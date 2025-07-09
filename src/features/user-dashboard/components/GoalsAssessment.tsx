@@ -7,12 +7,15 @@ import PreferencesSection from "./PreferencesSection";
 import questions from "../data/assessmentQuestions.json";
 
 interface GoalsAssessmentProps {
-  onSectionChange?: (section: string) => void;
+  onSectionChange?: (section: string, data?: any) => void;
+  selectedGoals?: any[];
 }
 
-export default function GoalsAssessment({ onSectionChange }: GoalsAssessmentProps) {
+export default function GoalsAssessment({ onSectionChange, selectedGoals }: GoalsAssessmentProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedOptions, setSelectedOptions] = useState<string[]>(Array(questions.length).fill(""));
+  
+  console.log('🎯 GoalsAssessment: selectedGoals received:', selectedGoals);
 
   const handleOptionChange = (option: string) => {
     const updated = [...selectedOptions];
@@ -350,7 +353,7 @@ export default function GoalsAssessment({ onSectionChange }: GoalsAssessmentProp
           isLast={currentIndex === questions.length - 1}
           onSectionChange={onSectionChange}
         />
-        <MyGoalsSection />
+        <MyGoalsSection selectedGoals={selectedGoals} />
         <PreferencesSection />
       </div>
     </>

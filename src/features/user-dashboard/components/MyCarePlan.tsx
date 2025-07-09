@@ -360,7 +360,7 @@ export default function MyCarePlan() {
 
         .progress-indicator {
           width: 100%;
-          max-width: 1051px;
+          max-width: 100%;
         }
 
         .progress-indicator svg {

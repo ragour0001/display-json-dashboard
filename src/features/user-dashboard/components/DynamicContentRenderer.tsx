@@ -35,6 +35,8 @@ export default function DynamicContentRenderer({
   }, [content]);
 
   const handleSectionChange = (section: string, data?: any) => {
+    console.log('🎯 DynamicContentRenderer: handleSectionChange called with:', section, data);
+    
     if (section === 'goals-completed') {
       setGoalsCompleted(true);
       
@@ -52,7 +54,11 @@ export default function DynamicContentRenderer({
         });
       }
       
-      // Don't pass 'goals-completed' to parent to avoid changing activeSection
+      // Pass 'goals-completed' with data to parent to save selected goals
+      if (onSectionChange) {
+        console.log('🎯 DynamicContentRenderer: Passing goals-completed to parent with data:', data);
+        onSectionChange(section, data);
+      }
       return;
     }
     
@@ -548,6 +554,7 @@ function GoalsSelection({ goalSet, selectedGoals = [], availableGoals, maxGoals,
   const handleDone = () => {
     if (localSelectedGoals.length > 0 && onSectionChange) {
       // Pass the selected goals to trigger the status section
+      console.log('🎯 GoalsSelection: Sending goals-completed with goals:', localSelectedGoals);
       onSectionChange('goals-completed', localSelectedGoals);
     }
   };

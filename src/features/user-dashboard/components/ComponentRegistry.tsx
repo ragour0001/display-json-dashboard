@@ -14,7 +14,7 @@ import { DisplayConfig } from '../hooks/useDisplayConfig';
 
 export interface ComponentProps {
   config?: DisplayConfig;
-  onSectionChange?: (section: string) => void;
+  onSectionChange?: (section: string, data?: any) => void;
   [key: string]: unknown;
 }
 
@@ -43,7 +43,7 @@ function createDynamicComponent(
       }
     }
     
-    // For all other components, always use the original component
+    // For all other components, always use the original component with all props
     return <FallbackComponent {...props} />;
   };
 }
@@ -65,7 +65,7 @@ export const ComponentRegistry: Record<string, React.ComponentType<ComponentProp
 export interface DynamicComponentRendererProps {
   componentType: string;
   config?: DisplayConfig;
-  onSectionChange?: (section: string) => void;
+  onSectionChange?: (section: string, data?: any) => void;
   additionalProps?: Record<string, unknown>;
 }
 

@@ -1,0 +1,950 @@
+{
+    "id": 290,
+    "fullName": "Prateek Upreti",
+    "email": "prateekupreti.uk@gmail.com",
+    "role": "user",
+    "status": "active",
+    "theme": "light",
+    "profileCompleted": false,
+    "accountCreatedAt": "2024-12-15T10:30:00Z",
+    "lastLoginAt": "2024-12-28T09:15:00Z",
+    "assessment": {
+      "taken": false,
+      "completionPercentage": 0,
+      "lastTakenAt": null,
+      "nextDueAt": "2025-01-15T00:00:00Z",
+      "isOverdue": true,
+      "reminderCount": 3
+    },
+    "subscription": {
+      "plan": "free",
+      "status": "active",
+      "trialDaysLeft": 14,
+      "upgradeEligible": true
+    },
+    "rewards": {
+      "joined": false,
+      "points": 0,
+      "level": "beginner",
+      "achievements": []
+    },
+    "notifications": {
+      "unreadCount": 2,
+      "hasImportantUpdates": true,
+      "lastChecked": "2024-12-27T15:00:00Z"
+    },
+    "onboarding": {
+      "showOnboardingBanner": true,
+      "progress": {
+        "totalSteps": 4,
+        "completedSteps": 1,
+        "percentageComplete": 25,
+        "status": "in_progress"
+      },
+      "nextSteps": [
+        {
+          "stepNumber": 1,
+          "title": "Set 3 wellness goals",
+          "completed": true,
+          "completedAt": "2024-12-15T11:00:00Z"
+        },
+        {
+          "stepNumber": 2,
+          "title": "Complete your profile",
+          "completed": false,
+          "priority": "high"
+        },
+        {
+          "stepNumber": 3,
+          "title": "Take your initial assessment",
+          "completed": false,
+          "priority": "high",
+          "overdue": true
+        },
+        {
+          "stepNumber": 4,
+          "title": "Set up therapist preferences",
+          "completed": false,
+          "priority": "medium"
+        }
+      ],
+      "sidebarMenu": [
+        {
+          "label": "Home",
+          "icon": "home",
+          "iconSvg": "lucide:home",
+          "path": "/dashboard",
+          "visible": true,
+          "roles": ["user", "admin"],
+          "active": true,
+          "componentType": "home",
+          "description": "Your personalized dashboard overview"
+        },
+        {
+          "label": "Goals & Assessment",
+          "icon": "heart",
+          "iconSvg": "lucide:heart-pulse", 
+          "path": "/goals-assessment",
+          "visible": true,
+          "roles": ["user", "admin"],
+          "active": false,
+          "componentType": "goals-assessment",
+          "badge": "Due",
+          "badgeColor": "red",
+          "description": "Set wellness goals and complete assessments"
+        },
+        {
+          "label": "My Care Plan",
+          "icon": "clipboard",
+          "iconSvg": "lucide:clipboard-list",
+          "path": "/care-plan", 
+          "visible": true,
+          "roles": ["user"],
+          "active": false,
+          "componentType": "my-care-plan",
+          "description": "View and manage your personalized care plan"
+        },
+        {
+          "label": "Progress",
+          "icon": "bar-chart",
+          "iconSvg": "lucide:bar-chart-3",
+          "path": "/progress",
+          "visible": true,
+          "roles": ["user"],
+          "active": false,
+          "componentType": "progress",
+          "description": "Track your wellness journey and insights"
+        },
+        {
+          "label": "Therapist/Coach",
+          "icon": "user-heart",
+          "iconSvg": "lucide:user-heart",
+          "path": "/therapist",
+          "visible": true,
+          "roles": ["user"],
+          "active": false,
+          "componentType": "therapist-coach",
+          "badge": "Match",
+          "badgeColor": "green",
+          "description": "Connect with therapists and coaches"
+        },
+        {
+          "label": "Micro Learnings",
+          "icon": "book-open",
+          "iconSvg": "lucide:book-open",
+          "path": "/micro-learnings",
+          "visible": true,
+          "roles": ["user"],
+          "active": false,
+          "badge": "New",
+          "badgeColor": "blue",
+          "componentType": "micro-learnings",
+          "description": "Bite-sized learning content and courses"
+        },
+        {
+          "label": "Resources",
+          "icon": "file-text",
+          "iconSvg": "lucide:file-text",
+          "path": "/resources",
+          "visible": true,
+          "roles": ["user"],
+          "active": false,
+          "componentType": "resources",
+          "description": "Mental health resources and tools"
+        },
+        {
+          "label": "Profile",
+          "icon": "user",
+          "iconSvg": "lucide:user",
+          "path": "/profile",
+          "visible": true,
+          "roles": ["user", "admin"],
+          "active": false,
+          "componentType": "profile",
+          "badge": "Incomplete",
+          "badgeColor": "orange",
+          "description": "Manage your profile and preferences"
+        },
+        {
+          "label": "Settings",
+          "icon": "settings",
+          "iconSvg": "lucide:settings",
+          "path": "/settings",
+          "visible": true,
+          "roles": ["user", "admin"],
+          "active": false,
+          "componentType": "settings",
+          "description": "Account settings and notifications"
+        },
+        {
+          "label": "Need Help",
+          "icon": "help-circle",
+          "iconSvg": "lucide:help-circle",
+          "path": "/support",
+          "visible": true,
+          "roles": ["user", "admin"],
+          "active": false,
+          "componentType": "need-help",
+          "description": "Get support and find answers"
+        }
+      ],
+      "ctaText": "Complete Your Assessment!",
+      "ctaAction": "/dashboard/assessment",
+      "ctaPriority": "high"
+    },
+    "layout": {
+      "defaultComponent": "home",
+      "showRightSidebar": true,
+      "rightSidebarComponents": ["home"],
+      "components": [
+        {
+          "type": "home",
+          "content": [
+            {
+              "type": "breadcrumb-welcome",
+              "props": {
+                "breadcrumbItems": [
+                  {"label": "Global Dashboard", "active": false},
+                  {"label": "Home", "active": true}
+                ],
+                "welcomeTitle": "Good Morning, Prateek",
+                "showUserName": true
+              },
+              "className": "welcome-section"
+            },
+            {
+              "type": "unsure-section",
+              "props": {
+                "title": "Still unsure about what you need?",
+                "description": "",
+                "options": [
+                  {
+                    "id": "wellness-goals",
+                    "text": "Set 3 wellness goals",
+                    "selected": true,
+                    "disabled": false,
+                    "completed": false
+                  },
+                  {
+                    "id": "assessment",
+                    "text": "Take a short assessment",
+                    "selected": false,
+                    "disabled": false,
+                    "completed": false
+                  },
+                  {
+                    "id": "therapist-preferences", 
+                    "text": "Tell us your therapist preferences",
+                    "selected": false,
+                    "disabled": false,
+                    "completed": false
+                  }
+                ],
+                "ctaText": "Discover Yourself",
+                "illustrationUrl": "/assets/images/Positive_thinking-rafiki.png"
+              },
+              "className": "unsure-section-new"
+            },
+            {
+              "type": "goals-flow-manager",
+              "props": {
+                "sectionTitle": {
+                  "title": "Start your journey, Set Your Goals.",
+                  "level": 1,
+                  "className": "goal-set-title"
+                },
+                "goalsSelection": {
+                  "goalSet": false,
+                  "maxGoals": 3,
+                  "searchEnabled": false,
+                  "selectedGoals": [],
+                  "availableGoals": [
+                    {"emoji": "😌", "title": "Manage stress"},
+                    {"emoji": "😊", "title": "Boost mood & feel positive"},
+                    {"emoji": "💤", "title": "Sleep better"},
+                    {"emoji": "🔋", "title": "Prevent burnout"},
+                    {"emoji": "😟", "title": "Manage anxiety"},
+                    {"emoji": "🎯", "title": "Improve focus & productivity"},
+                    {"emoji": "🤝", "title": "Strengthen personal or work relationships"},
+                    {"emoji": "💪", "title": "Build self-confidence"},
+                    {"emoji": "⚖️", "title": "Improve work-life balance"},
+                    {"emoji": "🧘", "title": "Feel calm"},
+                    {"emoji": "🧘", "title": "Reduce unhealthy habits"},
+                    {"emoji": "🧘", "title": "Develop healthy routines"},
+                    {"emoji": "🧘", "title": "Build resilience"},
+                    {"emoji": "🧘", "title": "Navigate life transitions"}
+                  ],
+                  "showAllGoals": false,
+                  "className": "goals-section"
+                },
+                "goalsStatus": {
+                  "goalSet": true,
+                  "title": "Yayyyy,, Your Goal has been Set",
+                  "resetEnabled": false,
+                  "resetText": "You can Reset your Goals after 14 Days",
+                  "selectedGoals": [],
+                  "className": "goals-status-container"
+                }
+              }
+            },
+            {
+              "type": "progress-getting-started",
+              "props": {
+                "title": "You're just getting started – Let's kick off your Wellness Journey!",
+                "progressPercentage": 25,
+                "showProgressIndicators": true,
+                "ctaText": "Complete your Assessment",
+                "faqLink": "Take me to FAQ",
+                "onCtaClick": "goals-assessment"
+              },
+              "className": "progress-getting-started-section"
+            },
+            {
+              "type": "therapist-section",
+              "props": {
+                "showSearchFilters": true,
+                "showTherapistGrid": true,
+                "activeFilters": ["Therapist", "Price : $200 - $600"],
+                "searchPlaceholder": "Search By Names, Specialization or Language",
+                "therapists": [
+                  {
+                    "name": "Dr. Marci Maiden",
+                    "title": "Counselling Therapist",
+                    "rating": 4.5,
+                    "specializations": ["Stress", "Trauma", "Anxiety", "+2 More"],
+                    "sessionTime": "2 : 30 Pm",
+                    "sessionDay": "Today",
+                    "imageUrl": "/assets/images/dr-image.png",
+                    "availability": "Available Today"
+                  },
+                  {
+                    "name": "Dr. Marci Maiden",
+                    "title": "Counselling Therapist",
+                    "rating": 4.5,
+                    "specializations": ["Stress", "Trauma", "Anxiety", "+2 More"],
+                    "sessionTime": "2 : 30 Pm",
+                    "sessionDay": "Today",
+                    "imageUrl": "/assets/images/dr-image.png",
+                    "availability": "Available Today"
+                  },
+                  {
+                    "name": "Dr. Marci Maiden",
+                    "title": "Counselling Therapist",
+                    "rating": 4.5,
+                    "specializations": ["Stress", "Trauma", "Anxiety", "+2 More"],
+                    "sessionTime": "2 : 30 Pm",
+                    "sessionDay": "Today",
+                    "imageUrl": "/assets/images/dr-image.png",
+                    "availability": "Available Today"
+                  },
+                  {
+                    "name": "Dr. Marci Maiden",
+                    "title": "Counselling Therapist",
+                    "rating": 4.5,
+                    "specializations": ["Stress", "Trauma", "Anxiety", "+2 More"],
+                    "sessionTime": "2 : 30 Pm",
+                    "sessionDay": "Today",
+                    "imageUrl": "/assets/images/dr-image.png",
+                    "availability": "Available Today"
+                  },
+                  {
+                    "name": "Dr. Marci Maiden",
+                    "title": "Counselling Therapist",
+                    "rating": 4.5,
+                    "specializations": ["Stress", "Trauma", "Anxiety", "+2 More"],
+                    "sessionTime": "2 : 30 Pm",
+                    "sessionDay": "Today",
+                    "imageUrl": "/assets/images/dr-image.png",
+                    "availability": "Available Today"
+                  },
+                  {
+                    "name": "Dr. Marci Maiden",
+                    "title": "Counselling Therapist",
+                    "rating": 4.5,
+                    "specializations": ["Stress", "Trauma", "Anxiety", "+2 More"],
+                    "sessionTime": "2 : 30 Pm",
+                    "sessionDay": "Today",
+                    "imageUrl": "/assets/images/dr-image.png",
+                    "availability": "Available Today"
+                  }
+                ]
+              },
+              "className": "therapist-coach-section"
+            },
+            {
+              "type": "main-tabs-section",
+              "props": {
+                "activeTab": "recommendation",
+                "tabs": [
+                  {
+                    "id": "recommendation",
+                    "label": "Recommendation",
+                    "content": {
+                      "type": "assessment-prompt",
+                      "gifUrl": "/assets/images/recommendation_gif.gif",
+                      "title": "Kindly Take the Assessment",
+                      "description": "By taking the assessment we can customize and set up things for you",
+                      "ctaText": "Take Assessment"
+                    }
+                  },
+                  {
+                    "id": "my-progress", 
+                    "label": "My Progress",
+                    "content": {
+                      "type": "progress-insights",
+                      "title": "My Progress & Insights",
+                      "progressTabs": [
+                        { "id": "this-month", "label": "This Month" },
+                        { "id": "last-month", "label": "Last Month" },
+                        { "id": "last-3-months", "label": "Last 3 Months" },
+                        { "id": "last-6-months", "label": "Last 6 Months" }
+                      ],
+                      "chartControls": {
+                        "chartTypes": ["bar", "line"],
+                        "defaultChartType": "bar",
+                        "planFilter": "No plan"
+                      },
+                      "chartData": {
+                        "yAxisLabels": ["100%", "80%", "60%", "40%", "20%", "0%"],
+                        "months": ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+                        "legendItems": [
+                          { "label": "Expected", "color": "expected" },
+                          { "label": "Reality", "color": "reality" }
+                        ]
+                      },
+                      "showAssessmentWarning": true
+                    }
+                  },
+                  {
+                    "id": "my-goals",
+                    "label": "My Goals", 
+                    "content": {
+                      "type": "goals-management",
+                      "maxGoals": 3,
+                      "searchEnabled": false,
+                      "availableGoals": [
+                        {"emoji": "😌", "title": "Manage stress"},
+                        {"emoji": "😊", "title": "Boost mood & feel positive"},
+                        {"emoji": "💤", "title": "Sleep better"},
+                        {"emoji": "🔋", "title": "Prevent burnout"},
+                        {"emoji": "😟", "title": "Manage anxiety"},
+                        {"emoji": "🎯", "title": "Improve focus & productivity"},
+                        {"emoji": "🤝", "title": "Strengthen personal or work relationships"},
+                        {"emoji": "💪", "title": "Build self-confidence"},
+                        {"emoji": "⚖️", "title": "Improve work-life balance"},
+                        {"emoji": "🧘", "title": "Feel calm"},
+                        {"emoji": "🧘", "title": "Reduce unhealthy habits"},
+                        {"emoji": "🧘", "title": "Develop healthy routines"},
+                        {"emoji": "🧘", "title": "Build resilience"},
+                        {"emoji": "🧘", "title": "Navigate life transitions"}
+                      ],
+                      "showAssessmentWarning": true,
+                      "warningText": "Kindly Take the Assessment to track your process"
+                    }
+                  }
+                ]
+              },
+              "className": "goals-section"
+            },
+            {
+              "type": "care-plan-section",
+              "props": {
+                "showCarePlan": true,
+                "title": "Your Care Plan is Almost Ready",
+                "description": "To get personalized self-care actions, complete your first assessment.\nYour plan will be generated based on your mental health goals and responses.",
+                "unlockCard": {
+                  "title": "Unlock your Personalized care plan",
+                  "subtitle": "Take a quick assessment to unlock your Care Plan",
+                  "buttonText": "Complete Assessment"
+                },
+                "referralCard": {
+                  "label": "Referral",
+                  "title": "Help a friend, We'll help take care of them!",
+                  "imageUrl": "/assets/images/hand_shake_image.png",
+                  "codeLabel": "Copy code",
+                  "codeText": "C232DF",
+                  "buttonText": "Share Invite"
+                }
+              },
+              "className": "care-plan"
+            },
+            {
+              "type": "micro-learnings-section", 
+              "props": {
+                "title": "Micro Learnings",
+                "description": "short reads designed to support your well-being. Complete your assessment to get personalized suggestions.",
+                "learningCards": [
+                  {
+                    "title": "What is Microlearning?",
+                    "description": "Microlearning offers quick, focused reads to help you manage mental health one step at a time.",
+                    "tags": ["Beginner", "Overview"],
+                    "readTime": "2-min read",
+                    "ctaText": "Take a Look",
+                    "secondaryCta": "Take assessment to Personalize"
+                  },
+                  {
+                    "title": "Why Short Reads Help", 
+                    "description": "Learn how bite-sized articles reduce overwhelm and help you make steady progress.",
+                    "tags": ["Beginner", "Motivation"],
+                    "readTime": "2-min read",
+                    "ctaText": "Take a Look",
+                    "secondaryCta": "Take assessment to Personalize"
+                  },
+                  {
+                    "title": "Personalize Your Learning",
+                    "description": "Get tailored recommendations by taking a short assessment.",
+                    "tags": ["Interactive", "Overview"], 
+                    "readTime": "2-min read",
+                    "ctaText": "Take a Look",
+                    "secondaryCta": "Take assessment to Personalize"
+                  }
+                ]
+              },
+              "className": "micro-learnings-main-section"
+            },
+            {
+              "type": "new-platform-section",
+              "props": {
+                "showNewPlatform": true,
+                "label": "New Platform",
+                "title": "Get one of our Refill Health apps, which is only available on",
+                "downloadTitle": "Download Apps:",
+                "downloadButtons": [
+                  {
+                    "imageUrl": "/assets/images/ios_image.png",
+                    "alt": "iOS App Store"
+                  },
+                  {
+                    "imageUrl": "/assets/images/android_image.png", 
+                    "alt": "Google Play Store"
+                  }
+                ],
+                "phoneImages": [
+                  {
+                    "imageUrl": "/assets/images/mobile-img-first.png",
+                    "alt": "phone-1"
+                  },
+                  {
+                    "imageUrl": "/assets/images/mobile-img-second.png",
+                    "alt": "phone-2"
+                  }
+                ]
+              },
+              "className": "platform-section"
+            }
+          ]
+        },
+        {
+          "type": "goals-assessment",
+          "content": [
+            {
+              "type": "container",
+              "className": "goals-assessment-page",
+              "children": [
+                {
+                  "type": "assessment-reminder",
+                  "props": {
+                    "visible": true,
+                    "isOverdue": true,
+                    "nextDueAt": "2025-01-15T00:00:00Z",
+                    "title": "Assessment Overdue",
+                    "message": "Complete your wellness assessment to get personalized recommendations.",
+                    "actions": [
+                      {
+                        "text": "Start Assessment",
+                        "action": "goals-assessment",
+                        "className": "btn-primary"
+                      }
+                    ]
+                  },
+                  "className": "assessment-alert"
+                },
+                {
+                  "type": "goals-section",
+                  "props": {
+                    "visible": true,
+                    "title": "Your Wellness Goals",
+                    "maxGoals": 3
+                  },
+                  "className": "goals-selection"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "my-care-plan",
+          "content": [
+            {
+              "type": "care-plan-preview",
+              "props": {
+                "title": "My Personalized Care Plan",
+                "planGenerated": false,
+                "showGetStarted": true,
+                "requiresAssessment": true
+              },
+              "className": "care-plan-main"
+            }
+          ]
+        },
+        {
+          "type": "progress",
+          "content": [
+            {
+              "type": "progress-overview",
+              "props": {
+                "visible": true,
+                "title": "Your Wellness Progress",
+                "showInsights": true,
+                "showCharts": true,
+                "timeRange": "this-month",
+                "hasData": false,
+                "showGettingStartedBanner": true
+              },
+              "className": "progress-main"
+            },
+            {
+              "type": "daily-streak",
+              "props": {
+                "currentStreak": 0,
+                "longestStreak": 0,
+                "streakGoal": 7
+              },
+              "className": "progress-streak"
+            }
+          ]
+        },
+        {
+          "type": "therapist-coach",
+          "content": [
+            {
+              "type": "therapist-matching",
+              "props": {
+                "title": "Find Your Perfect Match",
+                "showMatching": true,
+                "showBooking": true,
+                "hasActiveBookings": false,
+                "showPreferences": true
+              },
+              "className": "therapist-main"
+            }
+          ]
+        },
+        {
+          "type": "micro-learnings",
+          "content": [
+            {
+              "type": "learning-progress",
+              "props": {
+                "title": "Micro Learnings",
+                "badge": "New Content",
+                "showCategories": true,
+                "showProgress": true,
+                "completedLessons": 0,
+                "totalLessons": 24,
+                "currentCourse": null
+              },
+              "className": "learning-main"
+            }
+          ]
+        },
+        {
+          "type": "resources",
+          "content": [
+            {
+              "type": "container",
+              "className": "resources-page",
+              "children": [
+                {
+                  "type": "welcome-header",
+                  "props": {
+                    "title": "Mental Health Resources",
+                    "userName": "",
+                    "welcomeMessage": "Explore our curated collection of mental health resources"
+                  },
+                  "className": "resources-header"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "profile",
+          "content": [
+            {
+              "type": "container",
+              "className": "profile-page",
+              "children": [
+                {
+                  "type": "welcome-header",
+                  "props": {
+                    "title": "Your Profile",
+                    "userName": "",
+                    "welcomeMessage": "Manage your personal information and preferences"
+                  },
+                  "className": "profile-header"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "settings",
+          "content": [
+            {
+              "type": "container",
+              "className": "settings-page",
+              "children": [
+                {
+                  "type": "welcome-header",
+                  "props": {
+                    "title": "Account Settings",
+                    "userName": "",
+                    "welcomeMessage": "Manage your account preferences and settings"
+                  },
+                  "className": "settings-header"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "need-help",
+          "content": [
+            {
+              "type": "container",
+              "className": "help-page",
+              "children": [
+                {
+                  "type": "welcome-header",
+                  "props": {
+                    "title": "How can we help you?",
+                    "userName": "",
+                    "welcomeMessage": "Get support and find answers to your questions"
+                  },
+                  "className": "help-header"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "profile": {
+      "profileCompleted": false,
+      "profileCompleteness": 25,
+      "profilePictureUrl": "https://refillhealth.com/images/default-avatar.png",
+      "isAnonymous": false,
+      "nickName": "",
+      "bio": "",
+      "country": "United States",
+      "timezone": "Pacific Standard Time (PST)",
+      "preferences": {
+        "communicationStyle": "supportive",
+        "sessionFormat": "video",
+        "availableHours": "evening"
+      }
+    },
+    "wellnessGoals": [
+      {
+        "id": 1,
+        "title": "Manage stress",
+        "selected": true,
+        "progress": 0,
+        "targetDate": "2025-03-01T00:00:00Z"
+      }
+    ],
+    "availableGoals": [
+      {
+        "id": 1,
+        "title": "Manage stress",
+        "emoji": "😌",
+        "imageUrl": "https://refillhealth.com/assets/goals/manage-stress.png",
+        "description": "Learn techniques to reduce and cope with everyday stress effectively.",
+        "category": "stress-management",
+        "difficulty": "beginner"
+      },
+      {
+        "id": 2,
+        "title": "Boost mood & feel positive",
+        "emoji": "😊",
+        "imageUrl": "https://refillhealth.com/assets/goals/boost-mood.png",
+        "description": "Improve your emotional well-being with activities that uplift your mood.",
+        "category": "mood-improvement",
+        "difficulty": "beginner"
+      },
+      {
+        "id": 3,
+        "title": "Sleep better",
+        "emoji": "💤",
+        "imageUrl": "https://refillhealth.com/assets/goals/sleep-better.png",
+        "description": "Establish healthy sleep routines and overcome sleep challenges.",
+        "category": "sleep-health",
+        "difficulty": "intermediate"
+      },
+      {
+        "id": 4,
+        "title": "Prevent burnout",
+        "emoji": "🔋",
+        "imageUrl": "https://refillhealth.com/assets/goals/prevent-burnout.png",
+        "description": "Avoid exhaustion by maintaining a balanced and sustainable pace.",
+        "category": "work-life-balance",
+        "difficulty": "intermediate"
+      },
+      {
+        "id": 5,
+        "title": "Manage anxiety",
+        "emoji": "😟",
+        "imageUrl": "https://refillhealth.com/assets/goals/manage-anxiety.png",
+        "description": "Get tools and support to reduce anxious thoughts and feelings.",
+        "category": "anxiety-management",
+        "difficulty": "intermediate"
+      },
+      {
+        "id": 6,
+        "title": "Improve focus & productivity",
+        "emoji": "🎯",
+        "imageUrl": "https://refillhealth.com/assets/goals/improve-focus.png",
+        "description": "Increase mental clarity and work output through mindful practices.",
+        "category": "productivity",
+        "difficulty": "beginner"
+      },
+      {
+        "id": 7,
+        "title": "Strengthen personal or work relationships",
+        "emoji": "🤝",
+        "imageUrl": "https://refillhealth.com/assets/goals/strengthen-relationships.png",
+        "description": "Develop stronger communication and connection with others.",
+        "category": "relationships",
+        "difficulty": "advanced"
+      },
+      {
+        "id": 8,
+        "title": "Build self-confidence",
+        "emoji": "💪",
+        "imageUrl": "https://refillhealth.com/assets/goals/build-confidence.png",
+        "description": "Boost your self-esteem and develop a positive self-image.",
+        "category": "self-improvement",
+        "difficulty": "intermediate"
+      },
+      {
+        "id": 9,
+        "title": "Improve work-life balance",
+        "emoji": "⚖️",
+        "imageUrl": "https://refillhealth.com/assets/goals/work-life-balance.png",
+        "description": "Create boundaries and priorities to better balance your time.",
+        "category": "work-life-balance",
+        "difficulty": "intermediate"
+      },
+      {
+        "id": 10,
+        "title": "Feel calm",
+        "emoji": "🧘",
+        "imageUrl": "https://refillhealth.com/assets/goals/feel-calm.png",
+        "description": "Cultivate a sense of peace and relaxation in your daily life.",
+        "category": "mindfulness",
+        "difficulty": "beginner"
+      }
+    ],
+    "dailyStreak": {
+      "currentStreak": 0,
+      "longestStreak": 0,
+      "lastActivityDate": null,
+      "streakGoal": 7
+    },
+    "upcomingEvents": [
+      {
+        "id": 1,
+        "eventType": "assessment",
+        "date": "2025-01-15T00:00:00Z",
+        "title": "Complete Initial Assessment",
+        "priority": "high",
+        "overdue": true
+      },
+      {
+        "id": 2,
+        "eventType": "reminder",
+        "date": "2025-01-02T10:00:00Z",
+        "title": "Complete your profile",
+        "priority": "medium"
+      }
+    ],
+    "learningProgress": {
+      "completedLessons": 0,
+      "totalLessons": 24,
+      "currentCourse": null,
+      "certificates": []
+    },
+    "therapistPreferences": {
+      "gender": null,
+      "specializations": [],
+      "sessionType": "video",
+      "availability": "flexible"
+    },
+    "navbar": {
+      "logo": {
+        "imageUrl": "/assets/images/logo.png",
+        "alt": "Refill Health Logo"
+      },
+      "search": {
+        "showSearch": false,
+        "placeholder": "What are you looking for?"
+      },
+      "notifications": {
+        "showNotificationIcon": true,
+        "showBellIcon": true
+      },
+      "profile": {
+        "avatar": {
+          "initial": "P",
+          "backgroundColor": "#006b5f"
+        },
+        "name": "Prateek Upreti",
+        "role": "Admin"
+      }
+    },
+    "rightSidebar": {
+      "profileOverview": {
+        "title": "Profile Overview",
+        "showMoreOptions": true,
+        "profile": {
+          "imageUrl": "/assets/images/profile_image.svg",
+          "alt": "Profile",
+          "text": "Complete your Profile"
+        }
+      },
+      "insightsCard": {
+        "showCard": true,
+        "icon": "🏆",
+        "text": "Get your insights, just complete the assessment"
+      },
+      "dailyStreak": {
+        "showCard": true,
+        "title": "Daily Streak",
+        "showSeeMore": true,
+        "streakText": "Your Streak",
+        "description": "Complete the assessment, & do your activity",
+        "buttonText": "Complete Assessment",
+        "currentStreak": 0,
+        "longestStreak": 0
+      },
+      "rewards": {
+        "showCard": true,
+        "title": "Welcome to rewards",
+        "subtitle": "Use Reward Points for free session",
+        "progressPercentage": 66,
+        "buttonText": "Claim reward"
+      },
+      "upcomingEvents": {
+        "showCard": true,
+        "title": "Upcoming Events",
+        "date": "12 Oct ,23",
+        "buttonText": "Complete Assessment"
+      },
+      "banner": {
+        "showBanner": true,
+        "activeDot": 0,
+        "totalDots": 3
+      }
+    }
+  }

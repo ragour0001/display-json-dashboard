@@ -33,7 +33,7 @@ export default function Resources() {
         .resources-container {
           display: flex;
           width: 100%;
-          max-width: 1117px;
+          max-width: 100%;
           padding: 0 32px;
           flex-direction: column;
           align-items: center;

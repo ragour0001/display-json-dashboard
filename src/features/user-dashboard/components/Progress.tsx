@@ -534,7 +534,7 @@ export default function Progress() {
 
         .progress-indicator-container {
           width: 100%;
-          max-width: 1051px;
+          max-width: 100%;
         }
 
         .progress-bar-main {

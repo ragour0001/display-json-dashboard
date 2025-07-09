@@ -10,6 +10,14 @@ export default function UserDashboardApp() {
   const { config, loading, error, getSidebarMenuItems, getActiveMenuItem } = useDisplayConfig();
   const [isSidebarExpanded, setIsSidebarExpanded] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+  
+  // State to track selected goals from Home tab
+  const [selectedGoals, setSelectedGoals] = useState<any[]>([]);
+
+  // Debug selectedGoals changes
+  useEffect(() => {
+    console.log('🎯 UserDashboardApp: selectedGoals state changed to:', selectedGoals);
+  }, [selectedGoals]);
 
   // Initialize active section from config when loaded (only if not already set)
   useEffect(() => {
@@ -88,8 +96,18 @@ export default function UserDashboardApp() {
     setIsSidebarExpanded(expanded);
   };
 
-  const handleSectionChange = (section: string) => {
-    console.log(`🔄 Navigation: Switching to ${section}`);
+  const handleSectionChange = (section: string, data?: any) => {
+    console.log(`🔄 Navigation: Switching to ${section}`, data);
+    
+    // Handle goal completion from home page
+    if (section === 'goals-completed' && data && Array.isArray(data)) {
+      console.log('✅ UserDashboardApp: Goals completed, saving:', data);
+      setSelectedGoals(data);
+      console.log('✅ UserDashboardApp: selectedGoals state updated to:', data);
+      // Don't change active section, keep user on current page
+      return;
+    }
+    
     setActiveSection(section);
   };
 
@@ -221,20 +239,33 @@ export default function UserDashboardApp() {
           transition: margin-left 0.3s ease !important;
         }
 
-        .dashboard-layout .user-dashboard-content.sidebar-expanded-layout .main-content,
-        .dashboard-layout .sidebar-expanded-layout .main-content {
+        /* When right sidebar is shown */
+        .dashboard-layout .user-dashboard-content.sidebar-expanded-layout .main-content.with-right-sidebar,
+        .dashboard-layout .sidebar-expanded-layout .main-content.with-right-sidebar {
           max-width: calc(100vw - 250px - 333px) !important;
+          transition: max-width 0.3s ease !important;
+        }
+
+        .dashboard-layout .user-dashboard-content:not(.sidebar-expanded-layout) .main-content.with-right-sidebar {
+          max-width: calc(100vw - 72px - 333px) !important;
+          transition: max-width 0.3s ease !important;
+        }
+
+        /* When right sidebar is hidden - expand to full width */
+        .dashboard-layout .user-dashboard-content.sidebar-expanded-layout .main-content:not(.with-right-sidebar),
+        .dashboard-layout .sidebar-expanded-layout .main-content:not(.with-right-sidebar) {
+          max-width: calc(100vw - 250px) !important;
+          transition: max-width 0.3s ease !important;
+        }
+
+        .dashboard-layout .user-dashboard-content:not(.sidebar-expanded-layout) .main-content:not(.with-right-sidebar) {
+          max-width: calc(100vw - 72px) !important;
           transition: max-width 0.3s ease !important;
         }
 
         /* When sidebar is collapsed, ensure proper spacing */
         .dashboard-layout .user-dashboard-content:not(.sidebar-expanded-layout) .content-wrapper {
           margin-left: 72px !important;
-        }
-        
-        .dashboard-layout .user-dashboard-content:not(.sidebar-expanded-layout) .main-content {
-          max-width: calc(100vw - 72px - 333px) !important;
-          transition: max-width 0.3s ease !important;
         }
 
         /* Ensure smooth transitions for sidebar toggle */
@@ -261,9 +292,14 @@ export default function UserDashboardApp() {
 
         /* Responsive Design - Fixed sidebar expansion */
         @media (max-width: 1200px) {
-          .dashboard-layout .user-dashboard-content.sidebar-expanded-layout .main-content,
-          .dashboard-layout .sidebar-expanded-layout .main-content {
+          .dashboard-layout .user-dashboard-content.sidebar-expanded-layout .main-content.with-right-sidebar,
+          .dashboard-layout .sidebar-expanded-layout .main-content.with-right-sidebar {
             max-width: calc(100vw - 250px - 280px) !important;
+          }
+          
+          .dashboard-layout .user-dashboard-content.sidebar-expanded-layout .main-content:not(.with-right-sidebar),
+          .dashboard-layout .sidebar-expanded-layout .main-content:not(.with-right-sidebar) {
+            max-width: calc(100vw - 250px) !important;
           }
         }
 
@@ -342,8 +378,12 @@ export default function UserDashboardApp() {
           margin-left: 250px !important;
         }
         
-        .dashboard-layout .sidebar-expanded-layout > .content-wrapper > .main-content {
+        .dashboard-layout .sidebar-expanded-layout > .content-wrapper > .main-content.with-right-sidebar {
           max-width: calc(100vw - 250px - 333px) !important;
+        }
+        
+        .dashboard-layout .sidebar-expanded-layout > .content-wrapper > .main-content:not(.with-right-sidebar) {
+          max-width: calc(100vw - 250px) !important;
         }
 
         /* Collapsed sidebar fallback selectors */
@@ -351,8 +391,12 @@ export default function UserDashboardApp() {
           margin-left: 72px !important;
         }
         
-        .dashboard-layout .user-dashboard-content:not(.sidebar-expanded-layout) > .content-wrapper > .main-content {
+        .dashboard-layout .user-dashboard-content:not(.sidebar-expanded-layout) > .content-wrapper > .main-content.with-right-sidebar {
           max-width: calc(100vw - 72px - 333px) !important;
+        }
+        
+        .dashboard-layout .user-dashboard-content:not(.sidebar-expanded-layout) > .content-wrapper > .main-content:not(.with-right-sidebar) {
+          max-width: calc(100vw - 72px) !important;
         }
       `}</style>
           <div className="dashboard-layout">
@@ -368,11 +412,14 @@ export default function UserDashboardApp() {
             onSectionChange={handleSectionChange}
           />
           <div className="content-wrapper">
-            <div className="main-content">
+            <div className={`main-content ${shouldShowRightSidebar ? 'with-right-sidebar' : ''}`}>
               <DynamicComponentRenderer
                 componentType={activeSection}
                 config={config}
                 onSectionChange={handleSectionChange}
+                additionalProps={{
+                  selectedGoals
+                }}
               />
             </div>
             {shouldShowRightSidebar && <RightSidebar config={config} />}

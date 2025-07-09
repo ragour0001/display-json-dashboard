@@ -23,7 +23,7 @@ export default function NeedHelp() {
           flex-direction: column;
           align-items: flex-start;
           gap: 32px;
-          max-width: 1070px;
+          max-width: 100%;
           width: 100%;
           padding-right: 20px;
         }

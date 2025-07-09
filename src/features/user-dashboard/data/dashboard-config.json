@@ -1,0 +1,582 @@
+{
+    "id": 290,
+    "fullName": "Prateek Upreti",
+    "email": "prateekupreti.uk@gmail.com",
+    "role": "user",
+    "userType": "individual",
+    "status": "active",
+    "theme": "light",
+    "profileCompleted": false,
+    "accountCreatedAt": "2024-12-15T10:30:00Z",
+    "lastLoginAt": "2024-12-28T09:15:00Z",
+    "subscription": {
+        "plan": "free",
+        "status": "active",
+        "trialDaysLeft": 14,
+        "upgradeEligible": true
+    },
+    "language": "en",
+    "timezone": "America/New_York",
+    "notificationsEnabled": true,
+    "nudgeSettings": {
+        "dailyReminders": true,
+        "weeklySummary": true,
+        "goalProgressUpdates": true,
+        "therapySessionReminders": false,
+        "carePlanUpdates": true
+    },
+    "searchOptions": {
+        "isVisible": false,
+        "placeholderText": "What are you looking for?",
+        "searchType": "global",
+        "searchIcon": "search",
+        "searchIconSvg": "lucide:search",
+        "recentSearches": [
+            "Stress management",
+            "Therapists near me",
+            "Mindfulness techniques"
+        ],
+        "suggestedTopics": [
+            "Mental health",
+            "Wellness tips",
+            "Self-care routines"
+        ]
+    },
+    "notifications": {
+        "isVisible": true,
+        "title": "Notifications",
+        "description": "Stay updated with your wellness journey",
+        "unreadCount": 2,
+        "hasImportantUpdates": true,
+        "lastChecked": "2024-12-27T15:00:00Z"
+    },
+    "sidebarMenu": [
+        {
+            "label": "Home",
+            "icon": "home",
+            "iconSvg": "lucide:home",
+            "path": "/dashboard",
+            "visible": true,
+            "roles": [
+                "user",
+                "admin"
+            ],
+            "active": true,
+            "componentType": "home",
+            "description": "Your personalized dashboard overview"
+        },
+        {
+            "label": "Goals & Assessment",
+            "icon": "heart",
+            "iconSvg": "lucide:heart-pulse",
+            "path": "/goals-assessment",
+            "visible": true,
+            "roles": [
+                "user",
+                "admin"
+            ],
+            "active": false,
+            "componentType": "goals-assessment",
+            "badge": "Due",
+            "badgeColor": "red",
+            "description": "Set wellness goals and complete assessments"
+        },
+        {
+            "label": "My Care Plan",
+            "icon": "clipboard",
+            "iconSvg": "lucide:clipboard-list",
+            "path": "/care-plan",
+            "visible": true,
+            "roles": [
+                "user"
+            ],
+            "active": false,
+            "componentType": "my-care-plan",
+            "description": "View and manage your personalized care plan"
+        },
+        {
+            "label": "Progress",
+            "icon": "bar-chart",
+            "iconSvg": "lucide:bar-chart-3",
+            "path": "/progress",
+            "visible": true,
+            "roles": [
+                "user"
+            ],
+            "active": false,
+            "componentType": "progress",
+            "description": "Track your wellness journey and insights"
+        },
+        {
+            "label": "Therapist/Coach",
+            "icon": "user-heart",
+            "iconSvg": "lucide:user-heart",
+            "path": "/therapist",
+            "visible": true,
+            "roles": [
+                "user"
+            ],
+            "active": false,
+            "componentType": "therapist-coach",
+            "badge": "Match",
+            "badgeColor": "green",
+            "description": "Connect with therapists and coaches"
+        },
+        {
+            "label": "Micro Learnings",
+            "icon": "book-open",
+            "iconSvg": "lucide:book-open",
+            "path": "/micro-learnings",
+            "visible": true,
+            "roles": [
+                "user"
+            ],
+            "active": false,
+            "badge": "New",
+            "badgeColor": "blue",
+            "componentType": "micro-learnings",
+            "description": "Bite-sized learning content and courses"
+        },
+        {
+            "label": "Resources",
+            "icon": "file-text",
+            "iconSvg": "lucide:file-text",
+            "path": "/resources",
+            "visible": true,
+            "roles": [
+                "user"
+            ],
+            "active": false,
+            "componentType": "resources",
+            "description": "Mental health resources and tools"
+        },
+        {
+            "label": "Profile",
+            "icon": "user",
+            "iconSvg": "lucide:user",
+            "path": "/profile",
+            "visible": true,
+            "roles": [
+                "user",
+                "admin"
+            ],
+            "active": false,
+            "componentType": "profile",
+            "badge": "Incomplete",
+            "badgeColor": "orange",
+            "description": "Manage your profile and preferences"
+        },
+        {
+            "label": "Settings",
+            "icon": "settings",
+            "iconSvg": "lucide:settings",
+            "path": "/settings",
+            "visible": true,
+            "roles": [
+                "user",
+                "admin"
+            ],
+            "active": false,
+            "componentType": "settings",
+            "description": "Account settings and notifications"
+        },
+        {
+            "label": "Need Help",
+            "icon": "help-circle",
+            "iconSvg": "lucide:help-circle",
+            "path": "/support",
+            "visible": true,
+            "roles": [
+                "user",
+                "admin"
+            ],
+            "active": false,
+            "componentType": "need-help",
+            "description": "Get support and find answers"
+        }
+    ],
+    "component": {
+        "componentName": "home",
+        "welcomeSection": {
+            "isVisible": true,
+            "title": "Good Morning",
+            "userName": "Prateek",
+            "showUserName": true,
+            "className": "welcome-section"
+        },
+        "goalsSection": {
+            "isVisible": true,
+            "title": "Start your journey, Set Your Goals.",
+            "props": {
+                "title": "select up to 3 goals",
+                "goalSet": false,
+                "maxGoals": 3,
+                "searchEnabled": false,
+                "selectedGoals": [
+                    {
+                        "emoji": "😌",
+                        "title": "Manage stress",
+                        "color": "#EDFFEF",
+                        "lockColor": "#006B5F",
+                        "isLocked": true
+                    }
+                ],
+                "availableGoals": [
+                    {
+                        "emoji": "😌",
+                        "title": "Manage stress"
+                    },
+                    {
+                        "emoji": "😊",
+                        "title": "Boost mood & feel positive"
+                    },
+                    {
+                        "emoji": "💤",
+                        "title": "Sleep better"
+                    },
+                    {
+                        "emoji": "🔋",
+                        "title": "Prevent burnout"
+                    },
+                    {
+                        "emoji": "😟",
+                        "title": "Manage anxiety"
+                    },
+                    {
+                        "emoji": "🎯",
+                        "title": "Improve focus & productivity"
+                    },
+                    {
+                        "emoji": "🤝",
+                        "title": "Strengthen personal or work relationships"
+                    },
+                    {
+                        "emoji": "💪",
+                        "title": "Build self-confidence"
+                    },
+                    {
+                        "emoji": "⚖️",
+                        "title": "Improve work-life balance"
+                    },
+                    {
+                        "emoji": "🧘",
+                        "title": "Feel calm"
+                    },
+                    {
+                        "emoji": "🧘",
+                        "title": "Reduce unhealthy habits"
+                    },
+                    {
+                        "emoji": "🧘",
+                        "title": "Develop healthy routines"
+                    },
+                    {
+                        "emoji": "🧘",
+                        "title": "Build resilience"
+                    },
+                    {
+                        "emoji": "🧘",
+                        "title": "Navigate life transitions"
+                    }
+                ],
+                "showAllGoals": false
+            },
+            "className": "goals-section"
+        },
+        "discoverYourselfProgressSection": {
+            "isVisible": true,
+            "title": "Still unsure about what you need?",
+            "progress": {
+                "totalSteps": 4,
+                "completedSteps": 1,
+                "percentageComplete": 25,
+                "status": "in_progress"
+            },
+            "nextSteps": [
+                {
+                    "stepNumber": 1,
+                    "title": "Set 3 wellness goals",
+                    "completed": true,
+                    "completedAt": "2024-12-15T11:00:00Z"
+                },
+                {
+                    "stepNumber": 2,
+                    "title": "Complete your profile",
+                    "completed": false,
+                    "priority": "high"
+                },
+                {
+                    "stepNumber": 3,
+                    "title": "Take your initial assessment",
+                    "completed": false,
+                    "priority": "high",
+                    "overdue": true
+                },
+                {
+                    "stepNumber": 4,
+                    "title": "Set up therapist preferences",
+                    "completed": false,
+                    "priority": "medium"
+                }
+            ],
+            "ctaText": "Complete Your Assessment!",
+            "ctaAction": "/dashboard/assessment",
+            "ctaPriority": "high"
+        },
+        "progressGettingStartedSection": {
+            "isVisible": true,
+            "title": "You're just getting started – Let's kick off your Wellness Journey!",
+            "progressPercentage": 25,
+            "showProgressIndicators": true,
+            "ctaText": "Complete your Assessment",
+            "faqLink": "Take me to FAQ",
+            "onCtaClick": "goals-assessment",
+            "className": "progress-getting-started-section",
+            "isAssessmentCompleted": false
+        },
+        "therapistCoachSection": {
+            "isVisible": true,
+            "title": "Here’s our Therapist and coches",
+            "showMatching": true,
+            "showBooking": true,
+            "hasActiveBookings": false,
+            "showSearchFilter": true,
+            "showPreferences": true,
+            "className": "therapist-main",
+            "activeFilters": [
+                "Therapist",
+                "Price : $200 - $600"
+            ],
+            "searchPlaceholder": "Search By Names, Specialization or Language",
+            "therapists": [
+                {
+                    "name": "Dr. Marci Maiden",
+                    "title": "Counselling Therapist",
+                    "rating": 4.5,
+                    "specializations": [
+                        "Stress",
+                        "Trauma",
+                        "Anxiety",
+                        "+2 More"
+                    ],
+                    "showBooking": true,
+                    "hasActiveBookings": false,
+                    "sessionTime": "2 : 30 Pm",
+                    "sessionDay": "Today",
+                    "imageUrl": "/assets/images/dr-image.png",
+                    "availability": "Available Today"
+                },
+                {
+                    "name": "Dr. Marci Maiden",
+                    "title": "Counselling Therapist",
+                    "rating": 4.5,
+                    "specializations": [
+                        "Stress",
+                        "Trauma",
+                        "Anxiety"
+                    ],
+                    "showBooking": true,
+                    "hasActiveBookings": false,
+                    "sessionTime": "2 : 30 Pm",
+                    "sessionDay": "Today",
+                    "imageUrl": "/assets/images/dr-image.png",
+                    "availability": "Available Today"
+                },
+                {
+                    "name": "Dr. Marci Maiden",
+                    "title": "Counselling Therapist",
+                    "rating": 4.5,
+                    "specializations": [
+                        "Stress",
+                        "Trauma",
+                        "Anxiety"
+                    ],
+                    "showBooking": true,
+                    "hasActiveBookings": false,
+                    "sessionTime": "2 : 30 Pm",
+                    "sessionDay": "Today",
+                    "imageUrl": "/assets/images/dr-image.png",
+                    "availability": "Available Today"
+                },
+                {
+                    "name": "Dr. Marci Maiden",
+                    "title": "Counselling Therapist",
+                    "rating": 4.5,
+                    "specializations": [
+                        "Stress",
+                        "Trauma",
+                        "Anxiety"
+                    ],
+                    "showBooking": true,
+                    "hasActiveBookings": false,
+                    "sessionTime": "2 : 30 Pm",
+                    "sessionDay": "Today",
+                    "imageUrl": "/assets/images/dr-image.png",
+                    "availability": "Available Today"
+                },
+                {
+                    "name": "Dr. Marci Maiden",
+                    "title": "Counselling Therapist",
+                    "rating": 4.5,
+                    "specializations": [
+                        "Stress",
+                        "Trauma",
+                        "Anxiety"
+                    ],
+                    "showBooking": true,
+                    "hasActiveBookings": false,
+                    "sessionTime": "2 : 30 Pm",
+                    "sessionDay": "Today",
+                    "imageUrl": "/assets/images/dr-image.png",
+                    "availability": "Available Today"
+                },
+                {
+                    "name": "Dr. Marci Maiden",
+                    "title": "Counselling Therapist",
+                    "rating": 4.5,
+                    "specializations": [
+                        "Stress",
+                        "Trauma",
+                        "Anxiety"
+                    ],
+                    "showBooking": true,
+                    "hasActiveBookings": false,
+                    "sessionTime": "2 : 30 Pm",
+                    "sessionDay": "Today",
+                    "imageUrl": "/assets/images/dr-image.png",
+                    "availability": "Available Today"
+                }
+            ]
+        },
+        "rightNavSection": {
+            "title": "Profile Overview",
+            "profilePicture": "/assets/images/profile-picture.png",
+            "userName": "Prateek Upreti",
+            "isProfileCompleted": false,
+            "profileCompletionPercentage": 50,
+            "upcomingEvents": {
+                "showCard": true,
+                "title": "Upcoming Events",
+                "date": "12 Oct ,23",
+                "buttonText": "Complete Assessment"
+            },
+            "banner": {
+                "showBanner": true,
+                "activeDot": 0,
+                "totalDots": 3
+            },
+            "rewards": {
+                "isVisible": true,
+                "title": "Welcome to rewards",
+                "subtitle": "Use Reward Points for free session",
+                "progressPercentage": 66,
+                "buttonText": "Claim reward"
+            },
+            "insightsCard": {
+                "isVisible": true,
+                "icon": "🏆",
+                "text": "Get your insights, just complete the assessment"
+            },
+            "dailyStreak": {
+                "isVisible": true,
+                "title": "Daily Streak",
+                "showSeeMore": true,
+                "streakText": "Your Streak",
+                "description": "Complete the assessment, & do your activity",
+                "buttonText": "Complete Assessment",
+                "currentStreak": 0,
+                "longestStreak": 0,
+                "isAssessmentCompleted": false
+            }
+        },
+        "carePlanSection": {
+            "isVisible": true,
+            "isAssessmentCompleted": false,
+            "title": "Your Care Plan is Almost Ready",
+            "description": "To get personalized self-care actions, complete your first assessment.\nYour plan will be generated based on your mental health goals and responses.",
+            "unlockCard": {
+                "title": "Unlock your Personalized care plan",
+                "subtitle": "Take a quick assessment to unlock your Care Plan",
+                "imageUrl": "/assets/images/hand_shake_image.png",
+                "buttonText": "Complete Assessment"
+            },
+            "referralCard": {
+                "label": "Referral",
+                "title": "Help a friend, We'll help take care of them!",
+                "imageUrl": "/assets/images/hand_shake_image.png",
+                "codeLabel": "Copy code",
+                "codeText": "C232DF",
+                "buttonText": "Share Invite"
+            },
+            "className": "care-plan"
+        },
+        "microLearningSection": {
+            "isVisible": true,
+            "title": "Micro Learnings",
+            "description": "short reads designed to support your well-being. Complete your assessment to get personalized suggestions.",
+            "learningCards": [
+                {
+                    "title": "What is Microlearning?",
+                    "description": "Microlearning offers quick, focused reads to help you manage mental health one step at a time.",
+                    "tags": [
+                        "Beginner",
+                        "Overview"
+                    ],
+                    "readTime": "2-min read",
+                    "ctaText": "Take a Look",
+                    "secondaryCta": "Take assessment to Personalize"
+                },
+                {
+                    "title": "Why Short Reads Help",
+                    "description": "Learn how bite-sized articles reduce overwhelm and help you make steady progress.",
+                    "tags": [
+                        "Beginner",
+                        "Motivation"
+                    ],
+                    "readTime": "2-min read",
+                    "ctaText": "Take a Look",
+                    "secondaryCta": "Take assessment to Personalize"
+                },
+                {
+                    "title": "Personalize Your Learning",
+                    "description": "Get tailored recommendations by taking a short assessment.",
+                    "tags": [
+                        "Interactive",
+                        "Overview"
+                    ],
+                    "readTime": "2-min read",
+                    "ctaText": "Take a Look",
+                    "secondaryCta": "Take assessment to Personalize"
+                }
+            ],
+            "className": "micro-learnings-main-section"
+        },
+        "newPlatFormSection": {
+            "isVisible": true,
+            "label": "New Platform",
+            "title": "Get one of our Refill Health apps, which is only available on",
+            "downloadTitle": "Download Apps:",
+            "downloadButtons": [
+                {
+                    "imageUrl": "/assets/images/ios_image.png",
+                    "alt": "iOS App Store"
+                },
+                {
+                    "imageUrl": "/assets/images/android_image.png",
+                    "alt": "Google Play Store"
+                }
+            ],
+            "phoneImages": [
+                {
+                    "imageUrl": "/assets/images/mobile-img-first.png",
+                    "alt": "phone-1"
+                },
+                {
+                    "imageUrl": "/assets/images/mobile-img-second.png",
+                    "alt": "phone-2"
+                }
+            ],
+            "className": "platform-section"
+        }
+    }
+}

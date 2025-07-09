@@ -34,7 +34,7 @@ export default function Profile() {
         .profile-content {
           display: flex;
           width: 100%;
-          max-width: 1006px;
+          max-width: 100%;
           flex-direction: column;
           align-items: flex-start;
           gap: 32px;
