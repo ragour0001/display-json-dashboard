@@ -291,11 +291,15 @@
               "type": "progress-getting-started",
               "props": {
                 "title": "You're just getting started – Let's kick off your Wellness Journey!",
-                "progressPercentage": 25,
+                "progressPercentage": 0,
                 "showProgressIndicators": true,
                 "ctaText": "Complete your Assessment",
                 "faqLink": "Take me to FAQ",
-                "onCtaClick": "goals-assessment"
+                "onCtaClick": "goals-assessment",
+                "showIcon": true,
+                "completionText": "0% Completed",
+                "borderStyle": "border: 1px solid #e94545; background: #fff6f6;",
+                "iconColor": "#006B5F"
               },
               "className": "progress-getting-started-section"
             },
