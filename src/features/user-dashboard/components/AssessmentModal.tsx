@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import questions from "../data/assessmentQuestions.json";
+import React, { useState, useEffect } from "react";
+import { AssessmentService, AssessmentQuestion } from "../services/assessmentService";
 
 interface AssessmentModalProps {
   open: boolean;
@@ -9,8 +9,105 @@ interface AssessmentModalProps {
 export default function AssessmentModal({ open, onClose }: AssessmentModalProps) {
   const [current, setCurrent] = useState(0);
   const [selected, setSelected] = useState<{ [key: number]: string }>({});
+  const [questions, setQuestions] = useState<AssessmentQuestion[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchQuestions = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+        const fetchedQuestions = await AssessmentService.getAssessmentQuestions();
+        setQuestions(fetchedQuestions);
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'Failed to load questions');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    if (open) {
+      fetchQuestions();
+    }
+  }, [open]);
 
   if (!open) return null;
+
+  if (loading) {
+    return (
+      <div style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100vw',
+        height: '100vh',
+        background: 'rgba(0,0,0,0.3)',
+        zIndex: 2000,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}>
+        <div style={{
+          background: '#FFF6F6',
+          borderRadius: '16px',
+          width: '800px',
+          maxWidth: '95vw',
+          boxShadow: '0 2px 16px rgba(0,0,0,0.15)',
+          padding: '32px',
+          textAlign: 'center'
+        }}>
+          <div>Loading assessment questions...</div>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100vw',
+        height: '100vh',
+        background: 'rgba(0,0,0,0.3)',
+        zIndex: 2000,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}>
+        <div style={{
+          background: '#FFF6F6',
+          borderRadius: '16px',
+          width: '800px',
+          maxWidth: '95vw',
+          boxShadow: '0 2px 16px rgba(0,0,0,0.15)',
+          padding: '32px',
+          textAlign: 'center'
+        }}>
+          <div style={{ color: '#d32f2f', marginBottom: '16px' }}>Error: {error}</div>
+          <button 
+            onClick={onClose}
+            style={{
+              background: '#006B5F',
+              color: '#fff',
+              border: 'none',
+              borderRadius: 8,
+              padding: '8px 18px',
+              fontWeight: 500,
+              cursor: 'pointer'
+            }}
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  if (questions.length === 0) return null;
+
   const question = questions[current];
   const total = questions.length;
 

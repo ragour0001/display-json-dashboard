@@ -27,7 +27,8 @@ export default function ProgressBar({ progress }: ProgressBarProps) {
         <svg
           width="865"
           height="16"
-          viewBox="0 0 865 16"
+          viewBox="0 0  16"
+          // viewBox="0 0 865 16"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
           className="progress-bar-svg"

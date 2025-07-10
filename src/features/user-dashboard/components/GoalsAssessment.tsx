@@ -1,10 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import AssessmentSection from "./AssessmentSection";
 import MyGoalsSection from "./MyGoalsSection";
 import PreferencesSection from "./PreferencesSection";
-import questions from "../data/assessmentQuestions.json";
+import { AssessmentService, AssessmentQuestion } from "../services/assessmentService";
 
 interface GoalsAssessmentProps {
   onSectionChange?: (section: string, data?: any) => void;
@@ -13,9 +13,30 @@ interface GoalsAssessmentProps {
 
 export default function GoalsAssessment({ onSectionChange, selectedGoals }: GoalsAssessmentProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [selectedOptions, setSelectedOptions] = useState<string[]>(Array(questions.length).fill(""));
+  const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
+  const [questions, setQuestions] = useState<AssessmentQuestion[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   
   console.log('🎯 GoalsAssessment: selectedGoals received:', selectedGoals);
+
+  useEffect(() => {
+    const fetchQuestions = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+        const fetchedQuestions = await AssessmentService.getAssessmentQuestions();
+        setQuestions(fetchedQuestions);
+        setSelectedOptions(Array(fetchedQuestions.length).fill(""));
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'Failed to load questions');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchQuestions();
+  }, []);
 
   const handleOptionChange = (option: string) => {
     const updated = [...selectedOptions];
@@ -34,6 +55,44 @@ export default function GoalsAssessment({ onSectionChange, selectedGoals }: Goal
       setCurrentIndex(currentIndex - 1);
     }
   };
+
+  if (loading) {
+    return (
+      <div className="goals-assessment-page" style={{ textAlign: 'center', padding: '50px' }}>
+        <div>Loading assessment questions...</div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="goals-assessment-page" style={{ textAlign: 'center', padding: '50px' }}>
+        <div style={{ color: '#d32f2f', marginBottom: '16px' }}>Error: {error}</div>
+        <button 
+          onClick={() => window.location.reload()}
+          style={{
+            background: '#006B5F',
+            color: '#fff',
+            border: 'none',
+            borderRadius: 8,
+            padding: '8px 18px',
+            fontWeight: 500,
+            cursor: 'pointer'
+          }}
+        >
+          Retry
+        </button>
+      </div>
+    );
+  }
+
+  if (questions.length === 0) {
+    return (
+      <div className="goals-assessment-page" style={{ textAlign: 'center', padding: '50px' }}>
+        <div>No assessment questions available.</div>
+      </div>
+    );
+  }
 
   return (
     <>
@@ -154,6 +213,7 @@ export default function GoalsAssessment({ onSectionChange, selectedGoals }: Goal
           align-items: flex-start;
           gap: 12px;
           flex: 1 0 0;
+          width: 100%;
         }
 
         .progress-title {
