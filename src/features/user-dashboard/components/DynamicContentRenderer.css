@@ -1446,12 +1446,12 @@
 }
 
 .completion-status {
-  color: #666;
+  color: #232323;
   font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
-  font-size: 14px;
+  font-size: 20px;
   font-style: normal;
-  font-weight: 400;
-  line-height: 135%;
+  font-weight: 600;
+  line-height: 120%;
 }
 
 .banner-actions {
@@ -1462,17 +1462,17 @@
 }
 
 .faq-link {
-  color: #006A63;
+  color: #006b5f;
   font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   font-style: normal;
-  font-weight: 400;
-  line-height: 125%;
+  font-weight: 600;
+  line-height: 140%;
   text-decoration-line: underline;
   background: transparent;
   border: none;
   cursor: pointer;
-  padding: 8px 0;
+  /* padding: 8px 0; */
 }
 
 .faq-link:hover {
@@ -1482,13 +1482,14 @@
 .assessment-btn {
   display: flex;
   height: 36px;
-  padding: 8px 20px;
+  padding: 10px 16px;
   justify-content: center;
   align-items: center;
   gap: 8px;
-  border-radius: 6px;
-  background: #006A63;
-  color: #FFF;
+  border-radius: 12px;
+  background: #eff5f3;
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 3px 0px 0px rgba(0, 0, 0, 0.15);
+  color: #006a63;
   font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
   font-size: 14px;
   font-style: normal;
@@ -2550,7 +2551,7 @@
   overflow: hidden;
   min-height: 370px;
   /* width: 1123px; */
-  width: 100%;
+  width: 140%;
 }
 
 .platform-content {

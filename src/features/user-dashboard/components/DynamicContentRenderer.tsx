@@ -1206,7 +1206,8 @@ function NewPlatformSection({ showNewPlatform, label, title, downloadTitle, down
   if (!showNewPlatform) return null;
   
   return (
-    <div className={className || "main-new-platform-section"} style={style}>
+    // <div className={className || "main-new-platform-section"} style={style}>
+    <div className="main-new-platform-section">
       <div className="platform-content">
         <div className="platform-info">
           <div className="platform-header">
