@@ -2551,7 +2551,8 @@
   overflow: hidden;
   min-height: 370px;
   /* width: 1123px; */
-  width: 140%;
+  /* width: 100%; */
+  width: fit-content;
 }
 
 .platform-content {
