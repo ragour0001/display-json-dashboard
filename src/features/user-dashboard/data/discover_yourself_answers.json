@@ -1,0 +1,268 @@
+{
+  "userId": 290,
+  "isCompleted": "Y",
+  "submissionDate": "2025-06-17T18:00:00Z",
+  "assessmentResponses": [
+    {
+      "answers": [
+        {
+          "answerId": 3,
+          "questionId": 1
+        },
+        {
+          "answerId": 7,
+          "questionId": 2
+        },
+        {
+          "answerId": 15,
+          "questionId": 3
+        },
+        {
+          "answerId": 18,
+          "questionId": 4
+        }
+      ],
+      "assessmentId": 3
+    },
+    {
+      "answers": [
+        {
+          "answerId": 22,
+          "questionId": 5
+        },
+        {
+          "answerId": 27,
+          "questionId": 6
+        }
+      ],
+      "assessmentId": 4
+    },
+    {
+      "answers": [
+        {
+          "answerId": 30,
+          "questionId": 7
+        },
+        {
+          "answerId": 34,
+          "questionId": 8
+        }
+      ],
+      "assessmentId": 5
+    },
+    {
+      "answers": [
+        {
+          "answerId": 39,
+          "questionId": 9
+        }
+      ],
+      "assessmentId": 6
+    },
+    {
+      "answers": [
+        {
+          "answerId": 44,
+          "questionId": 10
+        },
+        {
+          "answerId": 46,
+          "questionId": 11
+        }
+      ],
+      "assessmentId": 7
+    },
+    {
+      "answers": [
+        {
+          "answerId": 53,
+          "questionId": 12
+        },
+        {
+          "answerId": 56,
+          "questionId": 13
+        }
+      ],
+      "assessmentId": 8
+    },
+    {
+      "answers": [
+        {
+          "answerId": 62,
+          "questionId": 14
+        },
+        {
+          "answerId": 65,
+          "questionId": 15
+        }
+      ],
+      "assessmentId": 9
+    },
+    {
+      "answers": [
+        {
+          "answerId": 71,
+          "questionId": 16
+        }
+      ],
+      "assessmentId": 10
+    },
+    {
+      "answers": [
+        {
+          "answerId": 75,
+          "questionId": 17
+        },
+        {
+          "answerId": 79,
+          "questionId": 18
+        },
+        {
+          "answerId": 84,
+          "questionId": 19
+        }
+      ],
+      "assessmentId": 11
+    },
+    {
+      "answers": [
+        {
+          "answerId": 87,
+          "questionId": 20
+        },
+        {
+          "answerId": 93,
+          "questionId": 21
+        }
+      ],
+      "assessmentId": 12
+    },
+    {
+      "answers": [
+        {
+          "answerId": 97,
+          "questionId": 22
+        },
+        {
+          "answerId": 100,
+          "questionId": 23
+        },
+        {
+          "answerId": 107,
+          "questionId": 24
+        },
+        {
+          "answerId": 113,
+          "questionId": 25
+        },
+        {
+          "answerId": 118,
+          "questionId": 26
+        }
+      ],
+      "assessmentId": 14
+    },
+    {
+      "answers": [
+        {
+          "answerId": 122,
+          "questionId": 27
+        }
+      ],
+      "assessmentId": 15
+    },
+    {
+      "answers": [
+        {
+          "answerId": 127,
+          "questionId": 28
+        },
+        {
+          "answerId": 132,
+          "questionId": 29
+        },
+        {
+          "answerId": 137,
+          "questionId": 30
+        }
+      ],
+      "assessmentId": 16
+    },
+    {
+      "answers": [
+        {
+          "answerId": 143,
+          "questionId": 31
+        }
+      ],
+      "assessmentId": 17
+    },
+    {
+      "answers": [
+        {
+          "answerId": 147,
+          "questionId": 32
+        },
+        {
+          "answerId": 151,
+          "questionId": 33
+        },
+        {
+          "answerId": 159,
+          "questionId": 34
+        }
+      ],
+      "assessmentId": 18
+    },
+    {
+      "answers": [
+        {
+          "answerId": 215,
+          "questionId": 53
+        },
+        {
+          "answerId": 221,
+          "questionId": 54
+        },
+        {
+          "answerId": 230,
+          "questionId": 55
+        },
+        {
+          "answerId": 237,
+          "questionId": 56
+        },
+        {
+          "answerId": 236,
+          "questionId": 57
+        }
+      ],
+      "assessmentId": 25
+    },
+    {
+      "answers": [
+        {
+          "answerId": 246,
+          "questionId": 58
+        },
+        {
+          "answerId": 253,
+          "questionId": 59
+        },
+        {
+          "answerId": 258,
+          "questionId": 60
+        },
+        {
+          "answerId": 260,
+          "questionId": 61
+        },
+        {
+          "answerId": 266,
+          "questionId": 62
+        }
+      ],
+      "assessmentId": 26
+    }
+  ]
+}

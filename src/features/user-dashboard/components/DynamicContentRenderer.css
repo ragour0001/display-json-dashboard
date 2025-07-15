@@ -3150,3 +3150,169 @@
   align-items: center;
   justify-content: center;
 }
+
+/* Therapist Matches Card Styles */
+.therapist-matches-card {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-self: stretch;
+  padding: 20px 0;
+}
+
+.therapist-matches-header {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-self: stretch;
+}
+
+.therapist-matches-title {
+  color: #003A5D;
+  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 32px;
+  margin: 0;
+}
+
+.therapist-matches-description {
+  color: #666;
+  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  margin: 0;
+}
+
+.confidence-score {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: #E8F5E8;
+  border-radius: 20px;
+  width: fit-content;
+}
+
+.confidence-score span {
+  color: #006B5F;
+  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.therapist-matches-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(283px, 1fr));
+  gap: 13px;
+  align-self: stretch;
+}
+
+.matching-badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: #006B5F;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.therapist-experience {
+  color: #666;
+  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: normal;
+  margin: 0;
+}
+
+.match-details {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 12px;
+  background: #F8F9FA;
+  border-radius: 8px;
+  border: 1px solid #E5E7EB;
+}
+
+.match-scores {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.match-score {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.score-label {
+  color: #666;
+  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+}
+
+.score-value {
+  color: #006B5F;
+  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.clinical-fit {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  justify-content: center;
+}
+
+.clinical-fit-label {
+  color: #666;
+  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+}
+
+.clinical-fit-value {
+  color: #006B5F;
+  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+  text-transform: capitalize;
+}
+
+/* Responsive Design for Therapist Matches */
+@media (max-width: 768px) {
+  .therapist-matches-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .therapist-matches-title {
+    font-size: 20px;
+    line-height: 28px;
+  }
+  
+  .match-scores {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .match-score {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}

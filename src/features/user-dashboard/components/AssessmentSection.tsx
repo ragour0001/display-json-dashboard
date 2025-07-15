@@ -12,6 +12,7 @@ interface AssessmentSectionProps {
   setSelectedOption: (option: string) => void;
   onNext: () => void;
   onPrevious: () => void;
+  onSubmit?: () => void;
   isFirst: boolean;
   isLast: boolean;
   onSectionChange?: (section: string) => void;
@@ -26,6 +27,7 @@ export default function AssessmentSection({
   setSelectedOption,
   onNext,
   onPrevious,
+  onSubmit,
   isFirst,
   isLast,
   onSectionChange,
@@ -347,6 +349,52 @@ export default function AssessmentSection({
           letter-spacing: 0.1px;
         }
 
+        .submit-btn {
+          display: flex;
+          height: 48px;
+          justify-content: center;
+          align-items: center;
+          border-radius: 12px;
+          background: #006a63;
+          border: none;
+          cursor: pointer;
+          margin-left: 12px;
+        }
+
+        .submit-btn:hover {
+          background: #218838;
+        }
+
+        .submit-btn:disabled {
+          background: #6c757d;
+          cursor: not-allowed;
+        }
+
+        .submit-btn .btn-content {
+          display: flex;
+          padding: 10px 16px;
+          justify-content: center;
+          align-items: center;
+          gap: 8px;
+          align-self: stretch;
+        }
+
+        .submit-btn .btn-text {
+          color: #fff;
+          font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+          font-size: 14px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: 20px;
+          letter-spacing: 0.1px;
+        }
+
+        .last-question-actions {
+          display: flex;
+          align-items: center;
+          gap: 0;
+        }
+
         @media (max-width: 768px) {
           .assessment-section {
             max-width: 100%;
@@ -372,6 +420,17 @@ export default function AssessmentSection({
           }
 
           .dashboard-btn {
+            margin-left: 0;
+            width: 100%;
+          }
+
+          .last-question-actions {
+            flex-direction: column;
+            gap: 12px;
+            width: 100%;
+          }
+
+          .submit-btn {
             margin-left: 0;
             width: 100%;
           }
@@ -458,43 +517,59 @@ export default function AssessmentSection({
                   <span className="btn-text">Take Me to Dashboard</span>
                 </div>
               </button>
-              {/* Hide Previous button if on first question */}
-              {questionNumber > 1 && (
-                <button
-                  type="button"
-                  className="dashboard-btn previous-btn"
-                  onClick={onPrevious}
-                >
-                  <div className="btn-content">
-                    <span className="btn-text">Previous Question</span>
-                  </div>
-                </button>
+              
+              {/* Show Previous and Submit buttons side by side on last question */}
+              {isLast && questionNumber > 1 ? (
+                <div className="last-question-actions">
+                  <button
+                    type="button"
+                    className="dashboard-btn previous-btn"
+                    onClick={onPrevious}
+                  >
+                    <div className="btn-content">
+                      <span className="btn-text">Previous Question</span>
+                    </div>
+                  </button>
+                  <button
+                    type="button"
+                    className="submit-btn"
+                    onClick={() => onSubmit?.()}
+                    disabled={!selectedOption}
+                  >
+                    <div className="btn-content">
+                      <span className="btn-text">Submit</span>
+                    </div>
+                  </button>
+                </div>
+              ) : (
+                <>
+                  {/* Hide Previous button if on first question */}
+                  {questionNumber > 1 && (
+                    <button
+                      type="button"
+                      className="dashboard-btn previous-btn"
+                      onClick={onPrevious}
+                    >
+                      <div className="btn-content">
+                        <span className="btn-text">Previous Question</span>
+                      </div>
+                    </button>
+                  )}
+                  {/* Hide Next button if on last question */}
+                  {!isLast && (
+                    <button
+                      type="button"
+                      className="dashboard-btn"
+                      onClick={onNext}
+                      disabled={!selectedOption}
+                    >
+                      <div className="btn-content">
+                        <span className="btn-text">Next Question</span>
+                      </div>
+                    </button>
+                  )}
+                </>
               )}
-              {/* Hide Next button if on last question */}
-              {!isLast && (
-                <button
-                  type="button"
-                  className="dashboard-btn"
-                  onClick={onNext}
-                  disabled={!selectedOption}
-                >
-                  <div className="btn-content">
-                    <span className="btn-text">Next Question</span>
-                  </div>
-                </button>
-              )}
-              {/* Show Dashboard button only on last question */}
-              {/* {isLast && (
-                <button
-                  type="button"
-                  className="dashboard-btn"
-                  onClick={() => onSectionChange?.("home")}
-                >
-                  <div className="btn-content">
-                    <span className="btn-text">Take Me to Dashboard</span>
-                  </div>
-                </button>
-              )} */}
             </div>
           </div>
         </div>

@@ -1054,6 +1054,9 @@ function renderTabContent(content: any, onSectionChange?: (section: string, data
     case 'goals-management':
       return <GoalsManagementCard content={content} />;
     
+    case 'therapist-matches':
+      return <TherapistMatchesCard content={content} />;
+    
     default:
       return <div>Unknown tab content type</div>;
   }
@@ -1515,6 +1518,139 @@ function GoalsManagementCard({ content }: any) {
           </svg>
         </div>
       )}
+    </div>
+  );
+}
+
+function TherapistMatchesCard({ content }: any) {
+  const { title, description, therapists = [], showMatchDetails = true, showBookingOptions = true, matchingBadge = "AI Matched", confidenceScore = 0.7 } = content;
+  
+  const getBookingUrl = (name: string) => {
+    const cleanName = name.replace(/^(Dr\.|Mr\.|Ms\.|Mrs\.)\s+/i, "");
+    const parts = cleanName.trim().split(" ");
+    const firstName = parts[0];
+    const lastName = parts.length > 1 ? parts[parts.length - 1] : "";
+    const urlName = [firstName, lastName].filter(Boolean).join("+");
+    const email = firstName ? `${firstName.toLowerCase()}@refillhealth.com` : "";
+    return `https://bookings.refillhealth.com/sreeja/therapy-session?name=${urlName}&email=${encodeURIComponent(email)}`;
+  };
+
+  const TherapistMatchCard = ({ therapist }: { therapist: any }) => {
+    const [modalOpen, setModalOpen] = React.useState(false);
+    const bookingUrl = getBookingUrl(therapist.name);
+
+    return (
+      <div className="therapist-card">
+        <div className="therapist-card-image">
+          <img src={therapist.imageUrl || "/assets/images/dr-image.png"} alt={therapist.name} />
+          <div className="availability-badge">
+            <div className="availability-dot"></div>
+            <span>{therapist.availability || "Available Today"}</span>
+          </div>
+          {matchingBadge && (
+            <div className="matching-badge">
+              <span>{matchingBadge}</span>
+            </div>
+          )}
+        </div>
+        <div className="therapist-card-content">
+          <div className="therapist-profile-section">
+            <div className="therapist-info">
+              <h3 className="therapist-name">{therapist.name}</h3>
+              <p className="therapist-title">{therapist.title}</p>
+              {therapist.yearsExperience && (
+                <p className="therapist-experience">{therapist.yearsExperience} years experience</p>
+              )}
+            </div>
+            <div className="therapist-rating">
+              <svg width="20" height="19" viewBox="0 0 20 19" fill="none">
+                <path
+                  d="M9.04894 0.925099C9.3483 0.00378799 10.6517 0.0037868 10.9511 0.925097L12.4697 5.59886C12.6035 6.01088 12.9875 6.28984 13.4207 6.28984H18.335C19.3037 6.28984 19.7065 7.52946 18.9228 8.09886L14.947 10.9874C14.5966 11.242 14.4499 11.6934 14.5838 12.1054L16.1024 16.7792C16.4017 17.7005 15.3472 18.4666 14.5635 17.8972L10.5878 15.0087C10.2373 14.754 9.7627 14.754 9.41221 15.0087L5.43648 17.8972C4.65276 18.4666 3.59828 17.7005 3.89763 16.7792L5.41623 12.1054C5.55011 11.6934 5.40345 11.242 5.05296 10.9874L1.07722 8.09886C0.293507 7.52946 0.696283 6.28984 1.66501 6.28984H6.57929C7.01252 6.28984 7.39647 6.01088 7.53035 5.59886L9.04894 0.925099Z"
+                  fill="#FFB063"
+                />
+              </svg>
+              <span className="rating-value">{therapist.rating}</span>
+            </div>
+          </div>
+
+          <div className="therapist-details">
+            <div className="specializations">
+              {therapist.specializations?.map((spec: string, index: number) => (
+                <span key={index} className="specialization-tag">
+                  {spec}
+                </span>
+              ))}
+            </div>
+
+            {showMatchDetails && (
+              <div className="match-details">
+                <div className="match-scores">
+                  <div className="match-score">
+                    <span className="score-label">Match Score</span>
+                    <span className="score-value">{Math.round(therapist.matchScore * 100)}%</span>
+                  </div>
+                  <div className="match-score">
+                    <span className="score-label">Effectiveness</span>
+                    <span className="score-value">{Math.round(therapist.matchEffectiveness * 100)}%</span>
+                  </div>
+                </div>
+                <div className="clinical-fit">
+                  <span className="clinical-fit-label">Clinical Fit: </span>
+                  <span className="clinical-fit-value">{therapist.clinicalFit}</span>
+                </div>
+              </div>
+            )}
+
+            <div className="session-booking">
+              <div className="session-info">
+                <div className="session-label">Sessions</div>
+                <div className="session-time-info">
+                  <span className="session-time">{therapist.sessionTime}</span>
+                  <span className="session-day">{therapist.sessionDay}</span>
+                </div>
+              </div>
+              {showBookingOptions && (
+                <button className="book-now-btn" onClick={() => setModalOpen(true)}>
+                  Book Now
+                </button>
+              )}
+            </div>
+          </div>
+        </div>
+        
+        {modalOpen && (
+          <div className="booking-modal-overlay" onClick={() => setModalOpen(false)}>
+            <div className="booking-modal-content" onClick={(e) => e.stopPropagation()}>
+              <button className="booking-modal-close" onClick={() => setModalOpen(false)}>&times;</button>
+              <iframe
+                src={bookingUrl}
+                title="Book Now"
+                className="booking-modal-iframe"
+              />
+            </div>
+          </div>
+        )}
+      </div>
+    );
+  };
+
+  return (
+    <div className="therapist-matches-card">
+      <div className="therapist-matches-header">
+        <h3 className="therapist-matches-title">{title}</h3>
+        {description && <p className="therapist-matches-description">{description}</p>}
+        {confidenceScore && (
+          <div className="confidence-score">
+            <span>Confidence Score: {Math.round(confidenceScore * 100)}%</span>
+          </div>
+        )}
+      </div>
+      
+      <div className="therapist-matches-grid">
+        {therapists.map((therapist: any, index: number) => (
+          <TherapistMatchCard key={index} therapist={therapist} />
+        ))}
+      </div>
     </div>
   );
 }

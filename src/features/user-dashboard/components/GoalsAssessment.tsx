@@ -56,6 +56,20 @@ export default function GoalsAssessment({ onSectionChange, selectedGoals }: Goal
     }
   };
 
+  const handleSubmit = async () => {
+    try {
+      // Use the new service method for assessment submission
+      const result = await AssessmentService.submitAssessment(questions, selectedOptions, 290);
+
+      // Navigate to dashboard on successful submission
+      onSectionChange?.("home", { assessmentCompleted: true, submissionResult: result });
+
+    } catch (err) {
+      console.error('❌ Error submitting assessment:', err);
+      setError(err instanceof Error ? err.message : 'Failed to submit assessment');
+    }
+  };
+
   if (loading) {
     return (
       <div className="goals-assessment-page" style={{ textAlign: 'center', padding: '50px' }}>
@@ -409,6 +423,7 @@ export default function GoalsAssessment({ onSectionChange, selectedGoals }: Goal
           setSelectedOption={handleOptionChange}
           onNext={handleNext}
           onPrevious={handlePrevious}
+          onSubmit={handleSubmit}
           isFirst={currentIndex === 0}
           isLast={currentIndex === questions.length - 1}
           onSectionChange={onSectionChange}

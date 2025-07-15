@@ -445,6 +445,69 @@
                       "showAssessmentWarning": true,
                       "warningText": "Kindly Take the Assessment to track your process"
                     }
+                  },
+                  {
+                    "id": "therapist-matches",
+                    "label": "Therapist Matches",
+                    "content": {
+                      "type": "therapist-matches",
+                      "title": "Your Personalized Therapist Matches",
+                      "description": "Based on your preferences and assessment, here are your best matches",
+                      "therapists": [
+                        {
+                          "name": "Dr. Emily Watson",
+                          "title": "Trauma Specialist",
+                          "rating": 4.9,
+                          "specializations": ["Trauma", "PTSD", "EMDR", "+1 More"],
+                          "sessionTime": "10:00 AM",
+                          "sessionDay": "Today",
+                          "imageUrl": "/assets/images/dr-image.png",
+                          "availability": "Available Today",
+                          "yearsExperience": 18,
+                          "therapyApproaches": ["EMDR", "Somatic Therapy", "Trauma-Focused CBT"],
+                          "matchScore": 1.0,
+                          "compatibility": 1.0,
+                          "matchEffectiveness": 0.94,
+                          "clinicalFit": "excellent"
+                        },
+                        {
+                          "name": "Dr. Rachel Green",
+                          "title": "Life Coach & Counselor",
+                          "rating": 4.7,
+                          "specializations": ["Life Coaching", "Personal Development", "Counseling", "+0 More"],
+                          "sessionTime": "2:00 PM",
+                          "sessionDay": "Today",
+                          "imageUrl": "/assets/images/dr-image.png",
+                          "availability": "Available Today",
+                          "yearsExperience": 9,
+                          "therapyApproaches": ["Humanistic Therapy", "Solution-Focused Therapy", "Coaching"],
+                          "matchScore": 1.0,
+                          "compatibility": 1.0,
+                          "matchEffectiveness": 0.83,
+                          "clinicalFit": "excellent"
+                        },
+                        {
+                          "name": "Dr. Sarah Chen",
+                          "title": "Anxiety Specialist",
+                          "rating": 4.8,
+                          "specializations": ["Anxiety", "CBT", "Panic Disorders", "+0 More"],
+                          "sessionTime": "4:30 PM",
+                          "sessionDay": "Today",
+                          "imageUrl": "/assets/images/dr-image.png",
+                          "availability": "Available Today",
+                          "yearsExperience": 12,
+                          "therapyApproaches": ["CBT", "Exposure Therapy", "Mindfulness-Based Therapy"],
+                          "matchScore": 0.98,
+                          "compatibility": 0.98,
+                          "matchEffectiveness": 0.92,
+                          "clinicalFit": "excellent"
+                        }
+                      ],
+                      "showMatchDetails": true,
+                      "showBookingOptions": true,
+                      "matchingBadge": "AI Matched",
+                      "confidenceScore": 0.7
+                    }
                   }
                 ]
               },
