@@ -70,8 +70,6 @@ export interface DisplayConfig {
   };
   layout: {
     defaultComponent: string;
-    showRightSidebar: boolean;
-    rightSidebarComponents: string[];
     components: Array<{
       type: string;
       props?: Record<string, any>;
@@ -166,50 +164,6 @@ export interface DisplayConfig {
       };
       name: string;
       role: string;
-    };
-  };
-  rightSidebar: {
-    profileOverview: {
-      title: string;
-      showMoreOptions: boolean;
-      profile: {
-        imageUrl: string;
-        alt: string;
-        text: string;
-      };
-    };
-    insightsCard: {
-      showCard: boolean;
-      icon: string;
-      text: string;
-    };
-    dailyStreak: {
-      showCard: boolean;
-      title: string;
-      showSeeMore: boolean;
-      streakText: string;
-      description: string;
-      buttonText: string;
-      currentStreak: number;
-      longestStreak: number;
-    };
-    rewards: {
-      showCard: boolean;
-      title: string;
-      subtitle: string;
-      progressPercentage: number;
-      buttonText: string;
-    };
-    upcomingEvents: {
-      showCard: boolean;
-      title: string;
-      date: string;
-      buttonText: string;
-    };
-    banner: {
-      showBanner: boolean;
-      activeDot: number;
-      totalDots: number;
     };
   };
 }

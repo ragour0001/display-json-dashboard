@@ -194,8 +194,6 @@
     },
     "layout": {
       "defaultComponent": "home",
-      "showRightSidebar": true,
-      "rightSidebarComponents": ["home"],
       "components": [
         {
           "type": "home",
@@ -968,50 +966,6 @@
         },
         "name": "Prateek Upreti",
         "role": "Admin"
-      }
-    },
-    "rightSidebar": {
-      "profileOverview": {
-        "title": "Profile Overview",
-        "showMoreOptions": true,
-        "profile": {
-          "imageUrl": "/assets/images/profile_image.svg",
-          "alt": "Profile",
-          "text": "Complete your Profile"
-        }
-      },
-      "insightsCard": {
-        "showCard": true,
-        "icon": "🏆",
-        "text": "Get your insights, just complete the assessment"
-      },
-      "dailyStreak": {
-        "showCard": true,
-        "title": "Daily Streak",
-        "showSeeMore": true,
-        "streakText": "Your Streak",
-        "description": "Complete the assessment, & do your activity",
-        "buttonText": "Complete Assessment",
-        "currentStreak": 0,
-        "longestStreak": 0
-      },
-      "rewards": {
-        "showCard": true,
-        "title": "Welcome to rewards",
-        "subtitle": "Use Reward Points for free session",
-        "progressPercentage": 66,
-        "buttonText": "Claim reward"
-      },
-      "upcomingEvents": {
-        "showCard": true,
-        "title": "Upcoming Events",
-        "date": "12 Oct ,23",
-        "buttonText": "Complete Assessment"
-      },
-      "banner": {
-        "showBanner": true,
-        "activeDot": 0,
-        "totalDots": 3
       }
     }
   }

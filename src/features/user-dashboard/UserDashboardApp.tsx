@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
-import RightSidebar from "./components/RightSidebar";
 import { DynamicComponentRenderer } from "./components/ComponentRegistry";
 import { useDisplayConfig } from "./hooks/useDisplayConfig";
 import { USER_DASHBOARD_CSS_FILES, loadCssFile, removeCssFile } from "./cssConfig";
@@ -166,9 +165,7 @@ export default function UserDashboardApp() {
     return null;
   }
 
-  // Determine if right sidebar should show based on config
-  const shouldShowRightSidebar = config.layout.showRightSidebar && 
-    config.layout.rightSidebarComponents.includes(activeSection);
+
 
   return (
     <>
@@ -239,26 +236,14 @@ export default function UserDashboardApp() {
           transition: margin-left 0.3s ease !important;
         }
 
-        /* When right sidebar is shown */
-        .dashboard-layout .user-dashboard-content.sidebar-expanded-layout .main-content.with-right-sidebar,
-        .dashboard-layout .sidebar-expanded-layout .main-content.with-right-sidebar {
-          max-width: calc(100vw - 250px - 333px) !important;
-          transition: max-width 0.3s ease !important;
-        }
-
-        .dashboard-layout .user-dashboard-content:not(.sidebar-expanded-layout) .main-content.with-right-sidebar {
-          max-width: calc(100vw - 72px - 333px) !important;
-          transition: max-width 0.3s ease !important;
-        }
-
-        /* When right sidebar is hidden - expand to full width */
-        .dashboard-layout .user-dashboard-content.sidebar-expanded-layout .main-content:not(.with-right-sidebar),
-        .dashboard-layout .sidebar-expanded-layout .main-content:not(.with-right-sidebar) {
+        /* Main content expands to full width */
+        .dashboard-layout .user-dashboard-content.sidebar-expanded-layout .main-content,
+        .dashboard-layout .sidebar-expanded-layout .main-content {
           max-width: calc(100vw - 250px) !important;
           transition: max-width 0.3s ease !important;
         }
 
-        .dashboard-layout .user-dashboard-content:not(.sidebar-expanded-layout) .main-content:not(.with-right-sidebar) {
+        .dashboard-layout .user-dashboard-content:not(.sidebar-expanded-layout) .main-content {
           max-width: calc(100vw - 72px) !important;
           transition: max-width 0.3s ease !important;
         }
@@ -292,13 +277,8 @@ export default function UserDashboardApp() {
 
         /* Responsive Design - Fixed sidebar expansion */
         @media (max-width: 1200px) {
-          .dashboard-layout .user-dashboard-content.sidebar-expanded-layout .main-content.with-right-sidebar,
-          .dashboard-layout .sidebar-expanded-layout .main-content.with-right-sidebar {
-            max-width: calc(100vw - 250px - 280px) !important;
-          }
-          
-          .dashboard-layout .user-dashboard-content.sidebar-expanded-layout .main-content:not(.with-right-sidebar),
-          .dashboard-layout .sidebar-expanded-layout .main-content:not(.with-right-sidebar) {
+          .dashboard-layout .user-dashboard-content.sidebar-expanded-layout .main-content,
+          .dashboard-layout .sidebar-expanded-layout .main-content {
             max-width: calc(100vw - 250px) !important;
           }
         }
@@ -323,8 +303,7 @@ export default function UserDashboardApp() {
             margin-left: 0 !important;
           }
 
-          .dashboard-layout .user-dashboard-content.sidebar-expanded-layout .main-content,
-          .dashboard-layout .sidebar-expanded-layout .main-content {
+          .dashboard-layout .main-content {
             max-width: 100% !important;
           }
         }
@@ -378,11 +357,7 @@ export default function UserDashboardApp() {
           margin-left: 250px !important;
         }
         
-        .dashboard-layout .sidebar-expanded-layout > .content-wrapper > .main-content.with-right-sidebar {
-          max-width: calc(100vw - 250px - 333px) !important;
-        }
-        
-        .dashboard-layout .sidebar-expanded-layout > .content-wrapper > .main-content:not(.with-right-sidebar) {
+        .dashboard-layout .sidebar-expanded-layout > .content-wrapper > .main-content {
           max-width: calc(100vw - 250px) !important;
         }
 
@@ -391,11 +366,7 @@ export default function UserDashboardApp() {
           margin-left: 72px !important;
         }
         
-        .dashboard-layout .user-dashboard-content:not(.sidebar-expanded-layout) > .content-wrapper > .main-content.with-right-sidebar {
-          max-width: calc(100vw - 72px - 333px) !important;
-        }
-        
-        .dashboard-layout .user-dashboard-content:not(.sidebar-expanded-layout) > .content-wrapper > .main-content:not(.with-right-sidebar) {
+        .dashboard-layout .user-dashboard-content:not(.sidebar-expanded-layout) > .content-wrapper > .main-content {
           max-width: calc(100vw - 72px) !important;
         }
       `}</style>
@@ -412,7 +383,7 @@ export default function UserDashboardApp() {
             onSectionChange={handleSectionChange}
           />
           <div className="content-wrapper">
-            <div className={`main-content ${shouldShowRightSidebar ? 'with-right-sidebar' : ''}`}>
+            <div className="main-content">
               <DynamicComponentRenderer
                 componentType={activeSection}
                 config={config}
@@ -422,7 +393,6 @@ export default function UserDashboardApp() {
                 }}
               />
             </div>
-            {shouldShowRightSidebar && <RightSidebar config={config} />}
           </div>
         </div>
       </div>
