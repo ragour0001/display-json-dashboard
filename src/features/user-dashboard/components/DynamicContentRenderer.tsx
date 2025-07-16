@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { DisplayConfig } from '../hooks/useDisplayConfig';
+import ConfirmationModal from './ConfirmationModal';
 import './DynamicContentRenderer.css';
 
 interface ContentBlock {
@@ -23,6 +24,7 @@ export default function DynamicContentRenderer({
 }: DynamicContentRendererProps) {
   const [goalsCompleted, setGoalsCompleted] = useState(false);
   const [unsureSectionProps, setUnsureSectionProps] = useState<any>(null);
+  const [showConfirmationModal, setShowConfirmationModal] = useState(false);
 
   // Find the unsure-section props from content
   React.useEffect(() => {
@@ -62,10 +64,37 @@ export default function DynamicContentRenderer({
       return;
     }
     
+    // Handle goals-assessment action - show confirmation modal
+    if (section === 'goals-assessment') {
+      console.log('🎯 DynamicContentRenderer: Showing confirmation modal for goals-assessment');
+      setShowConfirmationModal(true);
+      return;
+    }
+    
     // Pass through to parent for other section changes
     if (onSectionChange) {
       onSectionChange(section, data);
     }
+  };
+
+  // Handle modal actions
+  const handleResetGoals = () => {
+    console.log('🔄 DynamicContentRenderer: Reset Goals clicked');
+    setShowConfirmationModal(false);
+    // Stay on the same page (home) - no navigation needed
+  };
+
+  const handleContinue = () => {
+    console.log('▶️ DynamicContentRenderer: Continue clicked - navigating to goals-assessment');
+    setShowConfirmationModal(false);
+    // Navigate to Goals & Assessment tab
+    if (onSectionChange) {
+      onSectionChange('goals-assessment');
+    }
+  };
+
+  const handleCloseModal = () => {
+    setShowConfirmationModal(false);
   };
 
   if (!content || !Array.isArray(content)) {
@@ -110,6 +139,14 @@ export default function DynamicContentRenderer({
           />
         );
       })}
+
+      {/* Confirmation Modal */}
+      <ConfirmationModal
+        isOpen={showConfirmationModal}
+        onClose={handleCloseModal}
+        onResetGoals={handleResetGoals}
+        onContinue={handleContinue}
+      />
     </>
   );
 }
@@ -633,7 +670,7 @@ function GoalsSelection({ goalSet, selectedGoals = [], availableGoals, maxGoals,
   );
 }
 
-function UnsureSection({ title, description, steps, currentStep, options, ctaText, illustrationUrl, className, style, onSectionChange }: any) {
+function UnsureSection({ title, description, steps, currentStep, options, ctaText, actions, illustrationUrl, className, style, onSectionChange }: any) {
   const [selectedOptions, setSelectedOptions] = React.useState(
     options?.reduce((acc: any, option: any) => {
       acc[option.id] = option.selected;
@@ -672,6 +709,12 @@ function UnsureSection({ title, description, steps, currentStep, options, ctaTex
     }
   };
 
+  const handleActionClick = (action: string) => {
+    if (onSectionChange) {
+      onSectionChange(action);
+    }
+  };
+
   // Handle both old steps format and new options format for backward compatibility
   const isNewFormat = options && options.length > 0;
 
@@ -697,18 +740,42 @@ function UnsureSection({ title, description, steps, currentStep, options, ctaTex
               </label>
             ))}
           </div>
-          <button className="discover-btn-new" onClick={handleDiscoverClick}>
-            <span>{ctaText}</span>
-            <div className="arrow-icon-new">
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                <circle cx="10" cy="10" r="10" fill="white" />
-                <path
-                  d="M10.6669 10.0001L7.55566 6.8889L8.44457 6L12.4446 10.0001L8.44457 14.0001L7.55566 13.1112L10.6669 10.0001Z"
-                  fill="black"
-                />
-              </svg>
+          {/* Render new actions format if available, otherwise fallback to old ctaText */}
+          {actions && actions.length > 0 ? (
+            <div className="actions-container">
+              {actions.map((actionItem: any, index: number) => (
+                <button 
+                  key={index}
+                  className={`discover-btn-new ${actionItem.className || ''}`} 
+                  onClick={() => handleActionClick(actionItem.action)}
+                >
+                  <span>{actionItem.text}</span>
+                  <div className="arrow-icon-new">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                      <circle cx="10" cy="10" r="10" fill="white" />
+                      <path
+                        d="M10.6669 10.0001L7.55566 6.8889L8.44457 6L12.4446 10.0001L8.44457 14.0001L7.55566 13.1112L10.6669 10.0001Z"
+                        fill="black"
+                      />
+                    </svg>
+                  </div>
+                </button>
+              ))}
             </div>
-          </button>
+          ) : (
+            <button className="discover-btn-new" onClick={handleDiscoverClick}>
+              <span>{ctaText}</span>
+              <div className="arrow-icon-new">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <circle cx="10" cy="10" r="10" fill="white" />
+                  <path
+                    d="M10.6669 10.0001L7.55566 6.8889L8.44457 6L12.4446 10.0001L8.44457 14.0001L7.55566 13.1112L10.6669 10.0001Z"
+                    fill="black"
+                  />
+                </svg>
+              </div>
+            </button>
+          )}
         </div>
         {illustrationUrl && (
           <div className="unsure-illustration">

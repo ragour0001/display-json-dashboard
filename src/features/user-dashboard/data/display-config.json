@@ -238,7 +238,18 @@
                     "completed": false
                   }
                 ],
-                "ctaText": "Discover Yourself",
+                "actions": [
+                  {
+                    "text": "Discover Yourself",
+                    "action": "goals-assessment",
+                    "className": "btn-primary"
+                  },
+                  {
+                    "text": "Learn More",
+                    "action": "learn-more",
+                    "className": "btn-secondary"
+                  }
+                ],
                 "illustrationUrl": "/assets/images/Positive_thinking-rafiki.png"
               },
               "className": "unsure-section-new"

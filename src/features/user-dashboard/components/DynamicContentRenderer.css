@@ -664,6 +664,32 @@
   transform: translateY(-2px);
 }
 
+.actions-container {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.discover-btn-new.btn-secondary {
+  background: #f7f9fa;
+  color: #2c2663;
+  border: 2px solid #2c2663;
+}
+
+.discover-btn-new.btn-secondary:hover {
+  background: #e8ecef;
+  transform: translateY(-2px);
+}
+
+.discover-btn-new.btn-secondary .arrow-icon-new {
+  background: #2c2663;
+}
+
+.discover-btn-new.btn-secondary .arrow-icon-new path {
+  fill: #fff;
+}
+
 .arrow-icon-new {
   display: flex;
   width: 20px;
