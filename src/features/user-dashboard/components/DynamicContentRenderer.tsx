@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { DisplayConfig } from '../hooks/useDisplayConfig';
-import ConfirmationModal from './ConfirmationModal';
 import './DynamicContentRenderer.css';
 
 interface ContentBlock {
@@ -24,7 +23,6 @@ export default function DynamicContentRenderer({
 }: DynamicContentRendererProps) {
   const [goalsCompleted, setGoalsCompleted] = useState(false);
   const [unsureSectionProps, setUnsureSectionProps] = useState<any>(null);
-  const [showConfirmationModal, setShowConfirmationModal] = useState(false);
 
   // Find the unsure-section props from content
   React.useEffect(() => {
@@ -64,37 +62,10 @@ export default function DynamicContentRenderer({
       return;
     }
     
-    // Handle goals-assessment action - show confirmation modal
-    if (section === 'goals-assessment') {
-      console.log('🎯 DynamicContentRenderer: Showing confirmation modal for goals-assessment');
-      setShowConfirmationModal(true);
-      return;
-    }
-    
     // Pass through to parent for other section changes
     if (onSectionChange) {
       onSectionChange(section, data);
     }
-  };
-
-  // Handle modal actions
-  const handleResetGoals = () => {
-    console.log('🔄 DynamicContentRenderer: Reset Goals clicked');
-    setShowConfirmationModal(false);
-    // Stay on the same page (home) - no navigation needed
-  };
-
-  const handleContinue = () => {
-    console.log('▶️ DynamicContentRenderer: Continue clicked - navigating to goals-assessment');
-    setShowConfirmationModal(false);
-    // Navigate to Goals & Assessment tab
-    if (onSectionChange) {
-      onSectionChange('goals-assessment');
-    }
-  };
-
-  const handleCloseModal = () => {
-    setShowConfirmationModal(false);
   };
 
   if (!content || !Array.isArray(content)) {
@@ -118,7 +89,7 @@ export default function DynamicContentRenderer({
                 <UnsureSection
                   {...unsureSectionProps}
                   className="unsure-section-new"
-                  onSectionChange={onSectionChange}
+                  onSectionChange={handleSectionChange}
                 />
               )}
             </React.Fragment>
@@ -140,13 +111,6 @@ export default function DynamicContentRenderer({
         );
       })}
 
-      {/* Confirmation Modal */}
-      <ConfirmationModal
-        isOpen={showConfirmationModal}
-        onClose={handleCloseModal}
-        onResetGoals={handleResetGoals}
-        onContinue={handleContinue}
-      />
     </>
   );
 }
