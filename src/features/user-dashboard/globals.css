@@ -15,4 +15,26 @@
 .dashboard-layout a {
   color: inherit !important;
   text-decoration: none !important;
-} 
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="date"],
+textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 0px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="number"]:focus,
+input[type="date"]:focus,
+textarea:focus {
+  border-color: #4CAF50;
+  outline: none;
+}

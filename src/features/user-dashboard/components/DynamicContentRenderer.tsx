@@ -16,10 +16,10 @@ interface DynamicContentRendererProps {
   onSectionChange?: (section: string, data?: any) => void;
 }
 
-export default function DynamicContentRenderer({ 
-  content, 
-  config, 
-  onSectionChange 
+export default function DynamicContentRenderer({
+  content,
+  config,
+  onSectionChange
 }: DynamicContentRendererProps) {
   const [goalsCompleted, setGoalsCompleted] = useState(false);
   const [unsureSectionProps, setUnsureSectionProps] = useState<any>(null);
@@ -36,10 +36,10 @@ export default function DynamicContentRenderer({
 
   const handleSectionChange = (section: string, data?: any) => {
     console.log('🎯 DynamicContentRenderer: handleSectionChange called with:', section, data);
-    
+
     if (section === 'goals-completed') {
       setGoalsCompleted(true);
-      
+
       // Update unsure section options when goals are completed
       if (unsureSectionProps) {
         const updatedOptions = unsureSectionProps.options?.map((option: any) => ({
@@ -47,13 +47,13 @@ export default function DynamicContentRenderer({
           disabled: option.id === 'wellness-goals', // Disable wellness goals option
           selected: option.id === 'assessment' // Select assessment as next step
         }));
-        
+
         setUnsureSectionProps({
           ...unsureSectionProps,
           options: updatedOptions
         });
       }
-      
+
       // Pass 'goals-completed' with data to parent to save selected goals
       if (onSectionChange) {
         console.log('🎯 DynamicContentRenderer: Passing goals-completed to parent with data:', data);
@@ -61,7 +61,7 @@ export default function DynamicContentRenderer({
       }
       return;
     }
-    
+
     // Pass through to parent for other section changes
     if (onSectionChange) {
       onSectionChange(section, data);
@@ -95,12 +95,12 @@ export default function DynamicContentRenderer({
             </React.Fragment>
           );
         }
-        
+
         // Hide the original unsure-section if goals are completed (to avoid duplication)
         if (block.type === 'unsure-section' && goalsCompleted) {
           return null;
         }
-        
+
         return (
           <ContentBlockRenderer
             key={index}
@@ -125,91 +125,80 @@ function ContentBlockRenderer({ block, config, onSectionChange }: {
   switch (type) {
     case 'breadcrumb-welcome':
       return <BreadcrumbWelcome {...props} className={className} style={style} />;
-    
+
     case 'section-title':
       return <SectionTitle {...props} className={className} style={style} />;
-    
+
     case 'goals-selection':
       return <GoalsSelection {...props} className={className} style={style} onSectionChange={onSectionChange} />;
-    
+
     case 'goals-flow-manager':
       return <GoalsFlowManager {...props} className={className} style={style} onSectionChange={onSectionChange} />;
-    
+
     case 'unsure-section':
       return <UnsureSection {...props} className={className} style={style} onSectionChange={onSectionChange} />;
-    
-    case 'progress-getting-started':
-      return <ProgressGettingStarted {...props} className={className} style={style} onSectionChange={onSectionChange} />;
-    
+
+    case 'let-us-help-you':
+      return <LetUsHelpYou {...props} className={className} style={style} onSectionChange={onSectionChange} />;
+
+    case 'something-for-you':
+      return <SomethingForYou {...props} className={className} style={style} onSectionChange={onSectionChange} />;
+
+    // case 'progress-getting-started':
+    //   return <ProgressGettingStarted {...props} className={className} style={style} onSectionChange={onSectionChange} />;
+
     case 'therapist-section':
       return <TherapistSection {...props} className={className} style={style} />;
     
+    case 'first-chat-section':
+      return <FirstChatSection {...props} className={className} style={style} onSectionChange={onSectionChange} />;
+    
     case 'main-tabs-section':
       return <MainTabsSection {...props} className={className} style={style} onSectionChange={onSectionChange} />;
-    
+
     case 'care-plan-section':
       return <CarePlanSection {...props} className={className} style={style} />;
-    
+
     case 'micro-learnings-section':
       return <MicroLearningsSection {...props} className={className} style={style} />;
-    
+
     case 'new-platform-section':
       return <NewPlatformSection {...props} className={className} style={style} />;
-    
+
     case 'welcome-header':
       return <WelcomeHeader {...props} className={className} style={style} />;
-    
+
     case 'onboarding-banner':
       return <OnboardingBanner {...props} className={className} style={style} onSectionChange={onSectionChange} />;
-    
-    case 'assessment-reminder':
-      return <AssessmentReminder {...props} className={className} style={style} onSectionChange={onSectionChange} />;
-    
-    case 'goals-section':
-      return <GoalsSection {...props} className={className} style={style} config={config} />;
-    
+
     case 'progress-overview':
       return <ProgressOverview {...props} className={className} style={style} />;
-    
+
     case 'daily-streak':
       return <DailyStreak {...props} className={className} style={style} />;
-    
+
     case 'care-plan-preview':
       return <CarePlanPreview {...props} className={className} style={style} />;
-    
+
     case 'learning-progress':
       return <LearningProgress {...props} className={className} style={style} />;
-    
+
     case 'therapist-matching':
       return <TherapistMatching {...props} className={className} style={style} />;
-    
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
     case 'goals-status-section':
       return <GoalsStatusSection {...props} className={className} style={style} onSectionChange={onSectionChange} />;
-    
+
     case 'goal-card-component':
       return <GoalCardComponent {...props} className={className} style={style} />;
-    
+
     case 'container':
       return (
         <div className={className} style={style}>
           {children && <DynamicContentRenderer content={children} config={config} onSectionChange={onSectionChange} />}
         </div>
       );
-    
+
     case 'card':
       return (
         <div className={className || 'card'} style={style}>
@@ -217,7 +206,7 @@ function ContentBlockRenderer({ block, config, onSectionChange }: {
           {children && <DynamicContentRenderer content={children} config={config} onSectionChange={onSectionChange} />}
         </div>
       );
-    
+
     default:
       console.warn(`Content block type "${type}" not recognized`);
       return null;
@@ -236,7 +225,7 @@ function WelcomeHeader({ userName, welcomeMessage, title, className, style }: an
 
 function OnboardingBanner({ visible, progress, title, message, actions, className, style, onSectionChange }: any) {
   if (!visible) return null;
-  
+
   return (
     <div className={className || "onboarding-banner"} style={style}>
       <h3>{title}</h3>
@@ -247,7 +236,7 @@ function OnboardingBanner({ visible, progress, title, message, actions, classNam
       {actions && (
         <div className="banner-actions">
           {actions.map((action: any, index: number) => (
-            <button 
+            <button
               key={index}
               className={action.className}
               onClick={() => action.action && onSectionChange?.(action.action)}
@@ -263,7 +252,7 @@ function OnboardingBanner({ visible, progress, title, message, actions, classNam
 
 function AssessmentReminder({ visible, isOverdue, nextDueAt, title, message, actions, className, style, onSectionChange }: any) {
   if (!visible) return null;
-  
+
   return (
     <div className={`${className || 'assessment-reminder'} ${isOverdue ? 'overdue' : ''}`.trim()} style={style}>
       <h3>{title}</h3>
@@ -272,7 +261,7 @@ function AssessmentReminder({ visible, isOverdue, nextDueAt, title, message, act
       {actions && (
         <div className="reminder-actions">
           {actions.map((action: any, index: number) => (
-            <button 
+            <button
               key={index}
               className={action.className}
               onClick={() => action.action && onSectionChange?.(action.action)}
@@ -288,9 +277,9 @@ function AssessmentReminder({ visible, isOverdue, nextDueAt, title, message, act
 
 function GoalsSection({ visible, goals, maxGoals, title, className, style, config }: any) {
   if (!visible) return null;
-  
+
   const userGoals = config?.wellnessGoals || goals || [];
-  
+
   return (
     <div className={className || "goals-section"} style={style}>
       <h3>{title}</h3>
@@ -314,7 +303,7 @@ function GoalsSection({ visible, goals, maxGoals, title, className, style, confi
 
 function ProgressOverview({ visible, title, className, style }: any) {
   if (!visible) return null;
-  
+
   return (
     <div className={className || "progress-overview"} style={style}>
       <h3>{title}</h3>
@@ -377,8 +366,8 @@ function LearningProgress({ completedLessons, totalLessons, currentCourse, class
       <div className="progress-stats">
         <p>{completedLessons} of {totalLessons} lessons completed</p>
         <div className="progress-bar">
-          <div 
-            className="progress" 
+          <div
+            className="progress"
             style={{ width: `${(completedLessons / totalLessons) * 100}%` }}
           ></div>
         </div>
@@ -419,7 +408,7 @@ function BreadcrumbWelcome({ breadcrumbItems, welcomeTitle, className, style }: 
             </span>
             {index < breadcrumbItems.length - 1 && (
               <svg className="breadcrumb-arrow" width="5" height="9" viewBox="0 0 5 9" fill="none">
-                <path d="M1 1L4 4.5L1 8" stroke="#999" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M1 1L4 4.5L1 8" stroke="#999" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             )}
           </React.Fragment>
@@ -440,13 +429,13 @@ function SectionTitle({ title, level, className, style }: any) {
 }
 
 // Goals Flow Manager - Coordinates between selection and status sections
-function GoalsFlowManager({ 
-  sectionTitle, 
-  goalsSelection, 
-  goalsStatus, 
-  className, 
-  style, 
-  onSectionChange 
+function GoalsFlowManager({
+  sectionTitle,
+  goalsSelection,
+  goalsStatus,
+  className,
+  style,
+  onSectionChange
 }: any) {
   const [isGoalsSet, setIsGoalsSet] = useState(false);
   const [selectedGoals, setSelectedGoals] = useState<any[]>([]);
@@ -454,7 +443,7 @@ function GoalsFlowManager({
   const handleGoalsCompleted = (goals: any[]) => {
     setSelectedGoals(goals);
     setIsGoalsSet(true);
-    
+
     // Notify parent about goals completion to show unsure section
     if (onSectionChange) {
       onSectionChange('goals-completed', goals);
@@ -472,11 +461,11 @@ function GoalsFlowManager({
       {!isGoalsSet && sectionTitle && (
         <SectionTitle {...sectionTitle} />
       )}
-      
+
       {/* Goals Selection - Hide when goals are set */}
       {!isGoalsSet && goalsSelection && (
-        <GoalsSelection 
-          {...goalsSelection} 
+        <GoalsSelection
+          {...goalsSelection}
           onSectionChange={(action: string, goals: any[]) => {
             if (action === 'goals-completed') {
               handleGoalsCompleted(goals);
@@ -484,10 +473,10 @@ function GoalsFlowManager({
           }}
         />
       )}
-      
+
       {/* Goals Status Section - Show when goals are set */}
       {isGoalsSet && goalsStatus && (
-        <GoalsStatusSection 
+        <GoalsStatusSection
           {...goalsStatus}
           selectedGoals={selectedGoals}
           onResetGoals={handleResetGoals}
@@ -510,19 +499,19 @@ function GoalsSelection({ goalSet, selectedGoals = [], availableGoals, maxGoals,
   const handleGoalSelect = (goal: any) => {
     setLocalSelectedGoals((prev: any[]) => {
       const isAlreadySelected = prev.some(g => g.title === goal.title);
-      
+
       if (isAlreadySelected) {
         // Remove goal if already selected
         return prev.filter(g => g.title !== goal.title);
       } else {
-        // Add goal with proper structure for status section
+        // Add goal with proper structure for status section using borderColor from config
         const newGoal = {
           ...goal,
-          color: getGoalColor(prev.length >= maxGoals ? maxGoals - 1 : prev.length), // Assign color based on position
-          lockColor: getGoalLockColor(prev.length >= maxGoals ? maxGoals - 1 : prev.length),
+          color: goal.borderColor ? `${goal.borderColor}20` : getGoalColor(prev.length >= maxGoals ? maxGoals - 1 : prev.length), // Use borderColor with 20% opacity for background
+          lockColor: goal.borderColor || getGoalLockColor(prev.length >= maxGoals ? maxGoals - 1 : prev.length), // Use borderColor for lock color
           isLocked: true
         };
-        
+
         if (prev.length < maxGoals) {
           // Add goal if under limit
           return [...prev, newGoal];
@@ -584,8 +573,8 @@ function GoalsSelection({ goalSet, selectedGoals = [], availableGoals, maxGoals,
                 <span>Search</span>
               </div>
             )}
-            <button 
-              className={`done-btn ${!isDoneEnabled ? 'disabled' : ''}`} 
+            <button
+              className={`done-btn ${!isDoneEnabled ? 'disabled' : ''}`}
               onClick={handleDone}
               disabled={!isDoneEnabled}
             >
@@ -595,28 +584,32 @@ function GoalsSelection({ goalSet, selectedGoals = [], availableGoals, maxGoals,
         </div>
         <div className="goals-grid">
           {visibleGoals?.map((goal: any, idx: number) => (
-            <div 
-              className={`goal-chip ${isGoalSelected(goal) ? 'selected' : ''}`} 
+            <div
+              className={`goal-chip ${isGoalSelected(goal) ? 'selected' : ''}`}
               key={goal.title + idx}
               onClick={() => handleGoalSelect(goal)}
+              style={isGoalSelected(goal) ? {
+                borderColor: goal.borderColor || '#006A63',
+                backgroundColor: goal.borderColor ? `${goal.borderColor}20` : '#E0F7F5'
+              } : {}}
             >
               <div className="goal-emoji">{goal.emoji}</div>
               <span>{goal.title}</span>
               {isGoalSelected(goal) && (
                 <div className="selected-indicator">
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                    <path d="M13.5 4.5L6 12L2.5 8.5" stroke="#006A63" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M13.5 4.5L6 12L2.5 8.5" stroke={goal.borderColor || "#006A63"} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </div>
               )}
             </div>
           ))}
-          
+
           {/* Show More/See less button only if there are more than 9 goals */}
           {availableGoals && availableGoals.length > 9 && (
-            <div 
-              className="goal-chip more" 
-              onClick={() => setLocalShowAllGoals((prev: boolean) => !prev)} 
+            <div
+              className="goal-chip more"
+              onClick={() => setLocalShowAllGoals((prev: boolean) => !prev)}
               style={{ cursor: 'pointer' }}
             >
               <svg width="17" height="5" viewBox="0 0 17 5" fill="none">
@@ -698,9 +691,9 @@ function UnsureSection({ title, description, steps, currentStep, options, ctaTex
                   onChange={() => handleOptionChange(option.id)}
                   disabled={option.disabled}
                   className="option-radio"
-                />                
+                />
                 <span className="option-text">{option.text}</span>
-                
+
               </label>
             ))}
           </div>
@@ -708,21 +701,23 @@ function UnsureSection({ title, description, steps, currentStep, options, ctaTex
           {actions && actions.length > 0 ? (
             <div className="actions-container">
               {actions.map((actionItem: any, index: number) => (
-                <button 
+                <button
                   key={index}
-                  className={`discover-btn-new ${actionItem.className || ''}`} 
+                  className={`discover-btn-new ${actionItem.className || ''}`}
                   onClick={() => handleActionClick(actionItem.action)}
                 >
                   <span>{actionItem.text}</span>
-                  <div className="arrow-icon-new">
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                      <circle cx="10" cy="10" r="10" fill="white" />
-                      <path
-                        d="M10.6669 10.0001L7.55566 6.8889L8.44457 6L12.4446 10.0001L8.44457 14.0001L7.55566 13.1112L10.6669 10.0001Z"
-                        fill="black"
-                      />
-                    </svg>
-                  </div>
+                  {actionItem.className !== 'btn-secondary' && (
+                    <div className="arrow-icon-new">
+                      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <circle cx="10" cy="10" r="10" fill="white" />
+                        <path
+                          d="M10.6669 10.0001L7.55566 6.8889L8.44457 6L12.4446 10.0001L8.44457 14.0001L7.55566 13.1112L10.6669 10.0001Z"
+                          fill="black"
+                        />
+                      </svg>
+                    </div>
+                  )}
                 </button>
               ))}
             </div>
@@ -797,6 +792,159 @@ function UnsureSection({ title, description, steps, currentStep, options, ctaTex
   );
 }
 
+function LetUsHelpYou({ title, helpCards, className, style, onSectionChange }: any) {
+  const defaultHelpCards = [
+    {
+      icon: (
+        <img
+          src="/src/assets/images/icons/target.svg"
+          alt="Target icon"
+          width="56"
+          height="56"
+        />
+      ),
+      title: 'Set Your Wellness Goals',
+      description: 'Choose up to 3 goals to personalize your experience.',
+      buttonText: 'Set goals',
+      action: 'set-goals'
+    },
+    {
+      icon: (
+        <img
+          src="src/assets/images/icons/diagnosis.svg"
+          alt="Assessment icon"
+          width="56"
+          height="56"
+        />
+      ),
+      title: 'Take a Short Assessment',
+      description: 'Help us understand your mental health needs better.',
+      buttonText: 'Take assessment',
+      action: 'take-assessment'
+    },
+    {
+      icon: (
+        <img
+          src="src/assets/images/icons/psychology_alt.svg"
+          alt="Assessment icon"
+          width="56"
+          height="56"
+        />
+      ),
+      title: 'Tell Us Your Therapist Preferences',
+      description: 'We\'ll match you with the right therapist based on your background and comfort.',
+      buttonText: 'Set Preferences',
+      action: 'set-preferences'
+    }
+  ];
+
+  const cardsToRender = helpCards || defaultHelpCards;
+
+  const handleButtonClick = (action: string, title: string) => {
+    console.log(`Clicked: ${title} with action: ${action}`);
+    if (onSectionChange) {
+      onSectionChange(action);
+    }
+  };
+
+  return (
+    <section className={className || "let-us-help-you"} style={style}>
+      <div className="help-container">
+        <h2 className="help-title">{title || "Let us Help You"}</h2>
+
+        <div className="help-cards">
+          {cardsToRender.map((card: any, index: number) => (
+            <div key={index} className="help-card">
+              <div className="help-card-icon">
+                {card.icon}
+              </div>
+
+              <div className="help-card-content">
+                <h3 className="help-card-title">{card.title}</h3>
+                <p className="help-card-description">{card.description}</p>
+              </div>
+
+              <button
+                className="help-card-button"
+                onClick={() => handleButtonClick(card.action, card.title)}
+              >
+                {card.buttonText}
+              </button>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function SomethingForYou({ title, subtitle, items, backgroundColor, className, style, onSectionChange }: any) {
+  const defaultItems = [
+    {
+      icon: (
+        <div className="free-star-badge">
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+            <path d="M32 4L38.8564 14.1436L51.3137 11.3137L48.4838 23.7711L60.6274 26.6009L50.4838 36.7446L53.3137 49.2019L40.8564 46.372L34 56.5157L27.1436 46.372L14.6863 49.2019L17.5162 36.7446L5.37258 33.9147L15.5162 23.7711L12.6863 11.3137L25.1436 14.1436L32 4Z" fill="#006B5F" />
+          </svg>
+          <span className="free-badge-text">Free</span>
+        </div>
+      ),
+      title: 'Congratulations! We\'ve got you a free Discovery Session',
+      description: 'Connect with a therapist today at no Cost..',
+      buttonText: 'Book Now',
+      action: 'book-discovery-session'
+    }
+  ];
+
+  const itemsToRender = items || defaultItems;
+
+  const handleButtonClick = (action: string, title: string) => {
+    console.log(`SomethingForYou clicked: ${title} with action: ${action}`);
+    if (onSectionChange) {
+      onSectionChange(action);
+    }
+  };
+
+  return (
+    <section
+      className={className || "something-for-you"}
+      style={{
+        backgroundColor: backgroundColor || '#f8f9fa',
+        ...style
+      }}
+    >
+      <div className="something-container">
+        <div className="something-header">
+          <h2 className="something-title">{title || "Here's Something For You"}</h2>
+          {subtitle && <p className="something-subtitle">{subtitle}</p>}
+        </div>
+
+        <div className="something-items">
+          {itemsToRender.map((item: any, index: number) => (
+            <div key={index} className="something-item">
+              <div className="something-item-icon">
+                {item.icon}
+              </div>
+
+              <div className="something-item-content">
+                <h3 className="something-item-title">{item.title}</h3>
+                <p className="something-item-description">{item.description}</p>
+              </div>
+
+              <button
+                className="something-item-button"
+                onClick={() => handleButtonClick(item.action, item.title)}
+              >
+                {item.buttonText}
+              </button>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function ProgressGettingStarted({ title, progressPercentage, showProgressIndicators, ctaText, faqLink, onCtaClick, showIcon, completionText, iconColor, className, style, onSectionChange }: any) {
   return (
     <div className={className || "progress-getting-started-section"} style={style}>
@@ -818,7 +966,7 @@ function ProgressGettingStarted({ title, progressPercentage, showProgressIndicat
           )}
           <div className="wellness-title">{title}</div>
         </div>
-        
+
         {showProgressIndicators && (
           <div className="progress-section">
             <div className="progress-indicator">
@@ -839,7 +987,7 @@ function ProgressGettingStarted({ title, progressPercentage, showProgressIndicat
             <div className="completion-status">{completionText || `${progressPercentage}% Completed`}</div>
           </div>
         )}
-        
+
         <div className="banner-actions">
           <button className="faq-link">{faqLink}</button>
           <button className="assessment-btn" onClick={() => onCtaClick && onSectionChange?.(onCtaClick)}>
@@ -851,9 +999,12 @@ function ProgressGettingStarted({ title, progressPercentage, showProgressIndicat
   );
 }
 
-function TherapistSection({ showSearchFilters, showTherapistGrid, activeFilters, searchPlaceholder, therapists, className, style }: any) {
+function TherapistSection({ title, showSearchFilters, showTherapistGrid, activeFilters, searchPlaceholder, therapists, className, style }: any) {
   const [currentFilters, setCurrentFilters] = React.useState(activeFilters || []);
   const [searchQuery, setSearchQuery] = React.useState("");
+  const [visibleCount, setVisibleCount] = React.useState(3); // Show only 3 initially
+  const [activeTab, setActiveTab] = React.useState("therapist"); // Default to therapist tab
+  const [showBanner, setShowBanner] = React.useState(true); // Banner visibility
 
   const removeFilter = (filterToRemove: string) => {
     setCurrentFilters((prev: string[]) => prev.filter((filter: string) => filter !== filterToRemove));
@@ -922,7 +1073,7 @@ function TherapistSection({ showSearchFilters, showTherapistGrid, activeFilters,
             </div>
           </div>
         </div>
-        
+
         {modalOpen && (
           <div className="booking-modal-overlay" onClick={() => setModalOpen(false)}>
             <div className="booking-modal-content" onClick={(e) => e.stopPropagation()}>
@@ -941,6 +1092,11 @@ function TherapistSection({ showSearchFilters, showTherapistGrid, activeFilters,
 
   return (
     <div className={className || "therapist-coach-section"} style={style}>
+      {title && (
+        <div className="therapist-section-header">
+          <h2 className="therapist-section-title">{title}</h2>
+        </div>
+      )}
       {showSearchFilters && (
         <div className="search-filters-section-therapist">
           <div className="search-container-therapist">
@@ -983,8 +1139,8 @@ function TherapistSection({ showSearchFilters, showTherapistGrid, activeFilters,
               {currentFilters.map((filter: string, index: number) => (
                 <div key={index} className="filter-chip">
                   <span className="filter-chip-label">{filter}</span>
-                  <button 
-                    className="filter-chip-remove" 
+                  <button
+                    className="filter-chip-remove"
                     onClick={() => removeFilter(filter)}
                   >
                     <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
@@ -1000,29 +1156,181 @@ function TherapistSection({ showSearchFilters, showTherapistGrid, activeFilters,
           )}
         </div>
       )}
+
+      {/* Therapist/Coaches Tabs */}
+      <div className="therapist-tabs-section">
+        <div className="therapist-tabs">
+                    <button 
+            className={`therapist-tab ${activeTab === 'therapist' ? 'active' : ''}`}
+            onClick={() => {
+              setActiveTab('therapist');
+              setShowBanner(true); // Show banner when switching to therapist tab
+            }}
+          >
+            Therapist
+            {activeTab === 'therapist' && (
+              <div className="info-icon">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <circle cx="8" cy="8" r="7" stroke="#006B5F" strokeWidth="1" />
+                  <path d="M8 7v4" stroke="#006B5F" strokeWidth="1" strokeLinecap="round" />
+                  <circle cx="8" cy="5" r="1" fill="#006B5F" />
+                </svg>
+              </div>
+            )}
+          </button>
+          <button 
+            className={`therapist-tab ${activeTab === 'coaches' ? 'active' : ''}`}
+            onClick={() => {
+              setActiveTab('coaches');
+              setShowBanner(true); // Show banner when switching to coaches tab
+            }}
+          >
+            Coaches
+            {activeTab === 'coaches' && (
+              <div className="info-icon">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <circle cx="8" cy="8" r="7" stroke="#006B5F" strokeWidth="1" />
+                  <path d="M8 7v4" stroke="#006B5F" strokeWidth="1" strokeLinecap="round" />
+                  <circle cx="8" cy="5" r="1" fill="#006B5F" />
+                </svg>
+              </div>
+            )}
+          </button>
+        </div>
+
+        {/* Banner for active tab */}
+        {showBanner && (
+          <div className="therapist-banner">
+            {activeTab === 'therapist' ? (
+              <div className="banner-content">
+                {/* <div className="banner-icon">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <circle cx="10" cy="10" r="8" stroke="#006B5F" strokeWidth="1.5" />
+                    <path d="M10 6v8M6 10h8" stroke="#006B5F" strokeWidth="1.5" strokeLinecap="round" />
+                  </svg>
+                </div> */}
+                <div className="info-icon">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <circle cx="8" cy="8" r="7" stroke="#006B5F" strokeWidth="1" />
+                    <path d="M8 7v4" stroke="#006B5F" strokeWidth="1" strokeLinecap="round" />
+                    <circle cx="8" cy="5" r="1" fill="#006B5F" />
+                  </svg>
+                </div>
+                <div className="banner-text">
+                  <p>Therapists are licensed mental health professionals who help with conditions like anxiety, depression, trauma, and more. They provide evidence-based therapy and clinical support tailored to your emotional well-being.</p>
+                </div>
+                <button className="banner-close" onClick={() => setShowBanner(false)}>
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M12 4L4 12M4 4l8 8" stroke="#006B5F" strokeWidth="1.5" strokeLinecap="round" />
+                  </svg>
+                </button>
+              </div>
+            ) : (
+              <div className="banner-content">
+                {/* <div className="banner-icon">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <circle cx="10" cy="10" r="8" stroke="#006B5F" strokeWidth="1.5" />
+                    <path d="M10 6v8M6 10h8" stroke="#006B5F" strokeWidth="1.5" strokeLinecap="round" />
+                  </svg>
+                </div> */}
+                <div className="info-icon">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <circle cx="8" cy="8" r="7" stroke="#006B5F" strokeWidth="1" />
+                    <path d="M8 7v4" stroke="#006B5F" strokeWidth="1" strokeLinecap="round" />
+                    <circle cx="8" cy="5" r="1" fill="#006B5F" />
+                  </svg>
+                </div>
+                <div className="banner-text">
+                  <p>Coaches are trained professionals who focus on personal development, goal achievement, and life skills. They provide guidance, motivation, and accountability to help you reach your full potential.</p>
+                </div>
+                <button className="banner-close" onClick={() => setShowBanner(false)}>
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M12 4L4 12M4 4l8 8" stroke="#006B5F" strokeWidth="1.5" strokeLinecap="round" />
+                  </svg>
+                </button>
+              </div>
+            )}
+          </div>
+        )}
+      </div>
+
       {showTherapistGrid && (
         <div className="therapist-grid">
           <div className="therapist-row">
-            {therapists?.slice(0, 3).map((therapist: any, index: number) => (
+            {therapists?.slice(0, Math.min(3, visibleCount)).map((therapist: any, index: number) => (
               <TherapistCard key={index} {...therapist} />
             ))}
           </div>
-          <div className="therapist-row">
-            {therapists?.slice(3, 6).map((therapist: any, index: number) => (
-              <TherapistCard key={index + 3} {...therapist} />
-            ))}
-          </div>
+          {visibleCount > 3 && (
+            <div className="therapist-row">
+              {therapists?.slice(3, visibleCount).map((therapist: any, index: number) => (
+                <TherapistCard key={index + 3} {...therapist} />
+              ))}
+            </div>
+          )}
+          {therapists && visibleCount < therapists.length && (
+            <div className="load-more-container">
+              <button
+                className="load-more-btn"
+                onClick={() => setVisibleCount(therapists.length)}
+              >
+                Load More
+              </button>
+            </div>
+          )}
         </div>
       )}
     </div>
   );
 }
 
+function FirstChatSection({ title, subtitle, buttonText, buttonAction, backgroundColor, className, style, onSectionChange }: any) {
+  const handleButtonClick = () => {
+    if (onSectionChange && buttonAction) {
+      onSectionChange(buttonAction);
+    }
+  };
+
+  return (
+    <section 
+      className={className || "first-chat-section"} 
+      style={{ backgroundColor: backgroundColor || '#F5F3FF', ...style }}
+    >
+      <div className="first-chat-container">
+        {/* Chat Icon */}
+        <div className="chat-icon-container">
+        <img
+          src="/src/assets/images/icons/Illustrations.svg"
+          alt="Illustrations icon"
+          width="120"
+          height="120"
+        />         
+        </div>
+
+        {/* Content */}
+        <div className="first-chat-content">
+          <h2 className="first-chat-title">
+            Start Your first <span className="highlight-text">Chat</span> with your Therapist
+          </h2>
+          <p className="first-chat-subtitle">{subtitle || "To begin, Click the chat button"}</p>
+        </div>
+
+        {/* Button */}
+        <div className="first-chat-button-container">
+          <button className="first-chat-button" onClick={handleButtonClick}>
+            {buttonText || "Go to chat"}
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function MainTabsSection({ activeTab, tabs, className, style, onSectionChange }: any) {
   const [currentTab, setCurrentTab] = React.useState(activeTab || tabs?.[0]?.id);
-  
+
   const currentTabContent = tabs?.find((tab: any) => tab.id === currentTab);
-  
+
   return (
     <div className={className || "goals-section"} style={style}>
       <div className="section-header">
@@ -1071,16 +1379,16 @@ function renderTabContent(content: any, onSectionChange?: (section: string, data
           </div>
         </div>
       );
-    
+
     case 'progress-insights':
       return <ProgressInsightsCard content={content} />;
-    
+
     case 'goals-management':
       return <GoalsManagementCard content={content} />;
-    
+
     case 'therapist-matches':
       return <TherapistMatchesCard content={content} />;
-    
+
     default:
       return <div>Unknown tab content type</div>;
   }
@@ -1088,7 +1396,7 @@ function renderTabContent(content: any, onSectionChange?: (section: string, data
 
 function CarePlanSection({ showCarePlan, title, description, unlockCard, referralCard, className, style }: any) {
   if (!showCarePlan) return null;
-  
+
   return (
     <div className={className || "care-plan"} style={style}>
       <div className="care-plan-section">
@@ -1231,7 +1539,7 @@ function MicroLearningsSection({ title, description, learningCards, className, s
 
 function NewPlatformSection({ showNewPlatform, label, title, downloadTitle, downloadButtons, phoneImages, className, style }: any) {
   if (!showNewPlatform) return null;
-  
+
   return (
     // <div className={className || "main-new-platform-section"} style={style}>
     <div className="main-new-platform-section">
@@ -1248,10 +1556,10 @@ function NewPlatformSection({ showNewPlatform, label, title, downloadTitle, down
             <h3 className="download-title">{downloadTitle || "Download Apps:"}</h3>
             <div className="download-buttons">
               {downloadButtons?.map((button: any, index: number) => (
-                <img 
+                <img
                   key={index}
-                  src={button.imageUrl} 
-                  alt={button.alt || "download-button"} 
+                  src={button.imageUrl}
+                  alt={button.alt || "download-button"}
                 />
               ))}
             </div>
@@ -1260,10 +1568,10 @@ function NewPlatformSection({ showNewPlatform, label, title, downloadTitle, down
 
         <div className="phone-1-phone-2">
           {phoneImages?.map((image: any, index: number) => (
-            <img 
+            <img
               key={index}
-              src={image.imageUrl} 
-              alt={image.alt || "phone"} 
+              src={image.imageUrl}
+              alt={image.alt || "phone"}
             />
           ))}
         </div>
@@ -1275,7 +1583,7 @@ function NewPlatformSection({ showNewPlatform, label, title, downloadTitle, down
 function ProgressInsightsCard({ content }: any) {
   const [progressActiveTab, setProgressActiveTab] = React.useState("this-month");
   const [chartType, setChartType] = React.useState("bar");
-  
+
   return (
     <div className="main-progress-content-tab">
       <div className="progress-insights-card">
@@ -1400,7 +1708,7 @@ function ProgressInsightsCard({ content }: any) {
           ))}
         </div>
       </div>
-      
+
       {content.showAssessmentWarning && (
         <div className="assessment-warning-banner">
           <div className="warning-content">
@@ -1446,11 +1754,11 @@ function ProgressInsightsCard({ content }: any) {
 
 function GoalsManagementCard({ content }: any) {
   const [showAllGoals, setShowAllGoals] = React.useState(false);
-  
-  const visibleGoals = showAllGoals 
-    ? content.availableGoals 
+
+  const visibleGoals = showAllGoals
+    ? content.availableGoals
     : content.availableGoals?.slice(0, 8);
-  
+
   return (
     <div className="goals-content">
       <div className="goals-header">
@@ -1492,9 +1800,9 @@ function GoalsManagementCard({ content }: any) {
             <span>{goal.title}</span>
           </div>
         ))}
-        <div 
-          className="goal-chip more" 
-          onClick={() => setShowAllGoals((prev: boolean) => !prev)} 
+        <div
+          className="goal-chip more"
+          onClick={() => setShowAllGoals((prev: boolean) => !prev)}
           style={{ cursor: 'pointer' }}
         >
           <svg width="17" height="5" viewBox="0 0 17 5" fill="none">
@@ -1548,7 +1856,7 @@ function GoalsManagementCard({ content }: any) {
 
 function TherapistMatchesCard({ content }: any) {
   const { title, description, therapists = [], showMatchDetails = true, showBookingOptions = true, matchingBadge = "AI Matched", confidenceScore = 0.7 } = content;
-  
+
   const getBookingUrl = (name: string) => {
     const cleanName = name.replace(/^(Dr\.|Mr\.|Ms\.|Mrs\.)\s+/i, "");
     const parts = cleanName.trim().split(" ");
@@ -1641,7 +1949,7 @@ function TherapistMatchesCard({ content }: any) {
             </div>
           </div>
         </div>
-        
+
         {modalOpen && (
           <div className="booking-modal-overlay" onClick={() => setModalOpen(false)}>
             <div className="booking-modal-content" onClick={(e) => e.stopPropagation()}>
@@ -1669,7 +1977,7 @@ function TherapistMatchesCard({ content }: any) {
           </div>
         )}
       </div>
-      
+
       <div className="therapist-matches-grid">
         {therapists.map((therapist: any, index: number) => (
           <TherapistMatchCard key={index} therapist={therapist} />
@@ -1696,8 +2004,8 @@ function GoalsStatusSection({ goalSet, selectedGoals, title, resetEnabled, reset
             <h3 className="goals-status-title">{title}</h3>
           </div>
           <div className="reset-goals-container">
-            <button 
-              className="reset-goals-btn" 
+            <button
+              className="reset-goals-btn"
               onClick={() => onResetGoals?.()}
               disabled={!resetEnabled}
             >
@@ -1728,8 +2036,8 @@ function GoalsStatusSection({ goalSet, selectedGoals, title, resetEnabled, reset
 
 function GoalCardComponent({ emoji, title, color, lockColor, isLocked, className, style }: any) {
   return (
-    <div 
-      className={className || "goal-card"} 
+    <div
+      className={className || "goal-card"}
       style={{
         ...style,
         backgroundColor: color,

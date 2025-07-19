@@ -2,9 +2,10 @@
 
 import { useState, useEffect } from "react";
 import AssessmentSection from "./AssessmentSection";
-import MyGoalsSection from "./MyGoalsSection";
 import PreferencesSection from "./PreferencesSection";
+import DynamicContentRenderer from "./DynamicContentRenderer";
 import { AssessmentService, AssessmentQuestion } from "../services/assessmentService";
+import { useDisplayConfig } from "../hooks/useDisplayConfig";
 
 interface GoalsAssessmentProps {
   onSectionChange?: (section: string, data?: any) => void;
@@ -17,8 +18,15 @@ export default function GoalsAssessment({ onSectionChange, selectedGoals }: Goal
   const [questions, setQuestions] = useState<AssessmentQuestion[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [userSelectedGoals, setUserSelectedGoals] = useState<string[]>([]);
+  const { config } = useDisplayConfig();
   
   console.log('🎯 GoalsAssessment: selectedGoals received:', selectedGoals);
+
+  // Get the goals-assessment content from the display config
+  const goalsAssessmentContent = config?.layout?.components?.find(
+    (component: any) => component.type === "goals-assessment"
+  )?.content || [];
 
   useEffect(() => {
     const fetchQuestions = async () => {
@@ -414,6 +422,11 @@ export default function GoalsAssessment({ onSectionChange, selectedGoals }: Goal
         }
       `}</style>
       <div className="goals-assessment-page">
+        <DynamicContentRenderer 
+          content={goalsAssessmentContent}
+          config={config || undefined}
+          onSectionChange={onSectionChange}
+        />
         <AssessmentSection
           question={questions[currentIndex].question}
           options={questions[currentIndex].options}
@@ -428,7 +441,6 @@ export default function GoalsAssessment({ onSectionChange, selectedGoals }: Goal
           isLast={currentIndex === questions.length - 1}
           onSectionChange={onSectionChange}
         />
-        <MyGoalsSection selectedGoals={selectedGoals} />
         <PreferencesSection />
       </div>
     </>

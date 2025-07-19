@@ -338,6 +338,7 @@
   align-items: flex-start;
   gap: 16px;
   margin-bottom: 20px;
+  padding: 10px 24px;
 }
 
 .breadcrumb {
@@ -530,7 +531,8 @@
 /* New Unsure Section - Yellow Design */
 .unsure-section-new {
   display: flex;
-  padding: 20px;
+  padding: 10px 24px;
+  margin-left: 1vw;
   justify-content: space-between;
   align-items: center;
   border-radius: 16px;
@@ -1335,6 +1337,8 @@
   align-items: flex-start;
   gap: 16px;
   align-self: stretch;
+  width: 100%;
+  padding: 5px 15px;
 }
 
 .search-container-therapist {
@@ -1541,6 +1545,277 @@
   margin-bottom: 5vh;
 }
 
+/* Therapist Section Header Styles */
+.therapist-section-header {
+  margin-bottom: 24px;
+}
+
+.therapist-section-title {
+  color: #232323;
+  font-family: Inter;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 135%;
+  margin: 0;
+}
+
+/* Therapist Tabs Section Styles */
+.therapist-tabs-section {
+  margin: 5px 24px;
+}
+
+.therapist-tabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: 16px;
+  border-bottom: 1px solid #E5E7EB;
+}
+
+.therapist-tab {
+  padding: 12px 16px;
+  background: transparent;
+  border: none;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #6B7280;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.therapist-tab.active {
+  color: #1F2937;
+  border-bottom-color: #006B5F;
+  font-weight: 600;
+}
+
+.therapist-tab:hover {
+  color: #1F2937;
+}
+
+.info-icon {
+  display: flex;
+  align-items: center;
+  padding-top: 4px;
+}
+
+/* Banner Styles */
+.therapist-banner {
+  background: #f0f0f0;
+  border: 1px solid #f0f0f0;
+  border-radius: 8px;
+  margin-bottom: 24px;
+}
+
+.banner-content {
+  display: flex;
+  align-items: flex-start;
+  padding: 16px;
+  gap: 12px;  
+}
+
+.banner-icon {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.banner-text {
+  flex: 1;
+}
+
+.banner-text p {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #006b5f;
+  line-height: 1.5;
+}
+
+.banner-close {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  flex-shrink: 0;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.banner-close:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+/* First Chat Section Styles */
+.first-chat-section {
+  padding: 2px 24px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  margin: 2vh 1.5vw;
+}
+
+.first-chat-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  min-height: 160px;
+}
+
+.line {
+  width: 20px;
+  height: 2px;
+  background: #8B5CF6;
+  margin: 4px 0;
+  border-radius: 1px;
+}
+
+.line-1 {
+  transform: rotate(25deg);
+}
+
+.line-2 {
+  transform: rotate(-25deg);
+}
+
+/* Chat Icon Container */
+.chat-icon-container {
+  position: relative;
+  margin-right: 2px;
+  flex-shrink: 0;
+}
+
+/* Content */
+.first-chat-content {
+  flex: 1;
+  margin: 0 32px;
+}
+
+.first-chat-title {
+  font-family: "Inter", sans-serif;
+  font-size: 25px;
+  font-weight: 700;
+  color: #1F2937;
+  margin: 0 0 12px 0;
+  line-height: 1.2;
+}
+
+.highlight-text {
+  color: #006B5F;
+}
+
+.first-chat-subtitle {
+  font-family: "Inter", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: #6B7280;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Button */
+.first-chat-button-container {
+  flex-shrink: 0;
+}
+
+.first-chat-button {
+  background: #006B5F;
+  color: white;
+  border: none;
+  border-radius: 24px;
+  padding: 14px 32px;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 107, 95, 0.15);
+}
+
+.first-chat-button:hover {
+  background: #005A4F;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 107, 95, 0.25);
+}
+
+.first-chat-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(0, 107, 95, 0.15);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .first-chat-section {
+    padding: 32px 16px;
+  }
+
+  .first-chat-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 24px;
+    min-height: auto;
+  }
+
+  .chat-icon-container {
+    margin-right: 0;
+    order: 1;
+  }
+
+  .first-chat-content {
+    margin: 0;
+    order: 2;
+  }
+
+  .first-chat-title {
+    font-size: 28px;
+  }
+
+  .first-chat-subtitle {
+    font-size: 16px;
+  }
+
+  .first-chat-button-container {
+    order: 3;
+  }
+
+  .first-chat-button {
+    padding: 12px 28px;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .first-chat-section {
+    padding: 24px 12px;
+  }
+
+  .first-chat-container {
+    gap: 20px;
+  }
+
+  .first-chat-title {
+    font-size: 24px;
+  }
+
+  .first-chat-subtitle {
+    font-size: 14px;
+  }
+
+  .first-chat-button {
+    padding: 10px 24px;
+    font-size: 14px;
+  }
+
+}
+
 .filter-chip-label {
   color: #3f4947;
   text-align: center;
@@ -1573,13 +1848,122 @@
   align-self: stretch;
 }
 
-.therapist-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  align-self: stretch;
-  gap: 24px;
-}
+  .therapist-row {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    align-self: stretch;
+    gap: 112px;
+  }
+
+  /* Load More Button Styles */
+  .load-more-container {
+    display: flex;
+    justify-content: center;
+    padding: 2px 0;
+  }
+
+  .load-more-btn {
+    background: transparent;
+    border: 2px solid #006B5F;
+    color: #006B5F;
+    padding: 12px 32px;
+    border-radius: 8px;
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-width: 140px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .load-more-btn:hover {
+    background: #006B5F;
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 107, 95, 0.2);
+  }
+
+  .load-more-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 107, 95, 0.2);
+  }
+
+  /* Responsive styles for Load More button */
+  @media (max-width: 768px) {
+    .load-more-container {
+      margin-top: 20px;
+      padding: 16px 0;
+    }
+
+    .load-more-btn {
+      width: 100%;
+      max-width: 200px;
+      font-size: 15px;
+      height: 44px;
+    }
+
+    .therapist-section-title {
+      font-size: 24px;
+      text-align: center;
+    }
+
+    .therapist-section-header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .therapist-tabs-section {
+      margin: 20px 0;
+    }
+
+    .therapist-tabs {
+      justify-content: center;
+    }
+
+    .therapist-tab {
+      font-size: 14px;
+      padding: 10px 14px;
+    }
+
+    .banner-content {
+      padding: 14px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .load-more-btn {
+      font-size: 14px;
+      height: 42px;
+      padding: 10px 24px;
+    }
+
+    .therapist-section-title {
+      font-size: 22px;
+    }
+
+    .therapist-tabs {
+      gap: 0;
+    }
+
+    .therapist-tab {
+      font-size: 13px;
+      padding: 10px 12px;
+    }
+
+    .banner-content {
+      padding: 12px;
+      gap: 10px;
+    }
+
+    .banner-text p {
+      font-size: 13px;
+    }
+  }
 
 .therapist-card {
   display: flex;
@@ -2980,5 +3364,504 @@
   .match-score {
     flex-direction: row;
     justify-content: space-between;
+  }
+}
+
+/* Let Us Help You Section Styles */
+.let-us-help-you {
+  padding: 10px 24px;
+  background-color: #FEFDF9;
+  min-height: auto;
+}
+
+.help-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.help-title {
+  color: #232323;
+  font-family: Inter;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 135%; /* 37.8px */
+}
+
+.help-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.help-card {
+  display: flex;
+  align-items: center;
+  background: #FEF7E3;
+  border-radius: 20px;
+  padding: 18px 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  gap: 32px;
+  min-height: 100px;
+  border: 1px solid rgba(252, 211, 77, 0.2);
+}
+
+.help-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.help-card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  /* background: rgba(0, 107, 95, 0.08); */
+  border-radius: 16px;
+  flex-shrink: 0;
+  /* border: 1px solid rgba(0, 107, 95, 0.1); */
+}
+
+.help-card-icon img {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+}
+
+.help-card-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.help-card-title {
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: #1F2937;
+  margin: 0;
+  line-height: 1.3;
+  letter-spacing: -0.025em;
+}
+
+.help-card-description {
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  color: #6B7280;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.help-card-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 28px;
+  background: #006B5F;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 24px;
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  min-width: 150px;
+  height: 48px;
+  box-shadow: 0 2px 4px rgba(0, 107, 95, 0.2);
+}
+
+.help-card-button:hover {
+  background: #005A4F;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 107, 95, 0.3);
+}
+
+.help-card-button:active {
+  transform: translateY(0);
+  background: #004A41;
+  box-shadow: 0 2px 4px rgba(0, 107, 95, 0.2);
+}
+
+/* Responsive Design for Let Us Help You */
+@media (max-width: 768px) {
+  .let-us-help-you {
+    padding: 40px 20px;
+  }
+  
+  .help-title {
+    font-size: 28px;
+    margin-bottom: 28px;
+    text-align: center;
+  }
+  
+  .help-cards {
+    gap: 16px;
+  }
+  
+  .help-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 24px 20px;
+    gap: 20px;
+    min-height: auto;
+  }
+  
+  .help-card-icon {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .help-card-icon svg,
+  .help-card-icon img {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .help-card-title {
+    font-size: 18px;
+  }
+  
+  .help-card-description {
+    font-size: 14px;
+    text-align: center;
+  }
+  
+  .help-card-button {
+    width: 100%;
+    min-width: auto;
+    padding: 12px 24px;
+    border-radius: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .let-us-help-you {
+    padding: 32px 16px;
+  }
+  
+  .help-card {
+    padding: 20px 16px;
+    gap: 16px;
+  }
+  
+  .help-title {
+    font-size: 24px;
+    margin-bottom: 24px;
+  }
+  
+  .help-card-icon {
+    width: 56px;
+    height: 56px;
+  }
+  
+     .help-card-icon svg,
+   .help-card-icon img {
+     width: 36px;
+     height: 36px;
+   }
+}
+
+.therapist-section-header {
+  text-align: left;
+  margin-bottom: 0px;
+  padding: 0 24px;
+}
+
+.therapist-section-title {
+  color: #232323;
+  font-family: Inter;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 135%;
+  margin: 0;
+}
+
+/* Something For You Section Styles */
+.something-for-you {
+  padding: 10px 24px;
+  background-color: transparent;
+  min-height: auto;
+  margin: 12px 0;
+}
+
+.something-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.something-header {
+  text-align: left;
+  margin-bottom: 24px;
+}
+
+.something-title {
+  color: #232323;
+  font-family: Inter;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 135%;
+  margin: 0;
+}
+
+.something-subtitle {
+  color: #6B7280;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+  margin: 8px 0 0 0;
+  line-height: 1.5;
+}
+
+.something-items {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.something-item {
+  display: flex;
+  align-items: center;
+  background: #f0f8ff;
+  border-radius: 20px;
+  padding: 18px 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  gap: 32px;
+  min-height: 100px;
+  border: 1px solid rgba(220, 224, 232, 0.8);
+}
+
+.something-item:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.something-item-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  flex-shrink: 0;
+  position: relative;
+}
+
+/* Free Star Badge Styles */
+.free-star-badge {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+}
+
+.free-star-badge svg {
+  width: 64px;
+  height: 64px;
+  filter: drop-shadow(0 2px 4px rgba(34, 197, 94, 0.3));
+}
+
+.free-badge-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  letter-spacing: 0.5px;
+}
+
+.something-item-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.something-item-title {
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: #1F2937;
+  margin: 0;
+  line-height: 1.3;
+  letter-spacing: -0.025em;
+}
+
+.something-item-description {
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  color: #6B7280;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.something-item-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 28px;
+  background: #006B5F;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 24px;
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  min-width: 150px;
+  height: 48px;
+  box-shadow: 0 2px 4px rgba(0, 107, 95, 0.2);
+}
+
+.something-item-button:hover {
+  background: #005A4F;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 107, 95, 0.3);
+}
+
+.something-item-button:active {
+  transform: translateY(0);
+  background: #004A41;
+  box-shadow: 0 2px 4px rgba(0, 107, 95, 0.2);
+}
+
+/* Responsive Design for Something For You */
+@media (max-width: 768px) {
+  .something-for-you {
+    padding: 32px 20px;
+    margin: 20px 0;
+  }
+  
+  .something-title {
+    font-size: 24px;
+    text-align: center;
+  }
+  
+  .something-header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .something-items {
+    gap: 16px;
+  }
+  
+  .something-item {
+    flex-direction: column;
+    text-align: center;
+    padding: 24px 20px;
+    gap: 20px;
+    min-height: auto;
+  }
+  
+  .something-item-icon {
+    width: 64px;
+    height: 64px;
+  }
+  
+  .free-star-badge {
+    width: 56px;
+    height: 56px;
+  }
+  
+  .free-star-badge svg {
+    width: 56px;
+    height: 56px;
+  }
+  
+  .free-badge-text {
+    font-size: 12px;
+  }
+  
+  .something-item-title {
+    font-size: 18px;
+    text-align: center;
+  }
+  
+  .something-item-description {
+    font-size: 14px;
+    text-align: center;
+  }
+  
+  .something-item-button {
+    width: 100%;
+    min-width: auto;
+    padding: 12px 24px;
+    border-radius: 20px;
+    height: 44px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .something-for-you {
+    padding: 24px 16px;
+    margin: 16px 0;
+  }
+  
+  .something-item {
+    padding: 20px 16px;
+    gap: 16px;
+  }
+  
+  .something-title {
+    font-size: 22px;
+  }
+  
+  .something-header {
+    margin-bottom: 16px;
+  }
+  
+  .something-item-icon {
+    width: 56px;
+    height: 56px;
+  }
+  
+  .free-star-badge {
+    width: 48px;
+    height: 48px;
+  }
+  
+  .free-star-badge svg {
+    width: 48px;
+    height: 48px;
+  }
+  
+  .free-badge-text {
+    font-size: 10px;
+  }
+  
+  .something-item-title {
+    font-size: 16px;
+  }
+  
+  .something-item-description {
+    font-size: 13px;
+  }
+  
+  .something-item-button {
+    height: 42px;
+    font-size: 14px;
+    padding: 10px 20px;
   }
 }
