@@ -113,19 +113,6 @@
         "description": "View and manage your personalized care plan"
       },
       {
-        "label": "Progress",
-        "icon": "bar-chart",
-        "iconSvg": "lucide:bar-chart-3",
-        "path": "/progress",
-        "visible": true,
-        "roles": [
-          "user"
-        ],
-        "active": false,
-        "componentType": "progress",
-        "description": "Track your wellness journey and insights"
-      },
-      {
         "label": "Therapist/Coach",
         "icon": "user-heart",
         "iconSvg": "lucide:user-heart",
@@ -139,6 +126,32 @@
         "badge": "Match",
         "badgeColor": "green",
         "description": "Connect with therapists and coaches"
+      },
+      {
+        "label": "Chat",
+        "icon": "message-circle",
+        "iconSvg": "lucide:message-circle",
+        "path": "/chat",
+        "visible": true,
+        "roles": [
+          "user"
+        ],
+        "active": false,
+        "componentType": "chat",
+        "description": "Chat with your therapist"
+      },
+      {
+        "label": "Progress",
+        "icon": "bar-chart",
+        "iconSvg": "lucide:bar-chart-3",
+        "path": "/progress",
+        "visible": true,
+        "roles": [
+          "user"
+        ],
+        "active": false,
+        "componentType": "progress",
+        "description": "Track your wellness journey and insights"
       },
       {
         "label": "Micro Learnings",
@@ -436,9 +449,9 @@
               "tabs": [
                 {
                   "id": "recommendation",
-                  "label": "Recommendation",
+                  "label": "Recommended Therapist",
                   "content": {
-                    "type": "assessment-prompt",
+                    "type": "recommended-therapist",
                     "gifUrl": "/assets/images/recommendation_gif.gif",
                     "title": "Kindly Take the Assessment",
                     "description": "By taking the assessment we can customize and set up things for you",
@@ -446,252 +459,77 @@
                   }
                 },
                 {
-                  "id": "my-progress",
-                  "label": "My Progress",
+                  "id": "recommended-coach",
+                  "label": "Recommended Coach",
                   "content": {
-                    "type": "progress-insights",
-                    "title": "My Progress & Insights",
-                    "progressTabs": [
-                      {
-                        "id": "this-month",
-                        "label": "This Month"
-                      },
-                      {
-                        "id": "last-month",
-                        "label": "Last Month"
-                      },
-                      {
-                        "id": "last-3-months",
-                        "label": "Last 3 Months"
-                      },
-                      {
-                        "id": "last-6-months",
-                        "label": "Last 6 Months"
-                      }
-                    ],
-                    "chartControls": {
-                      "chartTypes": [
-                        "bar",
-                        "line"
-                      ],
-                      "defaultChartType": "bar",
-                      "planFilter": "No plan"
-                    },
-                    "chartData": {
-                      "yAxisLabels": [
-                        "100%",
-                        "80%",
-                        "60%",
-                        "40%",
-                        "20%",
-                        "0%"
-                      ],
-                      "months": [
-                        "Jan",
-                        "Feb",
-                        "Mar",
-                        "Apr",
-                        "May",
-                        "Jun"
-                      ],
-                      "legendItems": [
-                        {
-                          "label": "Expected",
-                          "color": "expected"
-                        },
-                        {
-                          "label": "Reality",
-                          "color": "reality"
-                        }
-                      ]
-                    },
-                    "showAssessmentWarning": true
+                    "type": "recommended-coach",
+                    "gifUrl": "/assets/images/recommendation_gif.gif",
+                    "title": "Kindly Take the Assessment",
+                    "description": "By taking the assessment we can customize and set up things for you",
+                    "ctaText": "Take Assessment"
                   }
                 },
                 {
-                  "id": "my-goals",
-                  "label": "My Goals",
+                  "id": "self-care-tools",
+                  "label": "Self Care Tools",
                   "content": {
-                    "type": "goals-management",
-                    "maxGoals": 3,
-                    "searchEnabled": false,
-                    "availableGoals": [
-                      {
-                        "emoji": "😌",
-                        "title": "Manage stress"
-                      },
-                      {
-                        "emoji": "😊",
-                        "title": "Boost mood & feel positive"
-                      },
-                      {
-                        "emoji": "💤",
-                        "title": "Sleep better"
-                      },
-                      {
-                        "emoji": "🔋",
-                        "title": "Prevent burnout"
-                      },
-                      {
-                        "emoji": "😟",
-                        "title": "Manage anxiety"
-                      },
-                      {
-                        "emoji": "🎯",
-                        "title": "Improve focus & productivity"
-                      },
-                      {
-                        "emoji": "🤝",
-                        "title": "Strengthen personal or work relationships"
-                      },
-                      {
-                        "emoji": "💪",
-                        "title": "Build self-confidence"
-                      },
-                      {
-                        "emoji": "⚖️",
-                        "title": "Improve work-life balance"
-                      },
-                      {
-                        "emoji": "🧘",
-                        "title": "Feel calm"
-                      },
-                      {
-                        "emoji": "🧘",
-                        "title": "Reduce unhealthy habits"
-                      },
-                      {
-                        "emoji": "🧘",
-                        "title": "Develop healthy routines"
-                      },
-                      {
-                        "emoji": "🧘",
-                        "title": "Build resilience"
-                      },
-                      {
-                        "emoji": "🧘",
-                        "title": "Navigate life transitions"
-                      }
-                    ],
-                    "showAssessmentWarning": true,
-                    "warningText": "Kindly Take the Assessment to track your process"
-                  }
-                },
-                {
-                  "id": "therapist-matches",
-                  "label": "Therapist Matches",
-                  "content": {
-                    "type": "therapist-matches",
-                    "title": "Your Personalized Therapist Matches",
-                    "description": "Based on your preferences and assessment, here are your best matches",
-                    "therapists": [
-                      {
-                        "name": "Dr. Emily Watson",
-                        "title": "Trauma Specialist",
-                        "rating": 4.9,
-                        "specializations": [
-                          "Trauma",
-                          "PTSD",
-                          "EMDR",
-                          "+1 More"
-                        ],
-                        "sessionTime": "10:00 AM",
-                        "sessionDay": "Today",
-                        "imageUrl": "/assets/images/dr-image.png",
-                        "availability": "Available Today",
-                        "yearsExperience": 18,
-                        "therapyApproaches": [
-                          "EMDR",
-                          "Somatic Therapy",
-                          "Trauma-Focused CBT"
-                        ],
-                        "matchScore": 1.0,
-                        "compatibility": 1.0,
-                        "matchEffectiveness": 0.94,
-                        "clinicalFit": "excellent"
-                      },
-                      {
-                        "name": "Dr. Rachel Green",
-                        "title": "Life Coach & Counselor",
-                        "rating": 4.7,
-                        "specializations": [
-                          "Life Coaching",
-                          "Personal Development",
-                          "Counseling",
-                          "+0 More"
-                        ],
-                        "sessionTime": "2:00 PM",
-                        "sessionDay": "Today",
-                        "imageUrl": "/assets/images/dr-image.png",
-                        "availability": "Available Today",
-                        "yearsExperience": 9,
-                        "therapyApproaches": [
-                          "Humanistic Therapy",
-                          "Solution-Focused Therapy",
-                          "Coaching"
-                        ],
-                        "matchScore": 1.0,
-                        "compatibility": 1.0,
-                        "matchEffectiveness": 0.83,
-                        "clinicalFit": "excellent"
-                      },
-                      {
-                        "name": "Dr. Sarah Chen",
-                        "title": "Anxiety Specialist",
-                        "rating": 4.8,
-                        "specializations": [
-                          "Anxiety",
-                          "CBT",
-                          "Panic Disorders",
-                          "+0 More"
-                        ],
-                        "sessionTime": "4:30 PM",
-                        "sessionDay": "Today",
-                        "imageUrl": "/assets/images/dr-image.png",
-                        "availability": "Available Today",
-                        "yearsExperience": 12,
-                        "therapyApproaches": [
-                          "CBT",
-                          "Exposure Therapy",
-                          "Mindfulness-Based Therapy"
-                        ],
-                        "matchScore": 0.98,
-                        "compatibility": 0.98,
-                        "matchEffectiveness": 0.92,
-                        "clinicalFit": "excellent"
-                      }
-                    ],
-                    "showMatchDetails": true,
-                    "showBookingOptions": true,
-                    "matchingBadge": "AI Matched",
-                    "confidenceScore": 0.7
+                    "type": "self-care-tools",
+                    "gifUrl": "/assets/images/recommendation_gif.gif",
+                    "title": "Kindly Take the Assessment",
+                    "description": "By taking the assessment we can customize and set up things for you",
+                    "ctaText": "Take Assessment"
                   }
                 }
+              
               ]
             },
             "className": "goals-section"
           },
           {
-            "type": "care-plan-section",
+            "type": "progress-journey-section",
             "props": {
-              "showCarePlan": true,
-              "title": "Your Care Plan is Almost Ready",
-              "description": "To get personalized self-care actions, complete your first assessment.\nYour plan will be generated based on your mental health goals and responses.",
+              "title": "Your Progress Journey Starts Here",
+              "subtitle": "You'll be able to track your emotional growth and wellness after taking your second assessment.",
+              "buttonText": "Go to Progress",
+              "buttonAction": "go-to-progress",
+              "backgroundColor": "#F5F3FF"
+            },
+            "className": "progress-journey-section"
+          },
+          {
+            "type": "home-your-care-plan-section",
+            "props": {
+              "title": "Your Care Plan",
+              "subtitle": "To get personalized self-care actions, complete your first assessment. Your plan will be generated based on your mental health goals and responses.",
               "unlockCard": {
                 "title": "Unlock your Personalized care plan",
                 "subtitle": "Take a quick assessment to unlock your Care Plan",
-                "buttonText": "Complete Assessment"
+                "buttonText": "Take Assessment",
+                "buttonAction": "take-assessment"
               },
-              "referralCard": {
-                "label": "Referral",
-                "title": "Help a friend, We'll help take care of them!",
-                "imageUrl": "/assets/images/hand_shake_image.png",
-                "codeLabel": "Copy code",
-                "codeText": "C232DF",
-                "buttonText": "Share Invite"
+              "benefitsCard": {
+                "title": "What You'll Get with MyCarePlan",
+                "benefits": [
+                  {
+                    "text": "Matched with the Right Therapist & Coach",
+                    "icon": "checkmark"
+                  },
+                  {
+                    "text": "Personalized Microlearning Recommendations",
+                    "icon": "checkmark"
+                  },
+                  {
+                    "text": "Personalized Self care tools",
+                    "icon": "checkmark"
+                  },
+                  {
+                    "text": "Track Your Progress Over Time",
+                    "icon": "checkmark"
+                  }
+                ]
               }
             },
-            "className": "care-plan"
+            "className": "home-your-care-plan-section"
           },
           {
             "type": "micro-learnings-section",
@@ -707,34 +545,69 @@
                     "Overview"
                   ],
                   "readTime": "2-min read",
-                  "ctaText": "Take a Look",
-                  "secondaryCta": "Take assessment to Personalize"
+                  "ctaText": "Take a Look"                  
                 },
                 {
-                  "title": "Why Short Reads Help",
-                  "description": "Learn how bite-sized articles reduce overwhelm and help you make steady progress.",
+                  "title": "What is Microlearning?",
+                  "description": "Microlearning offers quick, focused reads to help you manage mental health one step at a time.",
                   "tags": [
                     "Beginner",
                     "Motivation"
                   ],
                   "readTime": "2-min read",
-                  "ctaText": "Take a Look",
-                  "secondaryCta": "Take assessment to Personalize"
+                  "ctaText": "Take a Look"
                 },
                 {
-                  "title": "Personalize Your Learning",
-                  "description": "Get tailored recommendations by taking a short assessment.",
+                  "title": "What is Microlearning?",
+                  "description": "Microlearning offers quick, focused reads to help you manage mental health one step at a time.",
                   "tags": [
                     "Interactive",
                     "Overview"
                   ],
                   "readTime": "2-min read",
-                  "ctaText": "Take a Look",
-                  "secondaryCta": "Take assessment to Personalize"
+                  "ctaText": "Take a Look"
                 }
               ]
             },
             "className": "micro-learnings-main-section"
+          },
+          {
+            "type": "refer-earn-happiness-coins-section",
+            "props": {
+              "title": "Refer and earn happiness Coins",
+              "referralCard": {
+                "label": "Referral",
+                "title": "Help a friend, We'll help take care of them!",
+                "iconType": "handshake",
+                "copyCode": {
+                  "label": "Copy code",
+                  "code": "C232DF"
+                },
+                "shareButton": {
+                  "text": "Share Invite",
+                  "action": "share-invite"
+                }
+              },
+              "howItWorks": {
+                "title": "How it works?",
+                "description": "Copy the referral code and share it with your Friends",
+                "socialIcons": [
+                  {
+                    "name": "WhatsApp",
+                    "iconType": "whatsapp",
+                    "color": "#25D366",
+                    "action": "share-whatsapp"
+                  },
+                  {
+                    "name": "Facebook",
+                    "iconType": "facebook",
+                    "color": "#1877F2",
+                    "action": "share-facebook"
+                  }
+                ]
+              }
+            },
+            "className": "refer-earn-happiness-coins-section"
           },
           {
             "type": "new-platform-section",
@@ -765,6 +638,41 @@
               ]
             },
             "className": "platform-section"
+          }
+        ]
+      },
+      {
+        "type": "chat",
+        "content": [
+          {
+            "type": "breadcrumb-welcome",
+            "props": {
+              "breadcrumbItems": [
+                {
+                  "label": "Global Dashboard",
+                  "active": false
+                },
+                {
+                  "label": "Chat",
+                  "active": true
+                }
+              ],
+              "welcomeTitle": "Chat",
+              "showUserName": false
+            },
+            "className": "chat-breadcrumb-section"
+          },
+          {
+            "type": "chat-empty-state",
+            "props": {
+              "illustration": "/assets/images/chat-illustration.svg",
+              "title": "Looks like you haven't booked a session yet",
+              "subtitle": "Book a session to start chatting with your fav Therapist",
+              "buttonText": "Book a Session",
+              "buttonAction": "book-session",
+              "footerText": "Refill your Mental Health with us ❤️"
+            },
+            "className": "chat-empty-state-section"
           }
         ]
       },

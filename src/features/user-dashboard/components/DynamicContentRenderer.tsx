@@ -149,12 +149,18 @@ function ContentBlockRenderer({ block, config, onSectionChange }: {
 
     case 'therapist-section':
       return <TherapistSection {...props} className={className} style={style} />;
-    
+
     case 'first-chat-section':
       return <FirstChatSection {...props} className={className} style={style} onSectionChange={onSectionChange} />;
-    
+
     case 'main-tabs-section':
       return <MainTabsSection {...props} className={className} style={style} onSectionChange={onSectionChange} />;
+
+    case 'progress-journey-section':
+      return <ProgressJourneySection {...props} className={className} style={style} onSectionChange={onSectionChange} />;
+
+    case 'home-your-care-plan-section':
+      return <HomeYourCarePlanSection {...props} className={className} style={style} onSectionChange={onSectionChange} />;
 
     case 'care-plan-section':
       return <CarePlanSection {...props} className={className} style={style} />;
@@ -162,8 +168,14 @@ function ContentBlockRenderer({ block, config, onSectionChange }: {
     case 'micro-learnings-section':
       return <MicroLearningsSection {...props} className={className} style={style} />;
 
+    case 'refer-earn-happiness-coins-section':
+      return <ReferEarnHappinessCoinsSection {...props} className={className} style={style} onSectionChange={onSectionChange} />;
+
     case 'new-platform-section':
       return <NewPlatformSection {...props} className={className} style={style} />;
+
+    case 'chat-empty-state':
+      return <ChatEmptyState {...props} className={className} style={style} onSectionChange={onSectionChange} />;
 
     case 'welcome-header':
       return <WelcomeHeader {...props} className={className} style={style} />;
@@ -1160,7 +1172,7 @@ function TherapistSection({ title, showSearchFilters, showTherapistGrid, activeF
       {/* Therapist/Coaches Tabs */}
       <div className="therapist-tabs-section">
         <div className="therapist-tabs">
-                    <button 
+          <button
             className={`therapist-tab ${activeTab === 'therapist' ? 'active' : ''}`}
             onClick={() => {
               setActiveTab('therapist');
@@ -1178,7 +1190,7 @@ function TherapistSection({ title, showSearchFilters, showTherapistGrid, activeF
               </div>
             )}
           </button>
-          <button 
+          <button
             className={`therapist-tab ${activeTab === 'coaches' ? 'active' : ''}`}
             onClick={() => {
               setActiveTab('coaches');
@@ -1268,14 +1280,24 @@ function TherapistSection({ title, showSearchFilters, showTherapistGrid, activeF
               ))}
             </div>
           )}
+
           {therapists && visibleCount < therapists.length && (
             <div className="load-more-container">
-              <button
+              {/* Load More  */}
+              <div className="load-more-all">
+                <button
+                  className="load-more-all-button"
+                  onClick={() => setVisibleCount(therapists.length)}
+                >
+                  Load More
+                </button>
+              </div>
+              {/* <button
                 className="load-more-btn"
                 onClick={() => setVisibleCount(therapists.length)}
               >
                 Load More
-              </button>
+              </button> */}
             </div>
           )}
         </div>
@@ -1292,19 +1314,19 @@ function FirstChatSection({ title, subtitle, buttonText, buttonAction, backgroun
   };
 
   return (
-    <section 
-      className={className || "first-chat-section"} 
+    <section
+      className={className || "first-chat-section"}
       style={{ backgroundColor: backgroundColor || '#F5F3FF', ...style }}
     >
       <div className="first-chat-container">
         {/* Chat Icon */}
         <div className="chat-icon-container">
-        <img
-          src="/src/assets/images/icons/Illustrations.svg"
-          alt="Illustrations icon"
-          width="120"
-          height="120"
-        />         
+          <img
+            src="/src/assets/images/icons/Illustrations.svg"
+            alt="Illustrations icon"
+            width="100"
+            height="100"
+          />
         </div>
 
         {/* Content */}
@@ -1320,6 +1342,136 @@ function FirstChatSection({ title, subtitle, buttonText, buttonAction, backgroun
           <button className="first-chat-button" onClick={handleButtonClick}>
             {buttonText || "Go to chat"}
           </button>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ProgressJourneySection({ title, subtitle, buttonText, buttonAction, backgroundColor, className, style, onSectionChange }: any) {
+  const handleButtonClick = () => {
+    if (onSectionChange && buttonAction) {
+      onSectionChange(buttonAction);
+    }
+  };
+
+  return (
+    <section
+      className={className || "progress-journey-section"}
+      style={{ backgroundColor: backgroundColor || '#F5F3FF', ...style }}
+    >
+      <div className="progress-journey-container">
+        {/* Progress Chart Icon */}
+        <div className="progress-chart-icon-container">
+          <img
+            src="/src/assets/images/icons/bar_chart.svg"
+            alt="bar_chart icon"
+            width="100"
+            height="100"
+          />
+          {/* <svg width="100" height="100" viewBox="0 0 100 100" fill="none">
+            <rect x="10" y="60" width="15" height="30" fill="#006B5F" rx="2"/>
+            <rect x="30" y="40" width="15" height="50" fill="#006B5F" rx="2"/>
+            <rect x="50" y="20" width="15" height="70" fill="#006B5F" rx="2"/>
+            <rect x="70" y="50" width="15" height="40" fill="#006B5F" rx="2"/>
+          </svg> */}
+        </div>
+
+        {/* Content */}
+        <div className="progress-journey-content">
+          <h2 className="progress-journey-title">
+            Your <span className="highlight-text">Progress</span> Journey Starts Here
+          </h2>
+          <p className="progress-journey-subtitle">{subtitle || "You'll be able to track your emotional growth and wellness after taking your second assessment."}</p>
+        </div>
+
+        {/* Button */}
+        <div className="progress-journey-button-container">
+          <button className="progress-journey-button" onClick={handleButtonClick}>
+            {buttonText || "Go to Progress"}
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function HomeYourCarePlanSection({ title, subtitle, unlockCard, benefitsCard, className, style, onSectionChange }: any) {
+  const handleUnlockButtonClick = () => {
+    if (onSectionChange && unlockCard?.buttonAction) {
+      onSectionChange(unlockCard.buttonAction);
+    }
+  };
+
+  return (
+    <section className={className || "home-your-care-plan-section"} style={style}>
+      <div className="home-care-plan-container">
+        {/* Header */}
+        <div className="home-care-plan-header">
+          <h2 className="home-care-plan-title">{title || "Your Care Plan"}</h2>
+          <p className="home-care-plan-subtitle">
+            {subtitle || "To get personalized self-care actions, complete your first assessment. Your plan will be generated based on your mental health goals and responses."}
+          </p>
+        </div>
+
+        {/* Main Content */}
+        <div className="home-care-plan-content">
+          {/* Unlock Card */}
+          <div className="home-unlock-care-plan-card">
+            <img
+              src="/src/assets/images/icons/unlock-care-plan.png"
+              alt="unlock care plan"
+              className="unlock-card-background-image"
+            />
+            <div className="unlock-card-overlay">
+              {/* <div className="lock-icon-container">
+                <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                  <path
+                    d="M12 18H36C37.1046 18 38 18.8954 38 20V40C38 41.1046 37.1046 42 36 42H12C10.8954 42 10 41.1046 10 40V20C10 18.8954 10.8954 18 12 18Z"
+                    fill="white"
+                    stroke="white"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M16 18V14C16 10.6863 18.6863 8 22 8H26C29.3137 8 32 10.6863 32 14V18"
+                    stroke="white"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </div> */}
+              <div className="unlock-card-content">
+                <h3 className="home-unlock-card-title">{unlockCard?.title || "Unlock your Personalized care plan"}</h3>
+                <p className="home-unlock-card-subtitle">{unlockCard?.subtitle || "Take a quick assessment to unlock your Care Plan"}</p>
+                <button className="home-unlock-card-button" onClick={handleUnlockButtonClick}>
+                  {unlockCard?.buttonText || "Take Assessment"}
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Benefits Card */}
+          <div className="benefits-care-plan-card">
+            <h3 className="benefits-card-title">
+              What You'll Get with <span className="mycare-plan-highlight">MyCarePlan</span>
+            </h3>
+            <div className="benefits-list">
+              {benefitsCard?.benefits?.map((benefit: any, index: number) => (
+                <div key={index} className="benefit-item">
+                  <div className="benefit-checkmark">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                      <circle cx="10" cy="10" r="10" fill="#006B5F" />
+                      <path d="M6 10L8.5 12.5L14 7" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </div>
+                  <span className="benefit-text">{benefit.text}</span>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -1358,7 +1510,51 @@ function MainTabsSection({ activeTab, tabs, className, style, onSectionChange }:
 
 function renderTabContent(content: any, onSectionChange?: (section: string, data?: any) => void) {
   switch (content.type) {
-    case 'assessment-prompt':
+    case 'recommended-therapist':
+      return (
+        <div className="progress-content">
+          <div className="recommendation-tab-header">
+            {content.gifUrl && (
+              <img
+                src={content.gifUrl}
+                alt="Recommendation GIF"
+                className="recomm-gif"
+              />
+            )}
+            <h3>{content.title}</h3>
+            <p>{content.description}</p>
+          </div>
+          <div className="recommendation-tab-button">
+            <button className="figma-button">
+              <span className="figma-button-text">{content.ctaText}</span>
+            </button>
+          </div>
+        </div>
+      );
+
+    case 'recommended-coach':
+      return (
+        <div className="progress-content">
+          <div className="recommendation-tab-header">
+            {content.gifUrl && (
+              <img
+                src={content.gifUrl}
+                alt="Recommendation GIF"
+                className="recomm-gif"
+              />
+            )}
+            <h3>{content.title}</h3>
+            <p>{content.description}</p>
+          </div>
+          <div className="recommendation-tab-button">
+            <button className="figma-button">
+              <span className="figma-button-text">{content.ctaText}</span>
+            </button>
+          </div>
+        </div>
+      );
+
+    case 'self-care-tools':
       return (
         <div className="progress-content">
           <div className="recommendation-tab-header">
@@ -1475,8 +1671,8 @@ function MicroLearningsSection({ title, description, learningCards, className, s
   return (
     <div className={className || "micro-learnings-main-section"} style={style}>
       <div className="section-header">
-        <div className="section-title">{title}</div>
-        <div className="section-description">{description}</div>
+        <div className="micro-learnings-section-title">{title}</div>
+        <div className="micro-learnings-section-description">{description}</div>
       </div>
 
       <div className="learning-cards-container">
@@ -1489,7 +1685,7 @@ function MicroLearningsSection({ title, description, learningCards, className, s
                     <div className="card-title-wrapper">
                       <div className="card-title-row">
                         <div className="card-name">{card.title}</div>
-                        <div className="card-button">
+                        {/* <div className="card-button">
                           <svg
                             className="card-arrow-icon"
                             width="26"
@@ -1504,7 +1700,7 @@ function MicroLearningsSection({ title, description, learningCards, className, s
                               fill="#00C7B2"
                             />
                           </svg>
-                        </div>
+                        </div> */}
                       </div>
                       <div className="card-tags-container">
                         <div className="card-tags-sub-container">
@@ -1525,13 +1721,157 @@ function MicroLearningsSection({ title, description, learningCards, className, s
                 <div className="card-actions-section">
                   <div className="card-actions-wrapper">
                     <button className="take-look-button">{card.ctaText}</button>
-                    <button className="take-assessment-button">{card.secondaryCta}</button>
+                    {/* <button className="take-assessment-button">{card.secondaryCta}</button> */}
                   </div>
                 </div>
               </div>
             </div>
           </div>
         ))}
+      </div>
+
+      {/* Explore All Button */}
+      <div className="micro-learnings-explore-all">
+        <button className="explore-all-button">
+          Explore All
+        </button>
+      </div>
+    </div>
+  );
+}
+
+function ReferEarnHappinessCoinsSection({ title, referralCard, howItWorks, className, style, onSectionChange }: any) {
+  const handleCopyCode = () => {
+    navigator.clipboard.writeText(referralCard?.copyCode?.code || '');
+    onSectionChange?.('copy-referral-code', { code: referralCard?.copyCode?.code });
+  };
+
+  const handleShareInvite = () => {
+    onSectionChange?.('share-invite', referralCard?.shareButton);
+  };
+
+  const handleSocialShare = (platform: string, action: string) => {
+    onSectionChange?.(action, { platform });
+  };
+
+  return (
+    <div className={className || "refer-earn-happiness-coins-section"} style={style}>
+      <div className="refer-earn-section-header">
+        <h2 className="refer-earn-title">{title}</h2>
+      </div>
+
+      <div className="refer-earn-content">
+        {/* Referral Card */}
+        <div className="referral-card">
+          <div className="referral-card-header">
+            <span className="referral-label">{referralCard?.label}</span>
+            <div className="handshake-icon">
+              🤝
+            </div>
+          </div>
+
+          <h3 className="referral-card-title">{referralCard?.title}</h3>
+
+          <div className="copy-code-section">
+            <div className="copy-code-container">
+              <span className="copy-label">{referralCard?.copyCode?.label}</span>
+
+              <div className="code-display">
+                <svg width="5" height="5" viewBox="0 0 16 16" fill="none" className="copy-icon">
+                  <path d="M13.5 6.5H7.5C6.94772 6.5 6.5 6.94772 6.5 7.5V13.5C6.5 14.0523 6.94772 14.5 7.5 14.5H13.5C14.0523 14.5 14.5 14.0523 14.5 13.5V7.5C14.5 6.94772 14.0523 6.5 13.5 6.5Z" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" />
+                  <path d="M3.5 9.5H2.5C2.23478 9.5 1.98043 9.39464 1.79289 9.20711C1.60536 9.01957 1.5 8.76522 1.5 8.5V2.5C1.5 2.23478 1.60536 1.98043 1.79289 1.79289C1.98043 1.60536 2.23478 1.5 2.5 1.5H8.5C8.76522 1.5 9.01957 1.60536 9.20711 1.79289C9.39464 1.98043 9.5 2.23478 9.5 2.5V3.5" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                <span className="code-text">{referralCard?.copyCode?.code}</span>
+                <button className="share-invite-button" onClick={handleShareInvite}>
+                  {referralCard?.shareButton?.text}
+                </button>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+
+        {/* How it Works */}
+        <div className="how-it-works-section">
+          <h3 className="how-it-works-title">{howItWorks?.title}</h3>
+          <p className="how-it-works-description">{howItWorks?.description}</p>
+
+          <div className="social-icons-container">
+            {howItWorks?.socialIcons?.map((social: any, index: number) => (
+              <div key={index} className="social-icon-wrapper" onClick={() => handleSocialShare(social.name, social.action)}>
+                <div className="social-icon" style={{ backgroundColor: social.color }}>
+                  {social.iconType === 'whatsapp' && (
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+                      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.893 3.386" />
+                    </svg>
+                  )}
+                  {social.iconType === 'facebook' && (
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+                      <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                    </svg>
+                  )}
+                </div>
+                <span className="social-icon-label">{social.name}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ChatEmptyState({ illustration, title, subtitle, buttonText, buttonAction, footerText, className, style, onSectionChange }: any) {
+  const handleBookSession = () => {
+    if (onSectionChange && buttonAction) {
+      onSectionChange(buttonAction);
+    }
+  };
+
+  return (
+    <div className={className || "chat-empty-state-section"} style={style}>
+      <div className="chat-empty-state-container">
+        {/* Chat Illustration */}
+        <div className="chat-illustration-container">
+          <div className="chat-bubble-icon">
+            <svg width="120" height="120" viewBox="0 0 120 120" fill="none">
+              {/* Main chat bubble */}
+              <circle cx="60" cy="50" r="35" fill="#006B5F" />
+              {/* Eyes */}
+              <circle cx="50" cy="45" r="3" fill="white" />
+              <circle cx="70" cy="45" r="3" fill="white" />
+              {/* Mouth */}
+              <path d="M50 55 Q60 65 70 55" stroke="white" strokeWidth="2" fill="none" strokeLinecap="round" />
+              {/* Chat tail */}
+              <path d="M35 70 Q25 75 30 85 Q35 80 40 75" fill="#006B5F" />
+              {/* Decorative elements */}
+              <circle cx="95" cy="25" r="4" fill="#8B5CF6" />
+              <path d="M25 25 L30 20 L35 25 L30 30 Z" fill="#8B5CF6" />
+              <path d="M90 75 L95 70 L100 75 L95 80 Z" fill="#8B5CF6" />
+              {/* Chat lines */}
+              <path d="M25 90 Q30 85 35 90" stroke="#333" strokeWidth="2" strokeLinecap="round" />
+              <path d="M15 95 Q20 90 25 95" stroke="#333" strokeWidth="2" strokeLinecap="round" />
+            </svg>
+          </div>
+        </div>
+
+        {/* Content */}
+        <div className="chat-empty-content">
+          <h2 className="chat-empty-title">{title}</h2>
+          <p className="chat-empty-subtitle">{subtitle}</p>
+          
+          <button className="book-session-button" onClick={handleBookSession}>
+            {buttonText}
+          </button>
+        </div>
+
+        {/* Footer */}
+        {footerText && (
+          <div className="chat-footer">
+            <p className="chat-footer-text">{footerText}</p>
+          </div>
+        )}
       </div>
     </div>
   );
