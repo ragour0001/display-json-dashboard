@@ -129,8 +129,8 @@
       },
       {
         "label": "Chat",
-        "icon": "message-circle",
-        "iconSvg": "lucide:message-circle",
+        "icon": "message-chat",
+        "iconSvg": "lucide:message-chat",
         "path": "/chat",
         "visible": true,
         "roles": [

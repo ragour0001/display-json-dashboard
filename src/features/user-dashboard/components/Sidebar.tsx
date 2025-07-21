@@ -166,6 +166,19 @@ export default function Sidebar({
             <path d="M12 3c5 0 9 4 9 9 0 2.3-.8 4.4-2.1 6.1-.4.5-.9 1-.9 1.6V21h-12v-1.3c0-.6-.5-1.1-.9-1.6C3.8 16.4 3 14.3 3 12c0-5 4-9 9-9z" />
           </svg>
         );
+      case "lucide:message-chat":
+        // Custom chat icon: chat bubble with three horizontal lines
+        return (
+          <svg {...iconProps} viewBox="0 0 36 36">
+            <g stroke={iconColor} strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
+              {/* <path d="M6 30v-4a2 2 0 0 1 2-2h20a2 2 0 012 2v4" /> */}
+              <rect x="6" y="8" width="24" height="16" rx="4" />
+              <line x1="12" y1="14" x2="24" y2="14" />
+              <line x1="12" y1="18" x2="24" y2="18" />
+              <line x1="12" y1="22" x2="20" y2="22" />
+            </g>
+          </svg>
+        );
       default:
         return (
           <svg {...iconProps} viewBox="0 0 24 24">
@@ -438,6 +451,9 @@ export default function Sidebar({
           }
         }
         .sidebar-toggle-btn {
+          position: initial;
+          top: 20px;
+          right: -18px;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -446,10 +462,22 @@ export default function Sidebar({
           border: none;
           background: #f7f9fa;
           border-radius: 50%;
+          box-shadow: 0 2px 8px rgba(0,0,0,0.08);
           cursor: pointer;
-          margin-bottom: 16px;
-          margin-left: 4px;
-          transition: background 0.2s;
+          z-index: 1001;
+          transition: background 0.2s, right 0.3s;
+        }
+        .sidebar-expanded .sidebar-toggle-btn {
+          right: -18px;
+          margin-left: 14vw;
+        }
+        .sidebar-collapsed .sidebar-toggle-btn {
+          right: -18px;
+        }
+        @media (min-width: 769px) {
+          .sidebar-expanded .sidebar-toggle-btn {
+            right: 0;
+          }
         }
         .sidebar-toggle-btn:hover {
           background: #e0e7ef;
