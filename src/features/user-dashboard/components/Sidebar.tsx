@@ -31,7 +31,8 @@ export default function Sidebar({
   activeSection = "home",
   onSectionChange,
 }: SidebarProps) {
-  const [isExpanded, setIsExpanded] = useState(false);
+  // Sidebar defaults to expanded
+  const [isExpanded, setIsExpanded] = useState(true);
 
   const toggleSidebar = () => {
     const newExpanded = !isExpanded;
@@ -41,18 +42,10 @@ export default function Sidebar({
     }
   };
 
+  // Remove toggle from Home click, just change section
   const handleSectionClick = (section: string) => {
-    if (section === "home") {
-      // For Home tab, toggle sidebar instead of switching sections
-      toggleSidebar();
-      if (onSectionChange) {
-        onSectionChange("home");
-      }
-    } else {
-      // For other tabs, switch sections
-      if (onSectionChange) {
-        onSectionChange(section);
-      }
+    if (onSectionChange) {
+      onSectionChange(section);
     }
   };
 
@@ -444,77 +437,106 @@ export default function Sidebar({
             padding: 20px;
           }
         }
+        .sidebar-toggle-btn {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 36px;
+          height: 36px;
+          border: none;
+          background: #f7f9fa;
+          border-radius: 50%;
+          cursor: pointer;
+          margin-bottom: 16px;
+          margin-left: 4px;
+          transition: background 0.2s;
+        }
+        .sidebar-toggle-btn:hover {
+          background: #e0e7ef;
+        }
       `}</style>
       <aside
         className={`sidebar ${isExpanded ? "sidebar-expanded" : "sidebar-collapsed"}`}
       >
-      <div className="sidebar-content">
-        <div className="sidebar-nav">
-          <div className="nav-items">
-            {menuItems.map((item) => {
-              const isActive = activeSection === item.componentType;
-              const badgeColor = getBadgeColor(item.badgeColor);
-              
-              return (
-                <div
-                  key={item.componentType}
-                  className={`nav-item ${isActive ? "active" : ""}`}
-                  onClick={() => handleSectionClick(item.componentType)}
-                  title={item.description}
-                >
-                  <div className="nav-item-inner">
-                    <div className="nav-icon-container">
-                      {getIconByName(item.iconSvg, isActive)}
-                    </div>
-                    {isExpanded && (
-                      <div className="nav-label-container">
-                        <span className="nav-label">{item.label}</span>
-                        {item.badge && (
-                          <span 
-                            className="nav-badge" 
-                            style={{ backgroundColor: badgeColor }}
-                          >
-                            {item.badge}
-                          </span>
-                        )}
+        <div className="sidebar-content">
+          {/* Toggle button at the top */}
+          <button
+            className="sidebar-toggle-btn"
+            onClick={toggleSidebar}
+            aria-label={isExpanded ? "Collapse sidebar" : "Expand sidebar"}
+            type="button"
+          >
+            {/* Chevron icon: left if expanded, right if collapsed */}
+            {isExpanded ? (
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#006B5F" strokeWidth="2"><polyline points="13 16 7 10 13 4" /></svg>
+            ) : (
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#006B5F" strokeWidth="2"><polyline points="7 4 13 10 7 16" /></svg>
+            )}
+          </button>
+          <div className="sidebar-nav">
+            <div className="nav-items">
+              {menuItems.map((item) => {
+                const isActive = activeSection === item.componentType;
+                const badgeColor = getBadgeColor(item.badgeColor);
+                return (
+                  <div
+                    key={item.componentType}
+                    className={`nav-item ${isActive ? "active" : ""}`}
+                    onClick={() => handleSectionClick(item.componentType)}
+                    title={item.description}
+                  >
+                    <div className="nav-item-inner">
+                      <div className="nav-icon-container">
+                        {getIconByName(item.iconSvg, isActive)}
                       </div>
-                    )}
+                      {isExpanded && (
+                        <div className="nav-label-container">
+                          <span className="nav-label">{item.label}</span>
+                          {item.badge && (
+                            <span 
+                              className="nav-badge" 
+                              style={{ backgroundColor: badgeColor }}
+                            >
+                              {item.badge}
+                            </span>
+                          )}
+                        </div>
+                      )}
+                    </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
-        </div>
-
-        <div className="sidebar-footer">
-          <div className="profile-avatar">
-            <div className="avatar-container">
-              <svg
-                className="profile-icon"
-                width="17"
-                height="18"
-                viewBox="0 0 17 18"
-                fill="none"
-              >
-                <path
-                  fillRule="evenodd"
-                  clipRule="evenodd"
-                  d="M1.318 12.1183C2.16189 11.2744 3.30646 10.8003 4.49992 10.8003H11.6998C12.8932 10.8003 14.0378 11.2744 14.8817 12.1183C15.7256 12.9622 16.1997 14.1068 16.1997 15.3002V17.1002C16.1997 17.5972 15.7968 18.0002 15.2997 18.0002C14.8027 18.0002 14.3997 17.5972 14.3997 17.1002V15.3002C14.3997 14.5841 14.1153 13.8974 13.6089 13.3911C13.1026 12.8847 12.4159 12.6003 11.6998 12.6003H4.49992C3.78385 12.6003 3.0971 12.8847 2.59076 13.3911C2.08443 13.8974 1.79997 14.5841 1.79997 15.3002V17.1002C1.79997 17.5972 1.39703 18.0002 0.899984 18.0002C0.402936 18.0002 0 17.5972 0 17.1002V15.3002C0 14.1068 0.474097 12.9622 1.318 12.1183Z"
-                  fill="#006B5F"
-                />
-                <path
-                  fillRule="evenodd"
-                  clipRule="evenodd"
-                  d="M8.1005 1.79997C6.60936 1.79997 5.40055 3.00878 5.40055 4.49992C5.40055 5.99106 6.60936 7.19987 8.1005 7.19987C9.59165 7.19987 10.8005 5.99106 10.8005 4.49992C10.8005 3.00878 9.59165 1.79997 8.1005 1.79997ZM3.60059 4.49992C3.60059 2.01468 5.61527 0 8.1005 0C10.5857 0 12.6004 2.01468 12.6004 4.49992C12.6004 6.98515 10.5857 8.99984 8.1005 8.99984C5.61527 8.99984 3.60059 6.98515 3.60059 4.49992Z"
-                  fill="#006B5F"
-                />
-              </svg>
-              {isExpanded && <span className="nav-label">Profile</span>}
+          <div className="sidebar-footer">
+            <div className="profile-avatar">
+              <div className="avatar-container">
+                <svg
+                  className="profile-icon"
+                  width="17"
+                  height="18"
+                  viewBox="0 0 17 18"
+                  fill="none"
+                >
+                  <path
+                    fillRule="evenodd"
+                    clipRule="evenodd"
+                    d="M1.318 12.1183C2.16189 11.2744 3.30646 10.8003 4.49992 10.8003H11.6998C12.8932 10.8003 14.0378 11.2744 14.8817 12.1183C15.7256 12.9622 16.1997 14.1068 16.1997 15.3002V17.1002C16.1997 17.5972 15.7968 18.0002 15.2997 18.0002C14.8027 18.0002 14.3997 17.5972 14.3997 17.1002V15.3002C14.3997 14.5841 14.1153 13.8974 13.6089 13.3911C13.1026 12.8847 12.4159 12.6003 11.6998 12.6003H4.49992C3.78385 12.6003 3.0971 12.8847 2.59076 13.3911C2.08443 13.8974 1.79997 14.5841 1.79997 15.3002V17.1002C1.79997 17.5972 1.39703 18.0002 0.899984 18.0002C0.402936 18.0002 0 17.5972 0 17.1002V15.3002C0 14.1068 0.474097 12.9622 1.318 12.1183Z"
+                    fill="#006B5F"
+                  />
+                  <path
+                    fillRule="evenodd"
+                    clipRule="evenodd"
+                    d="M8.1005 1.79997C6.60936 1.79997 5.40055 3.00878 5.40055 4.49992C5.40055 5.99106 6.60936 7.19987 8.1005 7.19987C9.59165 7.19987 10.8005 5.99106 10.8005 4.49992C10.8005 3.00878 9.59165 1.79997 8.1005 1.79997ZM3.60059 4.49992C3.60059 2.01468 5.61527 0 8.1005 0C10.5857 0 12.6004 2.01468 12.6004 4.49992C12.6004 6.98515 10.5857 8.99984 8.1005 8.99984C5.61527 8.99984 3.60059 6.98515 3.60059 4.49992Z"
+                    fill="#006B5F"
+                  />
+                </svg>
+                {isExpanded && <span className="nav-label">Profile</span>}
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </aside>
+      </aside>
     </>
   );
 }

@@ -154,6 +154,17 @@
         "description": "Track your wellness journey and insights"
       },
       {
+        "label": "Assignments",
+        "icon": "clipboard",
+        "iconSvg": "lucide:clipboard-list",
+        "path": "/assignments",
+        "visible": true,
+        "roles": ["user"],
+        "active": false,
+        "componentType": "assignments",
+        "description": "View and complete your assignments"
+      },
+      {
         "label": "Micro Learnings",
         "icon": "book-open",
         "iconSvg": "lucide:book-open",
@@ -167,35 +178,6 @@
         "badgeColor": "blue",
         "componentType": "micro-learnings",
         "description": "Bite-sized learning content and courses"
-      },
-      {
-        "label": "Resources",
-        "icon": "file-text",
-        "iconSvg": "lucide:file-text",
-        "path": "/resources",
-        "visible": true,
-        "roles": [
-          "user"
-        ],
-        "active": false,
-        "componentType": "resources",
-        "description": "Mental health resources and tools"
-      },
-      {
-        "label": "Profile",
-        "icon": "user",
-        "iconSvg": "lucide:user",
-        "path": "/profile",
-        "visible": true,
-        "roles": [
-          "user",
-          "admin"
-        ],
-        "active": false,
-        "componentType": "profile",
-        "badge": "Incomplete",
-        "badgeColor": "orange",
-        "description": "Manage your profile and preferences"
       },
       {
         "label": "Settings",
