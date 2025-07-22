@@ -1836,24 +1836,12 @@ function ChatEmptyState({ illustration, title, subtitle, buttonText, buttonActio
         {/* Chat Illustration */}
         <div className="chat-illustration-container">
           <div className="chat-bubble-icon">
-            <svg width="120" height="120" viewBox="0 0 120 120" fill="none">
-              {/* Main chat bubble */}
-              <circle cx="60" cy="50" r="35" fill="#006B5F" />
-              {/* Eyes */}
-              <circle cx="50" cy="45" r="3" fill="white" />
-              <circle cx="70" cy="45" r="3" fill="white" />
-              {/* Mouth */}
-              <path d="M50 55 Q60 65 70 55" stroke="white" strokeWidth="2" fill="none" strokeLinecap="round" />
-              {/* Chat tail */}
-              <path d="M35 70 Q25 75 30 85 Q35 80 40 75" fill="#006B5F" />
-              {/* Decorative elements */}
-              <circle cx="95" cy="25" r="4" fill="#8B5CF6" />
-              <path d="M25 25 L30 20 L35 25 L30 30 Z" fill="#8B5CF6" />
-              <path d="M90 75 L95 70 L100 75 L95 80 Z" fill="#8B5CF6" />
-              {/* Chat lines */}
-              <path d="M25 90 Q30 85 35 90" stroke="#333" strokeWidth="2" strokeLinecap="round" />
-              <path d="M15 95 Q20 90 25 95" stroke="#333" strokeWidth="2" strokeLinecap="round" />
-            </svg>
+          <img
+            src="/src/assets/images/icons/chat_Illustrations.svg"
+            alt="bar_chart icon"
+            width="100"
+            height="100"
+          />
           </div>
         </div>
 
