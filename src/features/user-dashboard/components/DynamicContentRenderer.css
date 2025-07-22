@@ -1141,8 +1141,8 @@
 @media (max-width: 1400px) {
   .micro-learnings-main-section {
     max-width: 100vw;
-    margin-left: 0;
-    margin-right: 0;
+    margin-left: 1.5vw;
+    margin-right: 1.5vw;
   }
   .learning-cards-container {
     max-width: 98vw;
@@ -2071,8 +2071,8 @@
 @media (max-width: 1400px) {
   .first-chat-section {
     max-width: 100vw;
-    margin-left: 0;
-    margin-right: 0;
+    margin-left: 1.5vw;
+    margin-right: 1.5vw;
   }
   .first-chat-container {
     max-width: 98vw;
@@ -2285,8 +2285,8 @@
 @media (max-width: 1400px) {
   .progress-journey-section {
     max-width: 100vw;
-    margin-left: 0;
-    margin-right: 0;
+    margin-left: 1.5vw;
+    margin-right: 1.5vw;
   }
   .progress-journey-container {
     max-width: 98vw;
