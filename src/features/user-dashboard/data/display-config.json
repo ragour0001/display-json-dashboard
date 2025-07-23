@@ -156,7 +156,7 @@
       {
         "label": "Assignments",
         "icon": "clipboard",
-        "iconSvg": "lucide:clipboard-list",
+        "iconSvg": "lucide:clipboard-assignments",
         "path": "/assignments",
         "visible": true,
         "roles": ["user"],

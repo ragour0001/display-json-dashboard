@@ -809,7 +809,7 @@ function LetUsHelpYou({ title, helpCards, className, style, onSectionChange }: a
     {
       icon: (
         <img
-          src="/src/assets/images/icons/target.svg"
+          src="/assets/user-dashboard/icons/target.svg"
           alt="Target icon"
           width="56"
           height="56"
@@ -1322,7 +1322,7 @@ function FirstChatSection({ title, subtitle, buttonText, buttonAction, backgroun
         {/* Chat Icon */}
         <div className="chat-icon-container">
           <img
-            src="/src/assets/images/icons/Illustrations.svg"
+            src="/assets/user-dashboard/icons/Illustrations.svg"
             alt="Illustrations icon"
             width="100"
             height="100"
@@ -1364,7 +1364,7 @@ function ProgressJourneySection({ title, subtitle, buttonText, buttonAction, bac
         {/* Progress Chart Icon */}
         <div className="progress-chart-icon-container">
           <img
-            src="/src/assets/images/icons/bar_chart.svg"
+            src="/assets/user-dashboard/icons/bar_chart.svg"
             alt="bar_chart icon"
             width="100"
             height="100"
@@ -1419,7 +1419,7 @@ function HomeYourCarePlanSection({ title, subtitle, unlockCard, benefitsCard, cl
           {/* Unlock Card */}
           <div className="home-unlock-care-plan-card">
             <img
-              src="/src/assets/images/icons/unlock-care-plan.png"
+              src="/assets/user-dashboard/icons/unlock-care-plan.png"
               alt="unlock care plan"
               className="unlock-card-background-image"
             />
@@ -1837,7 +1837,7 @@ function ChatEmptyState({ illustration, title, subtitle, buttonText, buttonActio
         <div className="chat-illustration-container">
           <div className="chat-bubble-icon">
           <img
-            src="/src/assets/images/icons/chat_Illustrations.svg"
+            src="/assets/user-dashboard/icons/chat_Illustrations.svg"
             alt="bar_chart icon"
             width="100"
             height="100"
