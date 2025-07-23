@@ -58,7 +58,14 @@ function AssignmentsEmptyPage() {
           Complete these tasks to get the most from your sessions.
         </p>
         <div style={{ margin: '32px 0 24px 0' }}>
-          <svg width="160" height="160" viewBox="0 0 160 160" fill="none">
+        <img
+            src="/assets/user-dashboard/icons/assignment.svg"
+            alt="bar_chart icon"
+            width="120"
+            height="120"
+          />
+         
+          {/* <svg width="160" height="160" viewBox="0 0 160 160" fill="none">
             <circle cx="80" cy="80" r="80" fill="#F5F7FA" />
             <rect x="55" y="50" width="50" height="60" rx="10" fill="#006B5F" />
             <rect x="65" y="60" width="30" height="8" rx="2" fill="#fff" />
@@ -67,7 +74,7 @@ function AssignmentsEmptyPage() {
             <rect x="65" y="99" width="20" height="6" rx="2" fill="#fff" />
             <circle cx="80" cy="55" r="8" fill="#fff" />
             <rect x="77" y="52" width="6" height="6" rx="3" fill="#006B5F" />
-          </svg>
+          </svg> */}
         </div>
         <div style={{ textAlign: 'center', marginBottom: 8 }}>
           <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: '1.3rem', color: '#232a3d', marginBottom: 4 }}>

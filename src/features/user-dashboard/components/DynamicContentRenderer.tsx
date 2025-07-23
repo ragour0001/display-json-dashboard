@@ -823,7 +823,7 @@ function LetUsHelpYou({ title, helpCards, className, style, onSectionChange }: a
     {
       icon: (
         <img
-          src="src/assets/images/icons/diagnosis.svg"
+          src="/assets/user-dashboard/icons/diagnosis.svg"
           alt="Assessment icon"
           width="56"
           height="56"
@@ -837,7 +837,7 @@ function LetUsHelpYou({ title, helpCards, className, style, onSectionChange }: a
     {
       icon: (
         <img
-          src="src/assets/images/icons/psychology_alt.svg"
+          src="/assets/user-dashboard/icons/psychology_alt.svg"
           alt="Assessment icon"
           width="56"
           height="56"
@@ -1762,7 +1762,7 @@ function ReferEarnHappinessCoinsSection({ title, referralCard, howItWorks, class
       </div>
 
       <div className="refer-earn-content">
-        {/* Referral Card */}
+        {/* Referral Card  New */}
         <div className="referral-card">
           <div className="referral-card-header">
             <span className="referral-label">{referralCard?.label}</span>
@@ -1787,8 +1787,6 @@ function ReferEarnHappinessCoinsSection({ title, referralCard, howItWorks, class
                   {referralCard?.shareButton?.text}
                 </button>
               </div>
-
-
             </div>
           </div>
         </div>
