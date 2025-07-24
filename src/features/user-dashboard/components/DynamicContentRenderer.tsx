@@ -1623,7 +1623,7 @@ function CarePlanSection({ showCarePlan, title, description, unlockCard, referra
               </div>
             </div>
           </div>
-          
+
 
           <div className="referral-card">
             <div className="referral-overlay">
@@ -1776,17 +1776,19 @@ function ReferEarnHappinessCoinsSection({ title, referralCard, howItWorks, class
           <div className="copy-code-section">
             <div className="copy-code-container">
               <span className="copy-label">{referralCard?.copyCode?.label}</span>
-
               <div className="code-display">
                 <svg width="5" height="5" viewBox="0 0 16 16" fill="none" className="copy-icon">
                   <path d="M13.5 6.5H7.5C6.94772 6.5 6.5 6.94772 6.5 7.5V13.5C6.5 14.0523 6.94772 14.5 7.5 14.5H13.5C14.0523 14.5 14.5 14.0523 14.5 13.5V7.5C14.5 6.94772 14.0523 6.5 13.5 6.5Z" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" />
                   <path d="M3.5 9.5H2.5C2.23478 9.5 1.98043 9.39464 1.79289 9.20711C1.60536 9.01957 1.5 8.76522 1.5 8.5V2.5C1.5 2.23478 1.60536 1.98043 1.79289 1.79289C1.98043 1.60536 2.23478 1.5 2.5 1.5H8.5C8.76522 1.5 9.01957 1.60536 9.20711 1.79289C9.39464 1.98043 9.5 2.23478 9.5 2.5V3.5" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
                 <span className="code-text">{referralCard?.copyCode?.code}</span>
-                <button className="share-invite-button" onClick={handleShareInvite}>
+                {/* <button className="share-invite-button-referral" onClick={handleShareInvite}>
                   {referralCard?.shareButton?.text}
-                </button>
+                </button> */}
               </div>
+              <button className="share-invite-button-referral" onClick={handleShareInvite}>
+                {referralCard?.shareButton?.text}
+              </button>
             </div>
           </div>
         </div>
@@ -1834,12 +1836,12 @@ function ChatEmptyState({ illustration, title, subtitle, buttonText, buttonActio
         {/* Chat Illustration */}
         <div className="chat-illustration-container">
           <div className="chat-bubble-icon">
-          <img
-            src="/assets/user-dashboard/icons/chat_Illustrations.svg"
-            alt="bar_chart icon"
-            width="100"
-            height="100"
-          />
+            <img
+              src="/assets/user-dashboard/icons/chat_Illustrations.svg"
+              alt="bar_chart icon"
+              width="100"
+              height="100"
+            />
           </div>
         </div>
 
@@ -1847,7 +1849,7 @@ function ChatEmptyState({ illustration, title, subtitle, buttonText, buttonActio
         <div className="chat-empty-content">
           <h2 className="chat-empty-title">{title}</h2>
           <p className="chat-empty-subtitle">{subtitle}</p>
-          
+
           <button className="book-session-button" onClick={handleBookSession}>
             {buttonText}
           </button>

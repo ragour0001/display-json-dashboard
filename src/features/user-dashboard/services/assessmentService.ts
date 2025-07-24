@@ -3,6 +3,7 @@ export interface AssessmentQuestion {
   question: string;
   options: string[];
   answerIds?: number[]; // Add this to store actual answer IDs from API
+  assessmentSubCategoryDesc?: string;
 }
 
 export interface ApiQuestion {
@@ -13,6 +14,7 @@ export interface ApiQuestion {
     answerText: string;
     answerOrder: number;
   }[];
+  assessmentSubCategoryDesc?: string;
 }
 
 export interface ApiAssessment {
@@ -20,6 +22,7 @@ export interface ApiAssessment {
   assessmentType: string;
   assessmentTitle: string;
   questions: ApiQuestion[];
+  assessmentSubCategoryDesc?: string;
 }
 
 export interface AssessmentSubmissionPayload {
@@ -60,7 +63,9 @@ export class AssessmentService {
             id: apiQuestion.questionId,
             question: apiQuestion.questionText,
             options: sortedAnswers.map(answer => answer.answerText),
-            answerIds: sortedAnswers.map(answer => answer.answerId)
+            answerIds: sortedAnswers.map(answer => answer.answerId),
+            // Attach the parent assessment's description here:
+            assessmentSubCategoryDesc: assessment.assessmentSubCategoryDesc
           };
           
           allQuestions.push(mappedQuestion);

@@ -16,6 +16,7 @@ interface AssessmentSectionProps {
   isFirst: boolean;
   isLast: boolean;
   onSectionChange?: (section: string) => void;
+  assessmentSubCategoryDesc?: string;
 }
 
 export default function AssessmentSection({
@@ -31,6 +32,7 @@ export default function AssessmentSection({
   isFirst,
   isLast,
   onSectionChange,
+  assessmentSubCategoryDesc,
 }: AssessmentSectionProps) {
   return (
     <>
@@ -132,7 +134,8 @@ export default function AssessmentSection({
           gap: 21px;
           align-self: stretch;
           border-radius: 8px;
-          background: #cde8e1;
+          /* background: #cde8e1; */
+          background: #FFFAF6;
         }
 
         .assessment-progress-header {
@@ -395,6 +398,13 @@ export default function AssessmentSection({
           gap: 0;
         }
 
+        .assessment-subcategory-desc {
+          color: #666;
+          font-size: 15px;
+          font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+          margin-bottom: 8px;
+        }
+
         @media (max-width: 768px) {
           .assessment-section {
             max-width: 100%;
@@ -487,6 +497,9 @@ export default function AssessmentSection({
             </div>
 
             <div className="assessment-question-section">
+              {assessmentSubCategoryDesc && assessmentSubCategoryDesc.trim() !== '' && (
+                <div className="assessment-subcategory-desc">{assessmentSubCategoryDesc}</div>
+              )}
               <h3 className="question-title">
                 {question}
               </h3>

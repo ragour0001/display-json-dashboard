@@ -225,7 +225,7 @@ export default function GoalsAssessment({ onSectionChange, selectedGoals }: Goal
           gap: 21px;
           align-self: stretch;
           border-radius: 8px;
-          background: #cde8e1;
+          background: #FFFAF6;
         }
 
         .assessment-progress-header {
@@ -440,6 +440,7 @@ export default function GoalsAssessment({ onSectionChange, selectedGoals }: Goal
           isFirst={currentIndex === 0}
           isLast={currentIndex === questions.length - 1}
           onSectionChange={onSectionChange}
+          assessmentSubCategoryDesc={questions[currentIndex].assessmentSubCategoryDesc}
         />
         <PreferencesSection />
       </div>
