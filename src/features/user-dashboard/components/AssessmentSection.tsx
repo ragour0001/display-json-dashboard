@@ -451,6 +451,7 @@ export default function AssessmentSection({
           <h1 className="assessment-title">Assessment</h1>
         </div>
 
+        {/* <div className="assessment-card" style={{ background: (questionNumber >= totalQuestions - 1) ? '#E6F4EA' : '#f7f9fa' }}> */}
         <div className="assessment-card">
           <div className="assessment-card-header">
             <div className="assessment-icon">
@@ -489,10 +490,23 @@ export default function AssessmentSection({
             </div>
           </div>
 
-          <div className="assessment-progress-container">
+          {/* <div className="assessment-progress-container"> */}
+          <div className="assessment-progress-container" style={{ background: (questionNumber >= totalQuestions - 1) ? '#CDE8E1' : '#FFFAF6' }}>
             <div className="assessment-progress-header">
               <h3 className="progress-title">You're just getting started – Let's kick off your Wellness Journey!</h3>
-              <ProgressBar progress={Math.round((questionNumber / totalQuestions) * 100)} />
+              {/* Determine progress bar color based on questionNumber and totalQuestions */}
+              {(() => {
+                let color = "#E53935"; // Red by default
+                const mid = Math.floor(totalQuestions / 2);
+                if (questionNumber > mid && questionNumber < totalQuestions - 1) {
+                  color = "#FFA726"; // Orange
+                } else if (questionNumber >= totalQuestions - 1) {
+                  color = "#43A047"; // Green
+                }
+                return (
+                  <ProgressBar progress={Math.round((questionNumber / totalQuestions) * 100)} color={color} />
+                );
+              })()}
               <p className="progress-step">Question set {questionNumber} of {totalQuestions}</p>
             </div>
 

@@ -2,9 +2,10 @@
 
 interface ProgressBarProps {
   progress: number; // 0-100
+  color?: string; // Optional color for the progress bar
 }
 
-export default function ProgressBar({ progress }: ProgressBarProps) {
+export default function ProgressBar({ progress, color }: ProgressBarProps) {
   return (
     <>
       <style>{`
@@ -21,6 +22,7 @@ export default function ProgressBar({ progress }: ProgressBarProps) {
         .progress-bar-svg {
           width: 100%;
           height: 16px;
+          border-radius: 64px;
         }
       `}</style>
       <div className="progress-bar-wrapper">
@@ -38,7 +40,7 @@ export default function ProgressBar({ progress }: ProgressBarProps) {
             width={`${(progress / 100) * 865}`}
             height="16"
             rx="8"
-            fill="url(#paint0_linear_1155_12611)"
+            fill={color || "url(#paint0_linear_1155_12611)"}
           />
 
           {/* Progress dots */}
