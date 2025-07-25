@@ -10,10 +10,10 @@ export default function UserDashboardApp() {
   const { config, loading, error, getSidebarMenuItems, getActiveMenuItem } = useDisplayConfig();
   const [isSidebarExpanded, setIsSidebarExpanded] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
-  
+
   // State to track selected goals from Home tab
   const [selectedGoals, setSelectedGoals] = useState<any[]>([]);
-  
+
   // State for sliding Learn More screen
   const [showLearnMore, setShowLearnMore] = useState(false);
 
@@ -38,29 +38,29 @@ export default function UserDashboardApp() {
     // TARGETED CSS ISOLATION: Disable specific conflicting stylesheets
     const conflictingStylesheets = document.querySelectorAll('link[rel="stylesheet"], style');
     const disabledElements: { element: HTMLLinkElement | HTMLStyleElement; wasDisabled: boolean }[] = [];
-    
+
     conflictingStylesheets.forEach((element) => {
       const linkElement = element as HTMLLinkElement;
       const styleElement = element as HTMLStyleElement;
-      
+
       // Skip our own user-dashboard CSS
       if (element.id && element.id.includes('user-dashboard')) {
         return;
       }
-      
+
       // Check if this stylesheet contains conflicting CSS
       const href = linkElement.href || '';
-      const isConflicting = href.includes('Dashboard.scss') || 
-                           href.includes('SetNewPassword.scss') || 
-                           href.includes('Verification.scss') ||
-                           href.includes('index.css') ||
-                           href.includes('main.css') ||
-                           href.includes('global.css');
-      
+      const isConflicting = href.includes('Dashboard.scss') ||
+        href.includes('SetNewPassword.scss') ||
+        href.includes('Verification.scss') ||
+        href.includes('index.css') ||
+        href.includes('main.css') ||
+        href.includes('global.css');
+
       if (isConflicting) {
         const wasDisabled = linkElement.disabled || styleElement.disabled || false;
         disabledElements.push({ element: element as HTMLLinkElement | HTMLStyleElement, wasDisabled });
-        
+
         if (linkElement.href) {
           linkElement.disabled = true;
         } else if (styleElement) {
@@ -86,7 +86,7 @@ export default function UserDashboardApp() {
           element.disabled = false;
         }
       });
-      
+
       // Clean up user-dashboard specific CSS
       removeCssFile(globalsCssLink);
       loadedComponentLinks.forEach(link => {
@@ -101,7 +101,7 @@ export default function UserDashboardApp() {
 
   const handleSectionChange = (section: string, data?: any) => {
     console.log(`🔄 Navigation: Switching to ${section}`, data);
-    
+
     // Handle goal completion from home page
     if (section === 'goals-completed' && data && Array.isArray(data)) {
       console.log('✅ UserDashboardApp: Goals completed, saving:', data);
@@ -110,17 +110,17 @@ export default function UserDashboardApp() {
       // Don't change active section, keep user on current page
       return;
     }
-    
+
     // Handle Learn More action - trigger sliding animation
     if (section === 'learn-more') {
       console.log('📖 UserDashboardApp: Showing Learn More screen');
       setShowLearnMore(true);
       return;
     }
-    
+
     setActiveSection(section);
   };
-  
+
   // Handler for going back from Learn More screen
   const handleBackFromLearnMore = () => {
     console.log('🔙 UserDashboardApp: Going back from Learn More screen');
@@ -139,7 +139,7 @@ export default function UserDashboardApp() {
         fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif'
       }}>
         <div className="loading-spinner" style={{ fontSize: '18px', color: '#666' }}>
-          Loading dashboard...
+          {/* Loading dashboard... */}
         </div>
       </div>
     );
@@ -158,7 +158,7 @@ export default function UserDashboardApp() {
       }}>
         <h2 style={{ color: '#d32f2f', marginBottom: '16px' }}>Error loading dashboard</h2>
         <p>{error.message}</p>
-        <button 
+        <button
           onClick={() => window.location.reload()}
           style={{
             padding: '12px 24px',
@@ -394,6 +394,7 @@ export default function UserDashboardApp() {
           height: 100%;
           overflow: hidden;
           display: flex;
+          padding: 1px 40px;
         }
 
         .home-screen {
@@ -865,18 +866,27 @@ export default function UserDashboardApp() {
         }
 
         .platform-label {
-          font-size: 14px;
-          color: #006B5F;
-          font-weight: 600;
-          margin-bottom: 8px;
+        color: var(--5742-a-9, #5742A9);
+font-family: Inter;
+font-size: 16px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+
+          // font-size: 14px;
+          // color: #006B5F;
+          // font-weight: 600;
+          // margin-bottom: 8px;
         }
 
         .platform-title {
-          font-size: 22px;
-          font-weight: 700;
-          color: #1a1a1a;
-          margin-bottom: 24px;
-          line-height: 1.3;
+        color: #232323;
+font-family: Inter;
+font-size: 28px;
+font-style: normal;
+font-weight: 600;
+line-height: 130%; /* 36.4px */
+          
         }
 
         .download-section {
@@ -1020,7 +1030,7 @@ export default function UserDashboardApp() {
 
 
       `}</style>
-          <div className="dashboard-layout">
+      <div className="dashboard-layout">
         <Navbar />
         <div
           className={`user-dashboard-content ${isSidebarExpanded ? "sidebar-expanded-layout" : ""}`}
@@ -1046,7 +1056,7 @@ export default function UserDashboardApp() {
                   />
                 </div>
               </div>
-              
+
               {showLearnMore && (
                 <div className="learn-more-screen-container">
                   <LearnMoreScreen onBack={handleBackFromLearnMore} />

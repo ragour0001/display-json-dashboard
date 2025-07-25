@@ -914,13 +914,13 @@ export default function Progress() {
         }
 
         .platform-label {
-          color: #5742a9;
-          font-family: Inter, sans-serif;
-          font-size: 14px;
-          font-style: normal;
-          font-weight: 600;
-          line-height: 20px;
-          letter-spacing: 0.1px;
+        color: var(--5742-a-9, #5742A9);
+font-family: Inter;
+font-size: 16px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+         
         }
 
         .platform-title {
