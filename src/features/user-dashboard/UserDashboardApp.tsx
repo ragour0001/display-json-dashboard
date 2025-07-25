@@ -257,7 +257,7 @@ export default function UserDashboardApp() {
         .dashboard-layout .user-dashboard-content.sidebar-expanded-layout .main-content,
         .dashboard-layout .sidebar-expanded-layout .main-content {
           max-width: calc(100vw - 250px) !important;
-          transition: max-width 0.3s ease !important;
+          transition: max-width 0.3s ease !important;          
         }
 
         .dashboard-layout .user-dashboard-content:not(.sidebar-expanded-layout) .main-content {
@@ -394,7 +394,7 @@ export default function UserDashboardApp() {
           height: 100%;
           overflow: hidden;
           display: flex;
-          padding: 1px 40px;
+          // padding: 1px 40px;
         }
 
         .home-screen {
@@ -403,6 +403,7 @@ export default function UserDashboardApp() {
           position: relative;
           transition: transform 0.4s ease-in-out;
           flex-shrink: 0;
+          padding: 1px 40px;
         }
 
         .learn-more-screen-container {
