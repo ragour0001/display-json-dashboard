@@ -430,7 +430,7 @@ const therapistCoachConfig = {
   therapistSection: {
     showSearchFilters: true,
     showTherapistGrid: true,
-    activeFilters: ["Therapist", "Price : $200 - $600"],
+    // activeFilters: ["Therapist", "Price : $200 - $600"],
     searchPlaceholder: "Search By Names, Specialization or Language",
     therapists: [
       {
@@ -526,6 +526,18 @@ const therapistCoachConfig = {
 // Define the content blocks for dynamic rendering
 const therapistCoachContent = [
   {
+    type: 'breadcrumb-welcome',
+    props: {
+      breadcrumbItems: [
+        { label: 'Global Dashboard', active: false },
+        { label: 'Therapist & Coaches', active: true }
+      ],
+      welcomeTitle: 'Therapist & Coaches',
+      showUserName: false
+    },
+    className: 'chat-breadcrumb-section'
+  },
+  {
     type: 'therapist-section',
     props: therapistCoachConfig.therapistSection,
     className: 'therapist-coach-section'
@@ -537,15 +549,16 @@ const therapistCoachContent = [
   }
 ];
 
+
 export default function TherapistCoach() {
   return (
     <main className="therapist-coach-page">
       <div className="therapist-coach-content">
+        {/* this section can be used later
         <div className="page-header">
           <h1>Upcoming Session Details</h1>
         </div>
-
-        <UpcomingSessionDetails />
+        <UpcomingSessionDetails /> */}
 
         <div className="main-content-section">
           <DynamicContentRenderer content={therapistCoachContent} />

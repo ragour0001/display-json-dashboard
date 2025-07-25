@@ -1166,7 +1166,7 @@ function TherapistSection({ title, showSearchFilters, showTherapistGrid, activeF
               ))}
             </div>
           )}
-        </div>
+        </div>        
       )}
 
       {/* Therapist/Coaches Tabs */}
